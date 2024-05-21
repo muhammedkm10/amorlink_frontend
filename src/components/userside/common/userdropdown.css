@@ -1,0 +1,29 @@
+.dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .dropdown-select {
+    padding: 5px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .dropdown-select:focus {
+    border-bottom: 2px solid #007bff; /* Change to your desired focus color */
+  }
+  
+  .dropdown-select option {
+    color: #000;
+    background: #fff;
+  }
+  

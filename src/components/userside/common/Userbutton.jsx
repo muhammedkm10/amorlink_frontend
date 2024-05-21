@@ -1,9 +1,9 @@
 import React from 'react'
-import 'userbutton.css'
+import './userbutton.css'
 
-function Userbutton() {
+function Userbutton({name,onClick}) {
   return (
-    <div>Userbutton</div>
+    <button className='userbutton' onClick={onClick}>{name}</button>
   )
 }
 

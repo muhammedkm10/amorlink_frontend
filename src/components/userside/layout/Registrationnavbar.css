@@ -1,10 +1,12 @@
 .navbar{
     background: linear-gradient(to right, #40183A, #A63E96);
     text-align:center
+    
 
 }
-.logo{
-    width: 30px;
-    height: 20px;
+.logo {
+    margin: auto;
+    width: 14vh;  /* Set the desired width */
+    height: 6vh; /* Set the desired height */
 }
-  
+

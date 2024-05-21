@@ -1,0 +1,7 @@
+.userbutton{
+    background: linear-gradient(to right, #40183A, #A63E96);
+    padding: 2px 40px ;
+    border-radius: 20px;
+    border: none;
+    color: white;
+}

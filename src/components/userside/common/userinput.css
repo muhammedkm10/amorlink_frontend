@@ -1,0 +1,24 @@
+input {
+    border: none; /* Removes the default border */
+    outline: none; /* Removes the default focus outline */
+    padding: 3px; /* Adds some padding inside the input field */
+    font-size: 16px; /* Sets the font size */
+    border-bottom: 1px solid #e0e0e0; /* Adds a bottom border as an underline */
+    line-height: 24px; 
+    text-align: center;/* Adjusts the line height to create space at the bottom */
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+input:focus {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px; /* Changes the border color to red on hover */
+}
+.input1::-webkit-outer-spin-button,
+.input1::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+

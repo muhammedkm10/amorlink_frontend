@@ -1,0 +1,123 @@
+/* Prevent vertical scrolling and set full height for html and body */
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Wrapper settings to ensure full height */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Ensure the main content takes full height minus the footer */
+.main {
+    flex: 1;
+    display: flex;
+}
+
+/* Prevent container fluid from causing vertical overflow */
+.containerfluid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login image styling */
+.loginimage {
+    width: 50vw;
+    height: 85vh;
+    object-fit: cover;
+}
+
+/* Inner wrapper adjustments */
+.innerwrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-right: 0 !important;
+    --bs-gutter-x: 0 !important;
+}
+
+/* Side sections to occupy full height */
+.firstside, .secondside {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.heading {
+    color: #3a0933;
+}
+
+/* Styling for the login form */
+.login > * {
+    padding: 10px;
+    text-align: center;
+}
+
+.inputs > * {
+    padding: 1rem;
+}
+
+.loginbutton {
+    padding-top: 15px;
+}
+
+.login {
+    box-shadow: 0 0 40px rgba(165, 9, 9, 0.1);
+    border-radius: 20px;
+    padding: 2rem 4rem;
+}
+
+/* Transition effects */
+.login {
+    opacity: 0;
+    transform: translateX(200px);
+    transition: opacity 3s ease, transform 1s ease;
+}
+
+.login.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.firstside {
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: opacity 3s ease, transform 1s ease;
+}
+
+.firstside.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.footer-wrapper {
+    opacity: 0;
+    transition: opacity 3s ease, transform 1s ease;
+    transform: translateY(20px);
+}
+
+.footer-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.forget {
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.links {
+    margin-top: 8px;
+}
