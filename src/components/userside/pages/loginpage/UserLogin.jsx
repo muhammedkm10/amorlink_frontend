@@ -9,13 +9,47 @@ import { Link } from 'react-router-dom'
 
 function UserLogin() {
   const [isVisible, setIsVisible] = useState(false);
+  const [formData1,setFormdata1] = useState({
+    email:'',
+    password:''
+  })
+
+
+  const [isemailvalid,setisEmailvalid] = useState(false)
+  const [ispasswordvalid,setidPasswordvalid] = useState(false)
+
+  const handleemailandpassword = (e) =>{
+    const {name,value} = e.target;
+    setFormdata1({
+      ...formData1,
+      [name]:value
+    })
+    if (name === 'email'){
+      validateEmail(value)
+    }
+    else if (name === 'password'){
+      validateName(value)
+    }
+  }
+
+  const validateEmail = (value) =>{
+    const gmailRegex = /^(?! )[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    setisEmailvalid(gmailRegex.test(value));
+
+  }
+  const validateName = (value) =>{
+      // setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
+      setidPasswordvalid(/^[a-zA-Z0-9]{6}$/.test(value));
+    };
+
+  
+
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-
-
+console.log(formData1)
   return (
     <div className="wrapper">
     <RegistatinNavbar/>
@@ -30,8 +64,11 @@ function UserLogin() {
               <h4 className='heading'>Login</h4>
               <div className="loginform">
                 <div className="inputs">
-                  <Userinput placeholder="email" type="email"/>
-                  <Userinput placeholder="password" type="password" />
+                  <Userinput placeholder="email" type="email" name="email"onChange={handleemailandpassword}/>
+                  {!formData1.email || !isemailvalid && <div className="error">Invalid email</div>}
+                  <Userinput placeholder="password" type="password" name="password"  onChange={handleemailandpassword}/>
+                  {!formData1.password || !ispasswordvalid && <div className="error">Invalid email</div>}
+
                 </div>
                 <div className='loginbutton'>
                   <Userbutton name="login" />

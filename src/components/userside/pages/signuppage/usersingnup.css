@@ -6,3 +6,9 @@
     font-size: 13px;
     padding: 0px !important;
 }
+.error1{
+    color: red;
+    font-size: 10px;
+    padding: 0px !important;
+    max-width: 200px; 
+}

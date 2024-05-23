@@ -1,13 +1,16 @@
 import React from 'react'
-import Userinput from '../../../common/Userinput'
+import Usertextarea from '../../../common/Usertextarea'
 
 
-function Step5() {
+function Step5({data,handleChange,isAbout}) {
+  console.log(data)
+  console.log(isAbout)
   return (
-    <div><h1>5 page</h1>
+    <div><h6>About the groom : </h6>
     <div className="inputs">
-              <Userinput placeholder="email" />
-              <Userinput placeholder="password" />
+              <Usertextarea  onChange={handleChange} name="about" />
+              {!isAbout && <div className="error">Text should contain at least 15 characters</div> }
+  
     </div>
     </div>
   )
