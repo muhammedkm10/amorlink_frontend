@@ -5,20 +5,57 @@ import loginimage from '../../../../assets/images/pexels-imagestudio-1488315.jpg
 import './userlogin.css'
 import Userbutton from '../../common/Userbutton'
 import Userinput from '../../common/Userinput'
-import { Link } from 'react-router-dom'
-
+import { Link, useAsyncError, useNavigate } from 'react-router-dom'
+import { login } from '../../../../actions/authActions'
 import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { ToastContainer, toast  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './custom-toastify.css';
+import { ClipLoader } from 'react-spinners';
+
 
 function UserLogin() {
+  const notify = (data) => toast.error(
+    <div>
+      <i className="fas  "></i>
+      {data}
+    </div>, 
+    {
+      className: 'custom-toast',
+      bodyClassName: 'custom-toast-body',
+      progressClassName: 'custom-toast-progress',
+    }
+  );
+  
+
+  //  states using of the transition
   const [isVisible, setIsVisible] = useState(false);
-  const [formData1,setFormdata1] = useState({
-    email:'',
-    password:''
-  })
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+
+  const auth = useSelector((state)=>state.auth)
+console.log(auth)
+   const dispatch = useDispatch()
+
+
+
+
+  // to fetch the data from the previous component
   const location = useLocation()
   const {message} = location.state || {}
 
 
+  // states used to store the  form data
+  const [formData1,setFormdata1] = useState({
+    email:'',
+    password:''
+  })
+
+
+// validation for the enterd email and password
   const [isemailvalid,setisEmailvalid] = useState(false)
   const [ispasswordvalid,setidPasswordvalid] = useState(false)
 
@@ -32,7 +69,7 @@ function UserLogin() {
       validateEmail(value)
     }
     else if (name === 'password'){
-      validateName(value)
+      validatePassword(value)
     }
   }
 
@@ -41,17 +78,43 @@ function UserLogin() {
     setisEmailvalid(gmailRegex.test(value));
 
   }
-  const validateName = (value) =>{
+  const validatePassword = (value) =>{
       // setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
       setidPasswordvalid(/^[a-zA-Z0-9]{6}$/.test(value));
     };
 
-  
+
+    const [loading, setLoading] = useState(false);
+    const [isinvalid,setisinvalid] = useState(false)
+    const Navigate = useNavigate()
 
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+    // for submitting the form for login
+    const submitHandler =()=>{
+      if ( !isemailvalid || !ispasswordvalid){
+                notify("Please enter valid password and email")
+      }
+      else{
+              setLoading(true)
+             const information = dispatch(login(formData1))
+             if (information){
+              information.then(respons=>{
+                if (respons === "notpossible"){
+                  setLoading(false)
+                  setisinvalid(true)
+                }
+                else if(respons === "notverified")  {
+                    setLoading(false)
+                    Navigate('/modal',{state:{email:formData1.email}})
+                }
+                else {
+                  Navigate('/userhome')
+                }
+              })
+             }
+      }
+    }
+
 
 console.log(formData1)
   return (
@@ -63,23 +126,33 @@ console.log(formData1)
           <div className={`col-md-6 d-none d-md-block firstside ${isVisible ? 'visible' : ''}`}> 
             <img className="loginimage" src={loginimage} alt="Login" />
           </div>
+          
           <div className='col-12 col-md-6 secondside'>
+          <ToastContainer  position='top-center' />
+
             <div className={`login ${isVisible ? 'visible' : ''}`}>
-              {message ? <div><p>Verification completed please login....</p></div>:""}
+              {message ? <div className='text-success'><p>Verification completed please login....</p></div>:""}
               <h4 className='heading'>Login</h4>
               <div className="loginform">
                 <div className="inputs">
                   <Userinput placeholder="email" type="email" name="email"onChange={handleemailandpassword}/>
                   {!formData1.email || !isemailvalid && <div className="error">Invalid email</div>}
                   <Userinput placeholder="password" type="password" name="password"  onChange={handleemailandpassword}/>
-                  {!formData1.password || !ispasswordvalid && <div className="error">Invalid email</div>}
+                {!formData1.password || !ispasswordvalid && <div className="error"><p>Enter correct password</p></div>}
                  
                 </div>
                 <div className='loginbutton'>
-                  <Userbutton name="login" />
+                  <Userbutton name="login" onClick={submitHandler} />
                 </div>
+                {loading ? (
+                          <div className="spinner-container">
+                            <ClipLoader size={20} color={"#123abc"} loading={loading} />
+                          </div>
+                        ) : ""}
+                {isinvalid && <p className='text-danger'>Please enter the correct email and password</p>}
+
                 <div className='links'>
-                    <span className='forget'> <Link >forget passwsord?   </Link>|  <Link  to="/user/usersignup">signup  </Link></span>
+                    <span className='forget'> <Link >forget passwsord?   </Link>|  <Link  to="/usersignup">signup  </Link></span>
                 </div>
               </div>
             </div>

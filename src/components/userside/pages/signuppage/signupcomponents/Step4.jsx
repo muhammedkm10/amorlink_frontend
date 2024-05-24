@@ -10,34 +10,32 @@ function Step4({data,handleChange,isAnnualincome,isEmployedin,isState,isDistrict
   const [districts, setDistricts] = useState([]);
 
 // finding the states from the data
-  const states = 
-    statesData.map(state => {
-      return (
-        {
-          label:state.state,
-          value:state.state
-        }
-      )
+const states = [
+  { label: "select your state" },
+  ...statesData.map(state => ({
+    label: state.state,
+    value: state.state
+  }))
+];
 
-    })
 
 // finding the name of the districts from the data using the state name selected by this function
 
-    const another_function = (vlaue) =>{
-      const selectedState = statesData.find(state => state.state === vlaue);
-      setDistricts(selectedState.districts.map(district => {
-        return (
-          {
-            label:district,
-            value:district
-          }
-        )
+const another_function = (value) => {
+  const selectedState = statesData.find(state => state.state === value);
+  if (selectedState) {
+    setDistricts([
+      { label: "select your district" },
+      ...selectedState.districts.map(district => ({
+        label: district,
+        value: district
       }))
-      
-      
+    ]);
+  } else {
+    setDistricts([{ label: "select a profession" }]); // In case no state is found
+  }
+};
 
-    }
-  
   
   
   const job = [

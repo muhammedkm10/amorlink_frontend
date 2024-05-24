@@ -68,23 +68,22 @@ const Registration = () => {
 //     going to next step if the credentials are valid 
   const handleNextStep = () => {
     
-    // if (currentStep === 1 && (!isEmailValid || !isPhoneValid || !isPasswordValid || !isAccontforValid || !isnameValid)) {
-    //   notify("Fill the form correctly.....!")
-    //   return;
-    // }else  if (currentStep === 2 && (!isLanguagevalid || !isReligionvalid || !isCastvalid || !isDatevalid )) {
-    //   notify("Fill the form correctly.....!")
-    //   return;
-    // }
-    //  else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus )){
-    //   notify("Fill the form correctly.....!")
-    //   return
-    // }
-    // else if (currentStep === 4 && (!isAnnualincome || !isDistrict || !isState || !isEmployedin)){
-    //   notify("Fill the form correctly.....!")
-    //     return
-    //   }
-    // else 
-    if (currentStep === 5 ){
+    if (currentStep === 1 && (!isEmailValid || !isPhoneValid || !isPasswordValid || !isAccontforValid || !isnameValid)) {
+      notify("Fill the form correctly.....!")
+      return;
+    }else  if (currentStep === 2 && (!isLanguagevalid || !isReligionvalid || !isCastvalid || !isDatevalid )) {
+      notify("Fill the form correctly.....!")
+      return;
+    }
+     else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus )){
+      notify("Fill the form correctly.....!")
+      return
+    }
+    else if (currentStep === 4 && (!isAnnualincome || !isDistrict || !isState || !isEmployedin)){
+      notify("Fill the form correctly.....!")
+        return
+      }
+    else if (currentStep === 5 ){
       notify("Fill the form correctly.....!")
        return 
     }
@@ -375,10 +374,10 @@ const submitHandler = async () => {
         headers :{
 
         }
-      }); // Replace '/endpoint' with your actual endpoint
+      }); 
       if (response.status === 201){
         
-        navigate('/user/modal',{state:{email:formData.email}})
+        navigate('/modal',{state:{email:formData.email}})
       }
     } catch (error) {
       if (error.response.data.error === 'emailused') {
@@ -431,7 +430,7 @@ const submitHandler = async () => {
               </div>
               <div className="links">
                 <span className="forget">
-                  Your have account? <Link to="/user/userlogin">login</Link>
+                  Your have account? <Link to="/">login</Link>
                 </span>
               </div>
             </div>

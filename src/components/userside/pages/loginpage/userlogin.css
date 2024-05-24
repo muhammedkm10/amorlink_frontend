@@ -33,7 +33,7 @@ html, body {
 /* Login image styling */
 .loginimage {
     width: 50vw;
-    height: 85vh;
+    height: 87vh;
     object-fit: cover;
 }
 
@@ -121,3 +121,11 @@ html, body {
 .links {
     margin-top: 8px;
 }
+
+.error1{
+        color: red;
+        font-size: 10px;
+        padding: 0px !important;
+        max-width: 200px; 
+        margin-left: 28px;
+    }

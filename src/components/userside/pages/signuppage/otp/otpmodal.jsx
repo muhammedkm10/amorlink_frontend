@@ -39,9 +39,12 @@ const Modal = () => {
     }
   };
 
+  // submition of the form and checking the otp is correct or not
+
   const handleSubmit = async () => {
     const otpValue = otp.join("");
     if (otpValue.length !== 6){
+      // for not completed otps
       setiserror(true)
     }
     else{
@@ -57,15 +60,17 @@ const Modal = () => {
           setIsload(false)
           setiserror2(false)
         
-          navigate('/user/userlogin',{state:{message:"Please login..."}})
+          navigate('/',{state:{message:"Please login..."}})
         }
       } catch (error) {
         if (error.response.data.error === 'faild') {
           setIsload(false)
+          // for incurrect otps 
           setiserror2(true)
         }
         if (error.response.data.error === 'notpresent') {
           setIsload(false)
+          // for other errors
           setiserror3(true)
 
         }
