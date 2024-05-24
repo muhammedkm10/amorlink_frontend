@@ -61,7 +61,6 @@ function Step4({data,handleChange,isAnnualincome,isEmployedin,isState,isDistrict
   
   
 
-  console.log(data)
 
 
 

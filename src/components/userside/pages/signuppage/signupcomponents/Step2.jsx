@@ -98,7 +98,6 @@ function Step2({data,handleChange ,isLanguagevalid,isReligionvalid,isCastvalid,i
     {label:'Others',vlaue:'Others'}
 
   ]
-  console.log(data)
   return (
     <div>
     <div className="inputs text-center">

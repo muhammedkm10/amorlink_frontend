@@ -14,7 +14,6 @@ function Step1({ data, handleChange, isEmailValid, isPhoneValid,isPasswordValid 
 
       ];
     
-      console.log(data)
    
 
 
@@ -24,7 +23,7 @@ function Step1({ data, handleChange, isEmailValid, isPhoneValid,isPasswordValid 
       <Userdropdown options={options}  name="accountFor" value={data.accountFor}  onChange={handleChange} />
       {data.accountFor ? <div className="text-info">Account for : {data.accountFor}</div>:""}
       { !isAccontforValid && <div className="error">Select one option</div> }
-      <Userinput placeholder="name" type="text" name="name" value={data.name} onChange={handleChange} />
+      <Userinput placeholder="groom's name" type="text" name="name" value={data.name} onChange={handleChange} />
       {!data.name || !isnameValid &&<div className="error">Name must contain alphabets and inbetween spaces only</div>}
       <Userinput placeholder="email" type="email" name="email" value={data.email} onChange={handleChange} />
       {!data.email || !isEmailValid && <div className="error">Invalid email</div>}

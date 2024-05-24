@@ -1,0 +1,92 @@
+/* OtpModal.module.css */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the modal is above other content */
+}
+
+.modalContent {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-top: 10px #A63E96 solid;
+  border-bottom: 10px #A63E96 solid;
+
+
+}
+
+.modalContent h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.modalContent p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+.otpInputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.otpInputs input {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: border 0.3s ease;
+}
+
+.otpInputs input:focus {
+  border: 1px solid #A63E96;
+  outline: none;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modalButtons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn {
+  background: linear-gradient(to right, #40183A, #A63E96);
+  color: white;
+}
+
+.submitBtn:hover {
+  background: #A63E96;
+}
+
+.closeBtn {
+  background: #ccc;
+  color: #333;
+}
+
+.closeBtn:hover {
+  background: #bbb;
+}

@@ -33,7 +33,6 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
     { label: 'Rich/Affluent', value: 'Rich/Affluent' },
   ];
 
-console.log(data)
 
 
   return (

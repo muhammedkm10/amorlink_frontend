@@ -7,12 +7,16 @@ import Userbutton from '../../common/Userbutton'
 import Userinput from '../../common/Userinput'
 import { Link } from 'react-router-dom'
 
+import { useLocation } from 'react-router-dom'
+
 function UserLogin() {
   const [isVisible, setIsVisible] = useState(false);
   const [formData1,setFormdata1] = useState({
     email:'',
     password:''
   })
+  const location = useLocation()
+  const {message} = location.state || {}
 
 
   const [isemailvalid,setisEmailvalid] = useState(false)
@@ -61,6 +65,7 @@ console.log(formData1)
           </div>
           <div className='col-12 col-md-6 secondside'>
             <div className={`login ${isVisible ? 'visible' : ''}`}>
+              {message ? <div><p>Verification completed please login....</p></div>:""}
               <h4 className='heading'>Login</h4>
               <div className="loginform">
                 <div className="inputs">
@@ -68,7 +73,7 @@ console.log(formData1)
                   {!formData1.email || !isemailvalid && <div className="error">Invalid email</div>}
                   <Userinput placeholder="password" type="password" name="password"  onChange={handleemailandpassword}/>
                   {!formData1.password || !ispasswordvalid && <div className="error">Invalid email</div>}
-
+                 
                 </div>
                 <div className='loginbutton'>
                   <Userbutton name="login" />

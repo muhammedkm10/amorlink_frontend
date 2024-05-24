@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import Step1 from './signupcomponents/Step1';
 import Step2 from './signupcomponents/Step2';
 import Step3 from './signupcomponents/Step3';
@@ -13,13 +13,17 @@ import './usersingnup.css';
 import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './custom-toastify.css';
+import apiClient from '../../../../api/axiosconfig';
+import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
+
 
 const Registration = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const notify = () => toast.error(
+  const notify = (data) => toast.error(
     <div>
       <i className="fas  "></i>
-      Fill the form correctly.....!
+      {data}
     </div>, 
     {
       className: 'custom-toast',
@@ -39,6 +43,7 @@ const Registration = () => {
     accountFor: '',
     name: '',
     email: '',
+    password:'',
     phone: '',
     dob:'',
     language:'',
@@ -63,23 +68,24 @@ const Registration = () => {
 //     going to next step if the credentials are valid 
   const handleNextStep = () => {
     
-    if (currentStep === 1 && (!isEmailValid || !isPhoneValid || !isPasswordValid || !isAccontforValid || !isnameValid)) {
-      notify()
-      return;
-    }else  if (currentStep === 2 && (!isLanguagevalid || !isReligionvalid || !isCastvalid || !isDatevalid )) {
-      notify()
-      return;
-    }
-     else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus )){
-      notify()
-      return
-    }
-    else if (currentStep === 4 && (!isAnnualincome || !isDistrict || !isState || !isEmployedin)){
-      notify()
-        return
-      }
-    else if (currentStep === 5 ){
-      notify()
+    // if (currentStep === 1 && (!isEmailValid || !isPhoneValid || !isPasswordValid || !isAccontforValid || !isnameValid)) {
+    //   notify("Fill the form correctly.....!")
+    //   return;
+    // }else  if (currentStep === 2 && (!isLanguagevalid || !isReligionvalid || !isCastvalid || !isDatevalid )) {
+    //   notify("Fill the form correctly.....!")
+    //   return;
+    // }
+    //  else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus )){
+    //   notify("Fill the form correctly.....!")
+    //   return
+    // }
+    // else if (currentStep === 4 && (!isAnnualincome || !isDistrict || !isState || !isEmployedin)){
+    //   notify("Fill the form correctly.....!")
+    //     return
+    //   }
+    // else 
+    if (currentStep === 5 ){
+      notify("Fill the form correctly.....!")
        return 
     }
     setCurrentStep((prevStep) => prevStep + 1);
@@ -355,57 +361,92 @@ const validateAbout = (value) =>{
 
 //    submitting all form and going to the otp verification
 
-const submitHandler =()=>{
-  if (!isAbout){
-    notify()
-  }
-  else{
-    alert("submition")
-  }
+const navigate = useNavigate()
+const [loading, setLoading] = useState(false);
 
-}
+
+const submitHandler = async () => {
+  if (!isAbout) {
+    notify("Fill the form correctly....!");
+  } else {
+    setLoading(true);
+    try {
+      const response = await apiClient.post('/authapp/usersignup',formData ,{
+        headers :{
+
+        }
+      }); // Replace '/endpoint' with your actual endpoint
+      if (response.status === 201){
+        
+        navigate('/user/modal',{state:{email:formData.email}})
+      }
+    } catch (error) {
+      if (error.response.data.error === 'emailused') {
+        notify('Your email is already used');
+      }
+      else if (error.response.data.error === 'phonenumber') {
+        notify('Phone number should be length of 10');
+      } else {
+        notify('An error occurred. Please try again.');
+      }
+    }
+  }
+};
+
+
  
+       // basic skeleton of the registration form and  restructuring the pages here 
 
   return (
+    <div>
+   
+    <div  className='wrapper'>
+    <RegistatinNavbar />
+    <main className="main">
+      <div className="containerfluid">
+        <div className="row innerwrapper">
+          <div className={`col-md-6 d-none d-md-block firstside ${isVisible ? 'visible' : ''}`}>
 
-    // basic skeleton of the registration form and  restructuring the pages here 
-    <div className="wrapper">
-      <RegistatinNavbar />
-      <main className="main">
-        <div className="containerfluid">
-          <div className="row innerwrapper">
-            <div className={`col-md-6 d-none d-md-block firstside ${isVisible ? 'visible' : ''}`}>
-
-              <img className="loginimage" src={loginimage} alt="Login" />
-            </div>
-            <div className="col-12 col-md-6 secondside">
-            <ToastContainer  position='top-center' />
-              <div className={`login ${isVisible ? 'visible' : ''}`}>
-                <h4 className="heading">Provide your details</h4>
-                <div className="loginform">
-                  <div>{renderStep()}</div>
-                  <div className="loginbutton">
-                    <div>
-                      {currentStep > 1 && <Userbutton onClick={handlePreviousStep} name="Previous" />}
-                      {currentStep < 5 && <Userbutton onClick={handleNextStep} name="Next" />}
-                      {currentStep === 5 && <Userbutton onClick={submitHandler} name="Submit" />}
-                    </div>
+            <img className="loginimage" src={loginimage} alt="Login" />
+          </div>
+          <div className="col-12 col-md-6 secondside">
+          <ToastContainer  position='top-center' />
+            <div className={`login ${isVisible ? 'visible' : ''}`}>
+              <h4 className="heading">Provide your details</h4>
+              <div className="loginform">
+                <div>{renderStep()}</div>
+                <div className="loginbutton">
+                  <div>
+                    {currentStep > 1 && <Userbutton onClick={handlePreviousStep} name="Previous" />}
+                    {currentStep < 5 && <Userbutton onClick={handleNextStep} name="Next" />}
+                    {currentStep === 5 && <Userbutton onClick={submitHandler} name="Submit" />}
+                    {loading ? (
+                          <div className="spinner-container">
+                            <ClipLoader size={30} color={"#123abc"} loading={loading} />
+                          </div>
+                        ) : ""}
+                    
                   </div>
                 </div>
-                <div className="links">
-                  <span className="forget">
-                    Your have account? <Link to="/user/userlogin">login</Link>
-                  </span>
-                </div>
+              </div>
+              <div className="links">
+                <span className="forget">
+                  Your have account? <Link to="/user/userlogin">login</Link>
+                </span>
               </div>
             </div>
           </div>
         </div>
-      </main>
-      <div className={`footer-wrapper ${isVisible ? 'visible' : ''}`}>
-        <Registrationfooter />
       </div>
+    </main>
+    <div className={`footer-wrapper ${isVisible ? 'visible' : ''}`}>
+      <Registrationfooter />
     </div>
+  </div>
+  
+  </div>
+
+   
   );
 };
 
