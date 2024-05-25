@@ -1,4 +1,4 @@
-.userbutton{
+.userButton{
     background: linear-gradient(to right, #40183A, #A63E96);
     padding: 2px 40px ;
     border-radius: 20px;
@@ -7,7 +7,7 @@
     margin:10px
 
 }
-.userbutton:hover{
+.userButton:hover{
     border:1px solid #40183A;
     padding: 2px 40px ;
     border-radius: 20px;

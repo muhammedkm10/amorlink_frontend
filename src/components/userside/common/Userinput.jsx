@@ -1,5 +1,5 @@
 import React from 'react'
-import './userinput.css'
+import './userinput.module.css'
 
 
 function Userinput({placeholder, type, name, value, onChange }) {

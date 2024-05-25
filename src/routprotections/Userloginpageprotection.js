@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import NotFoundPage from '../components/userside/UI/Error'
+import Userhome from '../components/userside/pages/userhome/userhome'
 
 const Userloginpageprotection = ({children}) => {
     const user = useSelector((state)=>state.auth.usertoken)
-    console.log(user)
      
-    return user === null ? children  : <NotFoundPage/>
+    return user === null ? children  : <Userhome/>
 }
 
 export default Userloginpageprotection
+
+

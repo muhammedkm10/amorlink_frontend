@@ -1,17 +1,14 @@
-import React from 'react'
-import './Registrationnavbar.css'
-import logo from './../../../assets/images/logo-removebg-preview.png'
-function RegistatinNavbar() {
+import React from 'react';
+import styles from './Registrationnavbar.module.css';
+import logo from './../../../assets/images/logo-removebg-preview.png';
+
+function RegistrationNavbar() {
   return (
-    <div className='container-fluid navbar1'>
-            <img className="logo img-fluid" src={logo} alt="logo"  />
+    <div className={`container-fluid ${styles.navbar1}`}>
+      <img className={`img-fluid ${styles.logo}`} src={logo} alt="logo" />
     </div>
-  )
+  );
 }
 
-export default RegistatinNavbar
-
-
-
-
+export default RegistrationNavbar;
 

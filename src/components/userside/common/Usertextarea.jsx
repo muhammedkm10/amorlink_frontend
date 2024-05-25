@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import './usertextarea.css'; // Import the CSS file
+import React from 'react';
+import styles from './usertextarea.module.css';
 
-const Usertextarea = ({name,value,onChange,placeholder}) => {
- 
-
+const Usertextarea = ({ name, value, onChange, placeholder }) => {
   return (
     <div>
       <textarea
-        className="textarea" // Add the "textarea" class to apply the styles
-          placeholder={placeholder}
-          name={name}
-          value={value}
-          onChange={onChange}
+        className={styles.textarea} // Add the "textarea" class to apply the styles
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

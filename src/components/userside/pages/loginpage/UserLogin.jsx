@@ -6,13 +6,14 @@ import './userlogin.css'
 import Userbutton from '../../common/Userbutton'
 import Userinput from '../../common/Userinput'
 import { Link, useAsyncError, useNavigate } from 'react-router-dom'
-import { login } from '../../../../store/actions/authActions'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './custom-toastify.css';
 import { ClipLoader } from 'react-spinners';
+import axios from 'axios'
+import apiClient from '../../../../api/axiosconfig'
 
 
 function UserLogin() {
@@ -90,26 +91,42 @@ console.log("in login page",auth)
 
 
     // for submitting the form for login
-    const submitHandler = () => {
+    const submitHandler = async ()  => {
   if (!isemailvalid ||!ispasswordvalid) {
     notify("Please enter valid password and email");
   } else {
-    setLoading(true);
-    dispatch(login(formData1)).then((information) => {
-      console.log(information, "asdkifhaksjdf");
-      if (information === "hai") {
-        setLoading(false);
-        Navigate('/userhome');
-      } else {
-        // Handle other responses
-        // Your existing logic for handling "notpossible" and "notverified" goes here
-      }
-    }).catch((error) => {
-      // Handle errors
-      console.error("Error occurred:", error);
-      setLoading(false);
-      Navigate('/userhome'); // Optionally navigate to user home on error
-    });
+    try{
+              const response = await apiClient.post('/authapp/userlogin',formData1)
+              // if the response is success then the following code will work
+              if (response.status === 200 && response.data.role === "user"){
+                const resp = response.data
+                axios.post('http://127.0.0.1:8000/authapp/api/token',  formData1)
+                  .then((response)=>{
+                    const p = response.data
+                    if (resp.role === "user"){
+                          localStorage.setItem("authUserTokens", JSON.stringify(p))
+                          localStorage.setItem("role","user")
+                          dispatch({type:"LOGIN SUCCESS",payload:{usertoken:p,admintoken:null,role:resp.role}})
+                          Navigate('/userhome')
+                    }
+                  })
+              }
+              else{
+                console.log(response);
+              }
+            }
+            //  catching error from the backend and taking proper actions here
+            catch(error){
+              if (error.response && error.response.data.error === "notpresent") {
+                setLoading(false)
+                setisinvalid(true)
+            }
+            else if(error.response.data.error === "notverified"){
+              setLoading(false)
+              Navigate('/modal',{state:{email:formData1.email}})
+            }
+            
+            }
   }
 };
 

@@ -13,10 +13,10 @@ import Userloginpageprotection from '../../routprotections/Userloginpageprotecti
 function UserRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Userloginpageprotection><UserLogin /></Userloginpageprotection>} />
-      <Route path="/usersignup" element={<Registration/>} />
+      <Route path="/" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
+      <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
       <Route path="/userhome" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
-      <Route path="/userprofile" element={<Userprofile/>} />
+      <Route path="/userprofile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
 
 
 

@@ -1,12 +1,12 @@
-import React from 'react'
-import './registrationfooter.css'
+import React from 'react';
+import styles from './registrationfooter.module.css';
 
-function Registrationfooter() {
+function RegistrationFooter() {
   return (
-     <footer class="footer">
-          <div className='container-fluid footerbar'></div>
-     </footer>
-  )
+    <footer className={styles.footer}>
+      <div className={`container-fluid ${styles.footerbar}`}></div>
+    </footer>
+  );
 }
 
-export default Registrationfooter
+export default RegistrationFooter;

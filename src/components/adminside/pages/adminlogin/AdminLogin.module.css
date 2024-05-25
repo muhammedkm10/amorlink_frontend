@@ -1,21 +1,3 @@
-.loginbutton{
-    margin-top: 1px;
-}
-.error{
-    color: red;
-    font-size: 13px;
-    padding: 0px !important;
-}
-.error1{
-    color: red;
-    font-size: 10px;
-    padding: 0px !important;
-    max-width: 200px; 
-}
-.blur-background {
-    filter: blur(5px);
-  }
-  /* Prevent vertical scrolling and set full height for html and body */
 /* Prevent vertical scrolling and set full height for html and body */
 html, body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -48,12 +30,6 @@ html, body {
     align-items: center;
 }
 
-/* Login image styling */
-.loginimage {
-    width: 50vw;
-    height: 87vh;
-    object-fit: cover;
-}
 
 /* Inner wrapper adjustments */
 .innerwrapper {
@@ -62,36 +38,38 @@ html, body {
     height: 100%;
     margin-right: 0 !important;
     --bs-gutter-x: 0 !important;
+    align-items: center;
 }
 
 /* Side sections to occupy full height */
-.firstside, .secondside {
+.secondside1 {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
-.heading {
+.heading1 {
     color: #3a0933;
 }
 
 /* Styling for the login form */
-.login > * {
+.login1 > * {
     padding: 10px;
     text-align: center;
 }
 
 .inputs > * {
-    padding: 1rem;
+    padding: 10rem;
 }
 
 .loginbutton {
     padding-top: 15px;
 }
 
-.login {
+.login1 {
     box-shadow: 0 0 40px rgba(165, 9, 9, 0.1);
     border-radius: 20px;
     padding: 2rem 4rem;
@@ -136,14 +114,16 @@ html, body {
     font-size: 13px;
 }
 
-.links {
-    margin-top: 8px;
-}
-
 .error1{
         color: red;
         font-size: 10px;
         padding: 0px !important;
         max-width: 200px; 
-        margin-left: 28px;
+      margin-left: 16px;
     }
+.inputs1{
+   padding: 20px!important;
+}
+.p{
+    margin-top: 10px !important
+}
