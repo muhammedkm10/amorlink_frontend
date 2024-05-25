@@ -1,78 +1,91 @@
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: lightgray;
-  }
-  
-  .navbarBrand {
-    flex-shrink: 0; /* Prevent brand logo from shrinking */
-  }
-  
-  .navbarLogo {
-    margin-right: 20px; /* Add margin to the right of the brand logo */
-  }
-  
-  .toggleButton {
-    display: none; /* Hide toggle button by default */
+
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #40183A, #A63E96);
+  height: 10vh;
+}
+.navbarLogo{
+  width: 22vh;  /* Set the desired width */
+  height: 13vh;
+  padding: 8px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: rgb(5, 5, 116);
+  padding-left: 20px;
+}
+
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: black;
+}
+
+.nav__link {
+  position: fixed;
+  width: 94%;
+  top: 5rem;
+  left: 18px;
+  background-color: lightblue;
+}
+
+.nav__link a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.nav__link a:hover {
+  background-color: lightcoral;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .nav__link {
+    display: block;
+    position: static;
+    width: auto;
+    margin-right: 100px;
     background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .navLinks {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navLink {
     color: white;
-    margin-right: 30px; /* Add more margin between links on larger screens */
-    cursor: pointer;
   }
-  
-  .linksCenter {
-    flex: 1;
+
+  .nav__link a {
+    display: inline-block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+  }
+  .nav__link a:hover {
+    display: inline-block;
+    padding: 15px 20px;
+    color: black;
+  }
+
+  .hamburger {
+    display: none;
+  }
+  .nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #40183A, #A63E96);
+    height: 10vh;
+
   }
-  
-  .userIcon {
-    margin-left: 20px; /* Add margin to the left of the user icon */
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .toggleButton {
-        display: inline-block; /* Or another suitable value */
-        /* Other styles as needed */
-      }
-    .navLinks {
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: lightgray;
-        width: 100%;
-        padding: 10px 0;
-        text-align: center;
-        display: none; /* Hide nav links by default on smaller screens */
-        opacity: 0; /* Initially invisible */
-        transform: translateY(-10px); /* Slightly above the navbar */
-        transition: all 0.3s ease-in-out; /* Smooth transitions */
-      }
-    
-     .navLinks.show {
-        display: flex;
-        opacity: 1; /* Fully visible */
-        transform: translateY(0); /* Align with the navbar */
-      }
-    
-  
-   .userIcon {
-      margin-left: auto;
-      margin-right: 20px;
-    }
-  }
-  
+}

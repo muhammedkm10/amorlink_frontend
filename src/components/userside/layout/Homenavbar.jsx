@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
+import logo from './../../../assets/images/logo-removebg-preview.png';
 import styles from './Homenavbar.module.css'; // Import your CSS module
+import {Link} from 'react-router-dom'
 
 function Homenavbar() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(false);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
+  const handleHamburgerClick = () => {
+    setIsNavVisible(!isNavVisible);
   };
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navbarBrand}>
-        <img
-          src="https://via.placeholder.com/40"
-          width="40"
-          height="40"
-          className={styles.navbarLogo}
-          alt="Logo"
-        />
-      </div>
-      <button className={styles.toggleButton} onClick={toggleMenu}>
-        <i className="fa fa-bars"></i>
-      </button>
-      <div className={`${styles.navLinks} ${showMenu ? styles.show : ''}`}>
-        <div className={styles.linksCenter}>
-          <div className={styles.navLink}>Home</div>
-          <div className={styles.navLink}>Link 1</div>
-          <div className={styles.navLink}>Link 2</div>
-          <div className={styles.navLink}>Link 3</div>
-          <div className={styles.navLink}>Link 4</div>
-          <div className={styles.navLink}>Link 5</div>
+    <nav className={`container-fluid ${styles.nav}`}>
+      <img
+        src={logo} 
+        className={styles.navbarLogo}
+        alt="Logo"
+      />
+      <div className={styles.hamburger1} onClick={handleHamburgerClick}>
+        <div className={styles.hamburger}>
+        <i className={`fas fa-bars ${styles.hamburgerIcon}`}></i>
         </div>
-        
       </div>
-    </div>
+
+      <div className={`${styles.nav__link} ${isNavVisible ? '' : styles.hide}`}>
+        <Link href="#">home</Link>
+        <Link href="#">about</Link>
+        <Link href="#">contact</Link>
+        <Link href="#">blog</Link>
+      </div>
+    </nav>
   );
 }
 

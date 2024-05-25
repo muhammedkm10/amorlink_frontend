@@ -6,7 +6,8 @@
 }
 .logo {
     margin: auto;
-    width: 14vh;  /* Set the desired width */
-    height: 6vh; /* Set the desired height */
+    width: 15vh;  /* Set the desired width */
+    height: 6vh;
+    padding: 4px; /* Set the desired height */
 }
 
