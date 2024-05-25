@@ -122,7 +122,7 @@ function AdminLogin() {
     return (
         <div>
           <div className={styles.wrapper}>
-            <RegistatinNavbar />
+            <RegistatinNavbar user="admin"/>
             <main className={`main ${styles.innerwrapper}`}>
               <div className={styles.containerfluid}>
                 <ToastContainer position='top-center' />
@@ -154,7 +154,7 @@ function AdminLogin() {
                         {!formData2.password || !ispasswordvalid && <div className={styles.error1}><p>Enter correct password</p></div>}
                       </div>
                       <div className={styles.loginbutton}>
-                        <Userbutton name="login" onClick={submitHandler} />
+                        <Userbutton name="login" user="user"onClick={submitHandler} />
                       </div>
                       {loading ? (
                         <div className={styles['spinner-container']}>
@@ -167,7 +167,7 @@ function AdminLogin() {
                 </div>
               </div>
             </main>
-            <Registrationfooter />
+            <Registrationfooter  user="admin"/>
           </div>
         </div>
       );

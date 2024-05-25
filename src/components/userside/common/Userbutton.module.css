@@ -14,3 +14,18 @@
     color: black;
     background-color: white !important;
 }
+.adminbutton{
+    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
+    padding: 2px 40px ;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    margin:10px
+}
+.adminbutton:hover{
+    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
+    padding: 2px 40px ;
+    border-radius: 20px;
+    color: black;
+    background-color: white !important;
+}

@@ -10,4 +10,8 @@
     height: 6vh;
     padding: 4px; /* Set the desired height */
 }
+.adminnavbar{
+    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
+    text-align:center
+}
 

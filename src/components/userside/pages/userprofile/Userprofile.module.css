@@ -1,0 +1,99 @@
+.fullbody {
+    background-color: #40183A;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+    height: auto;
+    overflow: auto !important;
+  }
+  
+  .head {
+    border: 2px white solid;
+    border-radius: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: wheat;
+  }
+  
+  .firstside,
+  .secondside {
+    padding: 10vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for transform and box-shadow */
+  }
+  
+  .firstside {
+    border-radius: 30px 0 0 30px;
+  }
+  
+  .secondside {
+    border-radius: 0 30px 30px 0;
+    height: auto;
+  }
+  
+  .profile {
+    width: 34vh;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 40px;
+    transition: transform 0.3s ease, border-radius 0.3s ease; /* Add transition for transform and border-radius */
+  }
+  
+  .firstside {
+    text-align: center;
+    padding-top: 10vh;
+  }
+  
+  /* Adding responsive behavior */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+    .firstside,
+    .secondside {
+      width: 100%;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+    .firstside {
+      border-radius: 30px 30px 0 0;
+    }
+    .secondside {
+      border-radius: 0 0 30px 30px;
+    }
+  }
+  
+  .basic {
+    margin-left: 4vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+  }
+  
+  .location {
+    margin-left: 4vh;
+    margin-top: 7vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+  }
+  
+  .about {
+    margin-left: 4vh;
+    margin-top: 10vh;
+    max-width: 500px;
+    font-family: monospace;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+  }
+  
+  /* Hover effects */
+  .firstside:hover,
+  .secondside:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+
+  
+  .basic:hover,
+  .location:hover,
+  .about:hover {
+    color: #FFD700; 
+  }
+  
