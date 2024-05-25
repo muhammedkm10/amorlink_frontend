@@ -10,6 +10,7 @@ function Homenavbar() {
     setIsNavVisible(!isNavVisible);
   };
 
+
   return (
     <nav className={`container-fluid ${styles.nav}`}>
       <img
@@ -23,11 +24,14 @@ function Homenavbar() {
         </div>
       </div>
 
-      <div className={`${styles.nav__link} ${isNavVisible ? '' : styles.hide}`}>
-        <Link href="#">home</Link>
-        <Link href="#">about</Link>
-        <Link href="#">contact</Link>
-        <Link href="#">blog</Link>
+      <div className={`${styles.nav__link} ${isNavVisible ? '' : styles.hide} `}>
+        <Link to="/userhome"> <i className={`fas fa-home  icon${styles.hamburgerIcon}`} title="Home"style={{ color: 'white' }}></i></Link>
+        <Link to="#">Matches</Link>
+        <Link to="#">Chat</Link>
+        <Link to="#">PRO*</Link>
+        <Link to="#">Search</Link>
+        <Link to="/userprofile"> <i className="fas fa-user" style={{ color: 'white' }}></i> </Link>
+
       </div>
     </nav>
   );

@@ -6,7 +6,7 @@ import './userlogin.css'
 import Userbutton from '../../common/Userbutton'
 import Userinput from '../../common/Userinput'
 import { Link, useAsyncError, useNavigate } from 'react-router-dom'
-import { login } from '../../../../actions/authActions'
+import { login } from '../../../../store/actions/authActions'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast  } from 'react-toastify';
@@ -37,7 +37,7 @@ function UserLogin() {
 
 
   const auth = useSelector((state)=>state.auth)
-console.log(auth)
+console.log("in login page",auth)
    const dispatch = useDispatch()
 
 
@@ -90,30 +90,29 @@ console.log(auth)
 
 
     // for submitting the form for login
-    const submitHandler =()=>{
-      if ( !isemailvalid || !ispasswordvalid){
-                notify("Please enter valid password and email")
+    const submitHandler = () => {
+  if (!isemailvalid ||!ispasswordvalid) {
+    notify("Please enter valid password and email");
+  } else {
+    setLoading(true);
+    dispatch(login(formData1)).then((information) => {
+      console.log(information, "asdkifhaksjdf");
+      if (information === "hai") {
+        setLoading(false);
+        Navigate('/userhome');
+      } else {
+        // Handle other responses
+        // Your existing logic for handling "notpossible" and "notverified" goes here
       }
-      else{
-              setLoading(true)
-             const information = dispatch(login(formData1))
-             if (information){
-              information.then(respons=>{
-                if (respons === "notpossible"){
-                  setLoading(false)
-                  setisinvalid(true)
-                }
-                else if(respons === "notverified")  {
-                    setLoading(false)
-                    Navigate('/modal',{state:{email:formData1.email}})
-                }
-                else {
-                  Navigate('/userhome')
-                }
-              })
-             }
-      }
-    }
+    }).catch((error) => {
+      // Handle errors
+      console.error("Error occurred:", error);
+      setLoading(false);
+      Navigate('/userhome'); // Optionally navigate to user home on error
+    });
+  }
+};
+
 
 
 console.log(formData1)

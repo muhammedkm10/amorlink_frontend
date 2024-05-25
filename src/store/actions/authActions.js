@@ -1,6 +1,6 @@
-import apiClient from "../api/axiosconfig"
+import apiClient from "../../api/axiosconfig"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 export const login = (credentials) => async (dispatch)  =>{
     try{
@@ -15,6 +15,7 @@ export const login = (credentials) => async (dispatch)  =>{
                        localStorage.setItem("authUserTokens", JSON.stringify(p))
                        localStorage.setItem("role","user")
                        dispatch({type:"LOGIN SUCCESS",payload:{usertoken:p,admintoken:null,role:resp.role}})
+                       
                 }
                 else if (resp.role === "admin"){
                   localStorage.setItem('authAdminToken',JSON.stringify(p))
@@ -23,6 +24,7 @@ export const login = (credentials) => async (dispatch)  =>{
                 }
               })
           }
+         
 
     }
 

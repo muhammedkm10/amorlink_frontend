@@ -4,10 +4,11 @@ import Homenavbar from '../../layout/Homenavbar'
 
 function Userhome() {
     const state = useSelector((state)=>state.auth)
-    console.log(state)
+    console.log("inside the home page",state)
   return (
     <div>
         <Homenavbar/>
+        <h1>user home page</h1>
     </div>
   )
 }
