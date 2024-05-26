@@ -5,8 +5,10 @@ import NotFoundPage from '../components/userside/UI/Error'
 
 function Adminpagesprotection({children}) {
     const admin = useSelector(state=>state.auth.admintoken)
+    const user = useSelector(state=>state.auth.usertoken)
+
     console.log()
-  return admin  ? children : <NotFoundPage/>
+  return admin && !user ? children : <NotFoundPage/>
    
 }
 

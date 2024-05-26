@@ -13,7 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './custom-toastify.css';
 import { ClipLoader } from 'react-spinners';
 import axios from 'axios'
-import apiClient from '../../../../api/axiosconfig'
+import apiClient, { updateAxiosHeaderOnLogin } from '../../../../api/axiosconfig'
+import { backendurls } from '../../../../backendEndpoints'
 
 
 function UserLogin() {
@@ -96,11 +97,12 @@ console.log("in login page",auth)
     notify("Please enter valid password and email");
   } else {
     try{
-              const response = await apiClient.post('/authapp/userlogin',formData1)
+              const response = await apiClient.post(backendurls.loginurl,formData1)
               // if the response is success then the following code will work
               if (response.status === 200 && response.data.role === "user"){
+                setLoading(true)
                 const resp = response.data
-                axios.post('http://127.0.0.1:8000/authapp/api/token',  formData1)
+                apiClient.post(backendurls.accesstokenurl,  formData1)
                   .then((response)=>{
                     const p = response.data
                     if (resp.role === "user"){
@@ -112,7 +114,7 @@ console.log("in login page",auth)
                   })
               }
               else{
-                console.log(response);
+                console.log("you are in an erroo",response);
               }
             }
             //  catching error from the backend and taking proper actions here
@@ -124,6 +126,9 @@ console.log("in login page",auth)
             else if(error.response.data.error === "notverified"){
               setLoading(false)
               Navigate('/modal',{state:{email:formData1.email}})
+            }
+            else{
+              console.log("not found")
             }
             
             }

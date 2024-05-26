@@ -16,6 +16,7 @@ import './custom-toastify.css';
 import apiClient from '../../../../api/axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { backendurls } from '../../../../backendEndpoints';
 
 
 const Registration = () => {
@@ -370,7 +371,7 @@ const submitHandler = async () => {
   } else {
     setLoading(true);
     try {
-      const response = await apiClient.post('/authapp/usersignup',formData ,{
+      const response = await apiClient.post(backendurls.signup,formData ,{
         headers :{
 
         }

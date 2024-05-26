@@ -1,14 +1,42 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Homenavbar from '../../layout/Homenavbar'
+import  { authentcatedApiClient } from '../../../../api/axiosconfig'
+import { useNavigate } from 'react-router-dom'
+import styles from './Userhome.module.css'
+import { backendurls } from '../../../../backendEndpoints'
+
 
 function Userhome() {
-    const state = useSelector((state)=>state.auth)
-    console.log("inside the home page",state)
+
+    const [user,setUser] = useState({})
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    
+    
+    useEffect(()=>{
+      try{
+             authentcatedApiClient.get(backendurls.signup)
+             .then((response)=>{
+              if (response.data.message === "unauthorized"){
+                console.log(response.data.message)
+                navigate("/unauthorized")
+              }
+              if (response.data.message === "Success"){
+                setUser(response.data.user)
+                dispatch({type:"userdetails",payload:response.data.user})
+
+
+              }
+            })
+            }
+        catch(error){
+              console.log("erroorrrrr")
+        }
+    },[])
   return (
-    <div>
-        <Homenavbar/>
-        <h1>user home page</h1>
+    <div className={styles.fullbody} >
+        <Homenavbar name={user.username}/>
     </div>
   )
 }

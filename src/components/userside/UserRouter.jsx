@@ -8,6 +8,7 @@ import Userhome from './pages/userhome/userhome';
 import Userprofile from './pages/userprofile/Userprofile';
 import Usersiderouteprotection from '../../routprotections/Usersiderouteprotection';
 import Userloginpageprotection from '../../routprotections/Userloginpageprotection';
+import Unauthorized from './UI/Unauthorized';
 
 
 function UserRouter() {
@@ -17,6 +18,8 @@ function UserRouter() {
       <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
       <Route path="/userhome" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
       <Route path="/userprofile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
+      <Route path="/modal" element={<Modal/>} />
+      <Route path='/unauthorized' element={<Unauthorized/>}></Route>
 
 
 

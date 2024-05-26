@@ -3,6 +3,7 @@ import styles from './OtpModal.module.css';
 import apiClient from '../../../../../api/axiosconfig';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { backendurls } from '../../../../../backendEndpoints';
 
 
 
@@ -51,7 +52,7 @@ const Modal = () => {
       setIsload(true)
       setiserror(false)
       try{
-        const response = await apiClient.post('/authapp/otpverification',{email,otpValue} ,{
+        const response = await apiClient.post(backendurls.otpverification,{email,otpValue} ,{
           headers :{
   
           }

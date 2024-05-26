@@ -7,7 +7,7 @@ import Registrationfooter from '../../../userside/layout/regfooter';
 import Userbutton from '../../../userside/common/Userbutton';
 import Userinput from '../../../userside/common/Userinput';
 import styles from  './AdminLogin.module.css'
-import apiClient from '../../../../api/axiosconfig';
+import adminApiClient from '../../../../api/axiosconfig';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -89,13 +89,13 @@ function AdminLogin() {
           else{
             try{
                 
-              const response = await apiClient.post('/authapp/userlogin',formData2)
+              const response = await adminApiClient.post('/authapp/userlogin',formData2)
               setLoading(true)
               // if the response is success then the following code will work
               if (response.status === 200 && response.data.role === 'admin' ){
                 setLoading(true)
                 const resp = response.data
-                axios.post('http://127.0.0.1:8000/authapp/api/token',  formData2)
+                adminApiClient.post('/authapp/api/token',  formData2)
                   .then((response)=>{
                     console.log(response.data)
                     const p = response.data
