@@ -2,16 +2,14 @@ import React ,{useState,useEffect}from 'react'
 import styles from './Userprofile.module.css'
 import Homenavbar from '../../layout/Homenavbar'
 import profile from  '../../../../assets/images/image.png'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../api/axiosconfig'
-import { backendurls } from '../../../../backendEndpoints'
+import { backendurls } from '../../../../api/backendEndpoints'
 
 function Userprofile() {
 
   const [user,setUser] = useState({})
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   
   
   useEffect(()=>{
@@ -41,7 +39,7 @@ function Userprofile() {
                         </div>
                         <div className={`col-md-6 col-12 ${styles.secondside}`}>
                                 <div className={styles.basic}>
-                                    <h1>{user.usernam}</h1>
+                                    <h1>{user.username}</h1>
                                     <h4>23 years old</h4>
                                     <h4>India</h4>
                                 </div>

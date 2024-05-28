@@ -12,9 +12,8 @@ import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './custom-toastify.css';
 import { ClipLoader } from 'react-spinners';
-import axios from 'axios'
-import apiClient, { updateAxiosHeaderOnLogin } from '../../../../api/axiosconfig'
-import { backendurls } from '../../../../backendEndpoints'
+import apiClient from '../../../../api/axiosconfig'
+import { backendurls } from '../../../../api/backendEndpoints'
 
 
 function UserLogin() {
@@ -48,6 +47,7 @@ console.log("in login page",auth)
   // to fetch the data from the previous component
   const location = useLocation()
   const {message} = location.state || {}
+  console.log(message)
 
 
   // states used to store the  form data
@@ -89,6 +89,7 @@ console.log("in login page",auth)
     const [loading, setLoading] = useState(false);
     const [isinvalid,setisinvalid] = useState(false)
     const Navigate = useNavigate()
+    const dispatch1 = useDispatch()
 
 
     // for submitting the form for login
@@ -96,6 +97,7 @@ console.log("in login page",auth)
   if (!isemailvalid ||!ispasswordvalid) {
     notify("Please enter valid password and email");
   } else {
+      setLoading(true)
     try{
               const response = await apiClient.post(backendurls.loginurl,formData1)
               // if the response is success then the following code will work
@@ -124,7 +126,9 @@ console.log("in login page",auth)
                 setisinvalid(true)
             }
             else if(error.response.data.error === "notverified"){
-              setLoading(false)
+              setLoading(true)
+              dispatch1({type:"SHOW OTP PAGE"})
+
               Navigate('/modal',{state:{email:formData1.email}})
             }
             else{

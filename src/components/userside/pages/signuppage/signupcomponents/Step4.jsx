@@ -21,7 +21,7 @@ const states = [
 
 // finding the name of the districts from the data using the state name selected by this function
 
-const another_function = (value) => {
+const District_function = (value) => {
   const selectedState = statesData.find(state => state.state === value);
   if (selectedState) {
     setDistricts([
@@ -73,7 +73,6 @@ const another_function = (value) => {
           </div>
       {data.employed_in ? <div className="text-info">Profission : {data.employed_in}</div>:""}
 
-        { !isEmployedin && <div className="error">select an option</div> }
           
           <div className="d-flex align-items-center">
             <label htmlFor="annual_income" className="mr-3">Annual income  :</label>
@@ -83,7 +82,6 @@ const another_function = (value) => {
           </div>
       {data.annual_income ? <div className="text-info">Annual income : {data.annual_income}</div>:""}
 
-        { !isAnnualincome && <div className="error">select an option</div> }
 
           <div className="d-flex align-items-center">
             <label htmlFor="country" className="mr-3">Country  :</label>
@@ -95,13 +93,12 @@ const another_function = (value) => {
           <label htmlFor="state" className="mr-3">State  :</label>
           <div className="p-3">
             <Userdropdown options={states} name="state" onChange={(e)=>{handleChange(e)
-            another_function(e.target.value)
+            District_function(e.target.value)
             }} value={data.state} />
           </div>
         </div>
       {data.state ? <div className="text-info">State : {data.state}</div>:""}
 
-        { !isState && <div className="error">select an option</div> }
         {isState && (
           <div className="d-flex align-items-center">
             <label htmlFor="district" className="mr-3">District  :</label>
@@ -112,7 +109,6 @@ const another_function = (value) => {
         )}
       {data.district ? <div className="text-info">District : {data.district}</div>:""}
 
-        {!isDistrict && isState && <div className="error">Please select a district</div>}
     </div>
   </div>
   )

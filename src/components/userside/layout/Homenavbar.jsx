@@ -12,7 +12,7 @@ function Homenavbar({name}) {
     setIsNavVisible(!isNavVisible);
   };
 
-  const  logout = () =>{
+   const  logout = () =>{
        dispatch({type:"LOGIN FAILURE"})
        localStorage.removeItem("authUserTokens");
        localStorage.removeItem("role");

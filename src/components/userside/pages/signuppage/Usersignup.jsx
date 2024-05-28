@@ -16,7 +16,8 @@ import './custom-toastify.css';
 import apiClient from '../../../../api/axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { backendurls } from '../../../../backendEndpoints';
+import { backendurls } from '../../../../api/backendEndpoints';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Registration = () => {
@@ -112,7 +113,7 @@ const validatename = (name) => {
 };
 
 const validateEmail = (email) => {
-  const gmailRegex = /^(?! )[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  const gmailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
   setIsEmailValid(gmailRegex.test(email));
 };
 
@@ -186,11 +187,18 @@ const validateCast= (cast) =>{
 }
 const validateDob = (dob) =>{
   if(dob){
-    let inputDate = new Date(dob);
-    let currentdate = new Date();
-    let datebefore18 =  new Date()
-    datebefore18.setFullYear(currentdate.getFullYear() - 18);
-    setDatevalid(inputDate <= datebefore18)
+    const inputDate = new Date(dob);
+    const currentDate = new Date();
+    const date18YearsAgo = new Date();
+    date18YearsAgo.setFullYear(currentDate.getFullYear() - 18);
+    const date50YearsAgo = new Date();
+    date50YearsAgo.setFullYear(currentDate.getFullYear() - 50);
+    const isDateValid = inputDate <= date18YearsAgo && inputDate >= date50YearsAgo;
+    setDatevalid(isDateValid);
+    console.log(formData.dob);
+  }
+  else if (!formData.dob){
+    setDatevalid(false)
   }
 }
 
@@ -332,7 +340,8 @@ const handleInputChange5 = (e)=>{
 }
 
 const validateAbout = (value) =>{
-  if (value.length >= 15) {
+  const trimmedValue = value.trim();
+  if (trimmedValue.length >= 30) {
     setisAbout(true);
   } else {
     setisAbout(false);
@@ -363,6 +372,8 @@ const validateAbout = (value) =>{
 
 const navigate = useNavigate()
 const [loading, setLoading] = useState(false);
+const state = useSelector(state=>state.otppage.isvisible)
+const dispatch = useDispatch()
 
 
 const submitHandler = async () => {
@@ -377,6 +388,7 @@ const submitHandler = async () => {
         }
       }); 
       if (response.status === 201){
+        dispatch({type:"SHOW OTP PAGE"})
         
         navigate('/modal',{state:{email:formData.email}})
       }

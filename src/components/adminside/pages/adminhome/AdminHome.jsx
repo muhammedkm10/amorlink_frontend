@@ -1,11 +1,12 @@
 import React,{useEffect} from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './AdminHome.module.css'
 import { admin_authentcatedApiClient } from '../../../../api/axiosconfig'
 import { useNavigate } from 'react-router-dom'
 
 function AdminHome() {
     const state = useSelector(state=>state.auth.admintoken)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(()=>{
       try{
@@ -25,9 +26,20 @@ function AdminHome() {
               console.log("erroorrrrr")
         }
     },[])
+    const  logout = () =>{
+      dispatch({type:"LOGIN FAILURE"})
+      localStorage.removeItem("authAdminTokens");
+      localStorage.removeItem("role");
+      navigate('/admin/adminlogin')
+
+ }
 
   return (
-    <div>AdminHome</div>
+    <>    
+        <div>AdminHome</div>
+        <button onClick={logout}>logout</button>
+    </>
+    
   )
 }
 

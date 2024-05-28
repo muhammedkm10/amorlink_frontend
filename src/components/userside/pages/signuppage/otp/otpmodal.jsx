@@ -3,7 +3,8 @@ import styles from './OtpModal.module.css';
 import apiClient from '../../../../../api/axiosconfig';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { backendurls } from '../../../../../backendEndpoints';
+import { backendurls } from '../../../../../api/backendEndpoints';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -18,6 +19,10 @@ const Modal = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const {email} = location.state || {}
+  const state = useSelector(state=>state.otppage.isvisible)
+  console.log("ahsdjfhajshdfkljahsdfjkha",state)
+  const dispatch = useDispatch()
+
   const handleChange = (element, index) => {
 
     if (isNaN(element.value)) return;
@@ -60,8 +65,10 @@ const Modal = () => {
         if (response.status === 201){
           setIsload(false)
           setiserror2(false)
-        
-          navigate('/',{state:{message:"Please login..."}})
+          dispatch({type:'HIDE OTP PAGE'})
+
+          navigate('/',{state:{message:"please login"}})
+
         }
       } catch (error) {
         if (error.response.data.error === 'faild') {
@@ -94,6 +101,8 @@ const Modal = () => {
       <div className={styles.modalContent}>
         <h2> Verify your email here!</h2>
         <p>Please enter the otp sent to your mail</p>
+        <p>Dont refresh the page</p>
+
         <div className={styles.otpInputs}>
           {otp.map((data, index) => (
             <input

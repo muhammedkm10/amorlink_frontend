@@ -47,7 +47,6 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
                   ))}
                 </div>
           </div>
-        { !isMaritalstatus && <div className="error">select an option</div> }
 
 
           <div className='d-flex '>
@@ -58,7 +57,6 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
           </div>
       {data.height ? <div className="text-info">Height : {data.height}</div>:""}
 
-          { !isHeightvalid && <div className="error">select an option</div> }
 
           <div className='d-flex '>
              <label htmlFor="">Family status    :   </label>
@@ -68,7 +66,6 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
           </div>
       {data.familystatus ? <div className="text-info">Family status   : {data.familystatus}</div>:""}
 
-          { !isFamilystatus && <div className="error">select an option</div> }
 
 
     </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './registrationfooter.module.css';
 
 function RegistrationFooter({user}) {
-  console.log(user)
   
   return (
     <footer className={styles.footer}>

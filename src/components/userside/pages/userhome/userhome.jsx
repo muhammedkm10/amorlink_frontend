@@ -4,7 +4,7 @@ import Homenavbar from '../../layout/Homenavbar'
 import  { authentcatedApiClient } from '../../../../api/axiosconfig'
 import { useNavigate } from 'react-router-dom'
 import styles from './Userhome.module.css'
-import { backendurls } from '../../../../backendEndpoints'
+import { backendurls } from '../../../../api/backendEndpoints'
 
 
 function Userhome() {
@@ -37,6 +37,7 @@ function Userhome() {
   return (
     <div className={styles.fullbody} >
         <Homenavbar name={user.username}/>
+         <div></div>
     </div>
   )
 }

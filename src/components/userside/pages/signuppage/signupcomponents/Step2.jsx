@@ -103,7 +103,7 @@ function Step2({data,handleChange ,isLanguagevalid,isReligionvalid,isCastvalid,i
     <div className="inputs text-center">
         <div className='d-flex '>
               <label htmlFor=""className='p-2'>Date of birth :</label>
-              <Userinput placeholder="Date of birth" type="date"  name="dob" value={data.dob}  onChange={handleChange}/>
+              <Userinput placeholder={data.dob} type="date"  name="dob" value={data.dob}  onChange={handleChange}/>
         </div>
         { !isDatevalid && <div className="error">Groom should be 18 years old</div> }
         <div  className='d-flex '>
@@ -112,21 +112,18 @@ function Step2({data,handleChange ,isLanguagevalid,isReligionvalid,isCastvalid,i
         </div>
       {data.language ? <div className="text-info">Language : {data.language}</div>:""}
 
-        { !isLanguagevalid && <div className="error">Select one option</div> }
         <div className='d-flex '>
               <label htmlFor=""className='p-2'>Religion   :  </label>
               <Userdropdown options={religions}  name="religion" value={data.religion} onChange={handleChange}/>
         </div>
       {data.religion ? <div className="text-info">Religion : {data.religion}</div>:""}
 
-        { !isReligionvalid && <div className="error">Select one option</div> }
         <div className='d-flex '>
               <label htmlFor=""className='p-2'>Cast   :  </label>
               <Userdropdown options={cast}  name="cast" value={data.cast} onChange={handleChange}/>
         </div>
       {data.cast ? <div className="text-info">Cast : {data.cast}</div>:""}
 
-        { !isCastvalid && <div className="error">Select one option</div> }
     </div>
     </div>
   )

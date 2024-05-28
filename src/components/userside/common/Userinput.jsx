@@ -1,10 +1,10 @@
 import React from 'react'
-import './userinput.module.css'
+import './userinput.css'
 
 
 function Userinput({placeholder, type, name, value, onChange }) {
   const classname = type === "number"? "input1":"input2"
-  return (
+    return (
     <div>
           <input className={classname}
           placeholder={placeholder}
