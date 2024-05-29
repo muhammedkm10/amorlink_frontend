@@ -54,6 +54,7 @@ const Registration = () => {
     maritalStatus:'',
     height:'',
     familystatus:'',
+    gender:'',
     employed_in:'',
     annual_income:'',
     country:'india',
@@ -77,7 +78,7 @@ const Registration = () => {
       notify("Fill the form correctly.....!")
       return;
     }
-     else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus )){
+     else if (currentStep === 3 && (!isFamilystatus || !isHeightvalid || !isMaritalstatus|| !isGender )){
       notify("Fill the form correctly.....!")
       return
     }
@@ -123,7 +124,6 @@ const validatePhone = (phone) => {
 
 
 const validatePassword = (password) => {
-  console.log(password)
   // setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
   setIspasswordValid(/^[a-zA-Z0-9]{6}$/.test(password));
 };
@@ -195,7 +195,6 @@ const validateDob = (dob) =>{
     date50YearsAgo.setFullYear(currentDate.getFullYear() - 50);
     const isDateValid = inputDate <= date18YearsAgo && inputDate >= date50YearsAgo;
     setDatevalid(isDateValid);
-    console.log(formData.dob);
   }
   else if (!formData.dob){
     setDatevalid(false)
@@ -234,6 +233,8 @@ const validateDob = (dob) =>{
 const [isMaritalstatus,setMaritalstatus] = useState(false)
 const [isHeightvalid,setHeightvalid] = useState(false)
 const [isFamilystatus,setFamilystatus] = useState(false)
+const [isGender,setGender] = useState(false)
+
 
 
 const handleInputChange3 = (e)=>{
@@ -252,6 +253,9 @@ const handleInputChange3 = (e)=>{
   else if(name === 'familystatus'){
     validateFamilystatus(value)
   }
+  else if(name === 'gender'){
+    validateGender(value)
+  }
 }
 
 
@@ -268,6 +272,12 @@ const validateHeight = (value)=>{
 const validateFamilystatus = (value)=>{
   if(value){
     setFamilystatus(true)
+  }
+}
+
+const validateGender = (value)=>{
+  if (value){
+    setGender(true)
   }
 }
 
@@ -358,7 +368,7 @@ const validateAbout = (value) =>{
       case 2:
         return <Step2 data={formData} handleChange={handleInputChange2} isLanguagevalid={isLanguagevalid} isReligionvalid={isReligionvalid} isCastvalid={isCastvalid} isDatevalid={isDatevalid} />;
       case 3:
-        return <Step3 data={formData} handleChange={handleInputChange3} isMaritalstatus={isMaritalstatus} isHeightvalid={isHeightvalid} isFamilystatus={isFamilystatus}/>;
+        return <Step3 data={formData} handleChange={handleInputChange3} isMaritalstatus={isMaritalstatus} isHeightvalid={isHeightvalid} isFamilystatus={isFamilystatus} isGender={isGender}/>;
       case 4:
         return <Step4 data={formData} handleChange={handleInputChange4} isAnnualincome={isAnnualincome} isEmployedin={isEmployedin} isState={isState} isDistrict={isDistrict}/>;
       case 5:

@@ -1,0 +1,18 @@
+.outerwrapper{
+    background-image: linear-gradient(to bottom,#531027,#9E2550,#B72B5D,#D1316A);
+    padding: 5vh;
+    color: white;
+
+}
+.heading{
+   padding-bottom: 3vh;
+   border-bottom: 2px white solid;
+}
+.basic_details{
+    padding: 3vh;
+
+}
+.items{
+    padding: 2vh;
+    font-size: 20px;
+}

@@ -38,7 +38,6 @@ function UserLogin() {
 
 
   const auth = useSelector((state)=>state.auth)
-console.log("in login page",auth)
    const dispatch = useDispatch()
 
 
@@ -47,7 +46,6 @@ console.log("in login page",auth)
   // to fetch the data from the previous component
   const location = useLocation()
   const {message} = location.state || {}
-  console.log(message)
 
 
   // states used to store the  form data
@@ -111,7 +109,7 @@ console.log("in login page",auth)
                           localStorage.setItem("authUserTokens", JSON.stringify(p))
                           localStorage.setItem("role","user")
                           dispatch({type:"LOGIN SUCCESS",payload:{usertoken:p,admintoken:null,role:resp.role}})
-                          Navigate('/userhome')
+                          Navigate('/home')
                     }
                   })
               }
@@ -141,7 +139,6 @@ console.log("in login page",auth)
 
 
 
-console.log(formData1)
   return (
     <div className="wrapper">
     <RegistatinNavbar/>

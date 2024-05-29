@@ -32,6 +32,12 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
     { label: 'High class', value: 'High class' },
     { label: 'Rich/Affluent', value: 'Rich/Affluent' },
   ];
+  const gender = [
+    { label: 'male', value: 'male' },
+    { label: 'female', value: 'female' },
+
+  ];
+  
 
 
 
@@ -47,6 +53,16 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
                   ))}
                 </div>
           </div>
+          <div className='d-flex '>   
+                <label htmlFor=""> Gender : </label>
+                <div className="p-3 d-flex flex-wrap justify-content-center">
+                  {gender.map((option) => (
+                    <div className="mx-4 col-12 col-sm-6 col-md-3" key={option.value}>
+                      <RadioButton label={option.label} name="gender" value={option.value} checked={data.gender === option.value} onChange={handleChange}  />
+                    </div>
+                  ))}
+                </div>
+          </div>
 
 
           <div className='d-flex '>
@@ -55,7 +71,7 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
               <Userdropdown  options={height} onChange={handleChange} value={data.height} name="height"/>
               </div>
           </div>
-      {data.height ? <div className="text-info">Height : {data.height}</div>:""}
+      {data.height ? <div className="text-info p-0">Height : {data.height}</div>:""}
 
 
           <div className='d-flex '>
@@ -64,7 +80,7 @@ function Step3({data,handleChange,isMaritalstatus,isHeightvalid,isFamilystatus})
               <Userdropdown  options={familystatus} onChange={handleChange} value={data.familystatus} name="familystatus"/>
               </div>
           </div>
-      {data.familystatus ? <div className="text-info">Family status   : {data.familystatus}</div>:""}
+      {data.familystatus ? <div className="text-info p-0">Family status   : {data.familystatus}</div>:""}
 
 
 

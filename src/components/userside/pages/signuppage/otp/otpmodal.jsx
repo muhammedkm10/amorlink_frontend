@@ -20,7 +20,6 @@ const Modal = () => {
   const location = useLocation()
   const {email} = location.state || {}
   const state = useSelector(state=>state.otppage.isvisible)
-  console.log("ahsdjfhajshdfkljahsdfjkha",state)
   const dispatch = useDispatch()
 
   const handleChange = (element, index) => {

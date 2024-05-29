@@ -4,5 +4,6 @@ export const backendurls = {
         "accesstokenurl":"/authapp/api/token",
         "refreshtokenurl":"/authapp/api/token/refresh",
         "otpverification":"/authapp/otpverification",
+        "userprofile":"/profileapp/profiledetails"
 }
 

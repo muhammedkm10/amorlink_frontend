@@ -5,7 +5,7 @@ import { backendurls } from './backendEndpoints';
 // api clint that does not need tokens  (for login and signup)
 
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL:import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -16,7 +16,7 @@ const apiClient = axios.create({
 
 // api clint that should need tokens   (for other endpoints )
 export const authentcatedApiClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -100,7 +100,7 @@ authentcatedApiClient.interceptors.response.use(
 
 // admin side api clients  api clints that does not need authentication (for login)
 export const adminApiClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -110,7 +110,7 @@ export const adminApiClient = axios.create({
 // admin side api clients  api clints that should need authentication (for other endpoints)
 
 export const admin_authentcatedApiClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

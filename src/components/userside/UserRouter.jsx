@@ -16,10 +16,10 @@ function UserRouter() {
   const state = useSelector(state=>state.otppage.isvisible)
   return (
     <Routes>
-      <Route path="/" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
+      <Route path="" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
       <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
-      <Route path="/userhome" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
-      <Route path="/userprofile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
+      <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
+      <Route path="/profile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>
       <Route path="*" element={<NotFoundPage/>}></Route>
 
