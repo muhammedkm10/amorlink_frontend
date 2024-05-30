@@ -1,136 +1,206 @@
 .fullbody {
-    background-color: #40183A;
-    padding-top: 6vh;
-    height: auto;
-    overflow: auto !important;
+  background-color: #40183A;
+  padding-top: 6vh;
+  height: auto;
+  overflow: auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head {
+  box-shadow: 0 0 20px rgb(112, 104, 104);
+  border-radius: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: wheat;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.firstside,
+.secondside {
+  /* text-align: center!important; */
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for transform and box-shadow */
+}
+
+.firstside {
+  border-radius: 30px 0 0 30px;
+  padding-top: 10vh;
+  text-align: center!important;
+}
+
+.secondside {
+  border-radius: 0 30px 30px 0;
+  height: auto;
+  text-align: left!important;
+}
+
+.profile {
+  /* max-width: 100%; */
+  height: auto;
+  padding-top: 5vh;
+  /* width: 34vh; */
+}
+
+.basic {
+  /* margin-left: 4vh; */
+  margin-bottom: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.location {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.about {
+  /* text-align: center; */
+  /* margin-left: 4vh; */
+  margin-top: 10vh;
+  /* margin-top: 20px; */
+  /* margin-left: 4vw; */
+  max-width: 500px;
+  font-family: monospace;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Hover effects */
+.secondside:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.basic:hover,
+.location:hover,
+.about:hover {
+  color: #FFD700; 
+}
+
+/* details showing styling */
+.otherdetails {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7vh;
+}
+
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px white solid;
+}
+
+.wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* .showdetails {
+  width: 100%;
+  text-align: center;
+} */
+
+@media (max-width: 1000px) {
+  .showdetails {
+    padding: 0;
   }
-  
-  .head {
-    border: 2px white solid;
-    border-radius: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: wheat;
+}
+
+/* Navigation bar styles */
+.topnav {
+  display: flex;
+  justify-content: center;
+  margin: auto!important;
+
+}
+
+.links {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.links:hover {
+  border-bottom: 2px solid wheat;
+  color: wheat;
+}
+
+/* Show navigation bar when hamburger menu is clicked */
+
+
+.hamburger {
+  display: none; /* Initially hidden */
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
   }
-  
+
   .firstside,
   .secondside {
-    padding: 10vh;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for transform and box-shadow */
-  }
-  
-  .firstside {
-    border-radius: 30px 0 0 30px;
-  }
-  
-  .secondside {
-    border-radius: 0 30px 30px 0;
-    height: auto;
-  }
-  
-  .profile {
-    width: 34vh;
-    height: auto;
+    width: 100%;
     border-radius: 30px;
-    margin-top: 40px;
+    margin-bottom: 20px;
   }
-  
+
   .firstside {
-    text-align: center;
-    padding-top: 10vh;
+    border-radius: 30px 30px 0 0;
   }
-  
-  /* Adding responsive behavior */
-  @media (max-width: 768px) {
-    .row {
-      flex-direction: column;
-    }
-    .firstside,
-    .secondside {
-      width: 100%;
-      border-radius: 30px;
-      margin-bottom: 20px;
-    }
-    .firstside {
-      border-radius: 30px 30px 0 0;
-    }
-    .secondside {
-      border-radius: 0 0 30px 30px;
-    }
-  }
-  
-  .basic {
-    margin-left: 4vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease; 
-  }
-  
-  .location {
-    margin-left: 4vh;
-    margin-top: 7vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease; 
-  }
-  
-  .about {
-    margin-left: 4vh;
-    margin-top: 10vh;
-    max-width: 500px;
-    font-family: monospace;
-    transition: background-color 0.3s ease, color 0.3s ease; 
-  }
-  
-  /* Hover effects */
-  
-  .secondside:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-  }
-  
 
-  
-  .basic:hover,
-  .location:hover,
-  .about:hover {
-    color: #FFD700; 
+  .secondside {
+    border-radius: 0 0 30px 30px;
   }
-  
-/* details showing styling */
-  .otherdetails{
-    padding-top: 7vh;
-    display: flex;
-    flex-direction: row;
+
+  .topnav {
+    flex-direction: column;
+    align-items: center;
+    display: none;
     
   }
 
-  .details{
-    border-top: 2px white solid;
-
-  }
-  .showdetails{
-    border-top: 2px white solid;
-    flex: 1;
-    text-align: center;
-
-  }
-  @media (max-width: 1000px) {
-    .showdetails {
-      padding: 0;
-    }
-  }
-
-
-
-  /* side bar styling */
-  .wrapper{
+ .show {
     display: flex;
-    height: 100%;
-}
+  }
 
-.sidebar1{
-    background: linear-gradient(to bottom, #290a15, #461024,#8a3151,#72354b)!important;
-    
-}
-.links:hover{
-     color: wheat;
+  .show .links {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fa-bars {
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #210808be;
+    width: 100%;
+  }
+
+  .wrapper .text-decoration-none {
+    color: white;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  /* Hide navigation bar by default */
+ 
 }
