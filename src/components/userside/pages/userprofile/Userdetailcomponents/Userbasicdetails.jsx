@@ -3,13 +3,38 @@ import styles from './common.module.css'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import {Link} from 'react-router-dom'
+import { ToastContainer, toast  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './custom-toastify.css';
+import Swal from 'sweetalert2';
+import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function BasicDetails({user}) {
+function BasicDetails() {
   const [basicdetails,setBasicdetails] = useState({})
+  const [userdetais,setUserdetails] = useState({})
+
   const [isEditing,setIsEditing]  = useState(false)
   const [editDetails,setEditedDetails] = useState({})
+  const [isPhonevalid,setPhonevalid] = useState(false)
+  const [isDobvalid,setDobvalid] = useState(false)
+
+
+
+  // error notification
+  const notify = (data) => toast.error(
+    <div>
+      <i className="fas  "></i>
+      {data}
+    </div>, 
+    {
+      className: 'custom-toast',
+      bodyClassName: 'custom-toast-body',
+      progressClassName: 'custom-toast-progress',
+    }
+  );
+
 
   useEffect(()=>{
   
@@ -17,12 +42,14 @@ function BasicDetails({user}) {
         try {
           const response = await authentcatedApiClient.get(backendurls.userprofile, {
             headers: {
-              'details': 'basic_details', // Replace with your actual header and value
+              'details': 'basic_details', 
             },
           });
           
           if (response.data.message === 'success') {
             setBasicdetails(response.data.basic_details);
+            setUserdetails(response.data.userdetails)
+            
           }
         } catch (error) {
           console.log(error);
@@ -30,8 +57,7 @@ function BasicDetails({user}) {
       };
   
       fetchBasicDetails();
-  },[])
-
+  },[isEditing])
 
     // handling edit button
     const handleEditButton = () =>{
@@ -43,22 +69,83 @@ function BasicDetails({user}) {
   
     const handleChange = (e) =>{
         const {name,value} = e.target
-    setEditedDetails(
-      {...editDetails,
-        [name]:value
-       }
-    )
+          setEditedDetails(
+            {...editDetails,
+              [name]:value
+            })
+            if (name === "phone"){
+
+              validatePhone(value)
+            }
+            else if (name === "dob"){
+              validateDob(value)
+            }
+            
+        }
+  
+
+  // phone number validation
+  const validatePhone = (value) =>{
+    setPhonevalid(/^\d{10}$/.test(value));
   }
-  
-  
+
+  const validateDob = (dob) =>{
+    if(dob){
+      const inputDate = new Date(dob);
+      const currentDate = new Date();
+      const date18YearsAgo = new Date();
+      date18YearsAgo.setFullYear(currentDate.getFullYear() - 18);
+      const date50YearsAgo = new Date();
+      date50YearsAgo.setFullYear(currentDate.getFullYear() - 50);
+      const isDateValid = inputDate <= date18YearsAgo && inputDate >= date50YearsAgo;
+      setDobvalid(isDateValid);
+    }
+
+  }
   
   // saving the data to the data base to store in the database
   
-  const handleSave  =() =>{
-    setIsEditing(false)
-  console.log(editDetails)
+  const handleSave  = async() =>{
+    if(editDetails.phone && !isPhonevalid){
+       notify("please enter valid phone number")
+    }
+    else if (editDetails.dob && !isDobvalid){
+      notify("please enter valid date of birth bride should be 18 years old")
+
+    }
+    else{
+      const response = await authentcatedApiClient.put(backendurls.userprofile,editDetails,{
+        headers :{
+          "details" : "basic_details"
+        }
+      })
+      if (response.data.message == "success")
+        {
+         console.log("updated")
+         Swal.fire({
+          title: 'Edited successfully',
+          text: 'Details edited succesfully',
+          icon: 'success',
+          customClass: {
+              popup: 'my-custom-popup-class',
+              title: 'my-custom-title-class',
+              content: 'my-custom-content-class',
+          
+          },
+      });
+
+        }
+
+
+    }
     
   
+  }
+
+
+  // going back to details component
+  const gobacktodetails = () =>{
+    setIsEditing(false)
   }
   return (
     <div className={styles.outerwrapper}>
@@ -66,97 +153,142 @@ function BasicDetails({user}) {
 
         {isEditing ? (
            <div className={`container-fluid  ${styles.basic_details}`}>
+          <ToastContainer  position='top-center' />
+
               <div className="row">
                   <div className="col-lg-4 col-12 px-5">
                   <div>
-                      <label className={styles.label}>No of married brothers: </label>
-                      <input  className={styles.inputfield} type="number"   name="no_of_brothers_married"   value={editDetails.no_of_brothers_married || ''}   onChange={handleChange}/>
+                      <label className={styles.label}>Phone : </label>
+                      <input  className={styles.inputfield} type="number"   name="phone"  placeholder={userdetais.phone || ''}   onChange={handleChange}/>
                     </div>
                     <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
+                    <label className={styles.label}>Marital status: </label>
+                      <select className={styles.dropdown} name="marital_status" id="" defaultChecked={basicdetails.marital_status || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.marital_status || "None"}</option>
+                        <option value="single">single</option>
+                        <option value="married">married</option>
+                        <option value="divorced">divorced</option>
+                        <option value="widowed">widowed</option>
                         </select>
-                     
                     </div>
                     <div>
-                      <label className={styles.label}>No of married brothers: </label>
-                      <input  className={styles.inputfield} type="number"   name="no_of_brothers_married"   value={editDetails.no_of_brothers_married || ''}   onChange={handleChange}/>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-12 px-5">
-                  <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
-                        </select>
-                     
+                      <label className={styles.label}>Date of birth: </label>
+                      <input  className={styles.inputfield} type="date"   name="dob"   value={editDetails.dob || ''}   onChange={handleChange}/>
                     </div>
                     <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
-                        </select>
-                     
-                    </div>
-                    <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
-                        </select>
-                     
-                    </div>
-                    <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
+                    <label className={styles.label}>Height: </label>
+                      <select className={styles.dropdown} name="height" id="" defaultChecked={basicdetails.height || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.height || "None"}</option>
+                        <option value="0-151.999">Under 5' (Under 152 cm)</option>
+                        <option value="152-160">5'0" - 5'3" (152 - 160 cm)</option>
+                        <option value="161-170">5'4" - 5'7" (161 - 170 cm)</option>
+                        <option value="171-180">5'8" - 5'11" (171 - 180 cm)</option>
+                        <option value="181-190">6'0" - 6'3" (181 - 190 cm)</option>
+                        <option value="191-200">6'4" - 6'7" (191 - 200 cm)</option>
+                        <option value="201-210">6'8" - 6'11" (201 - 210 cm)</option>
+                        <option value="211-">7'0" and above (Over 210 cm)</option>
                         </select>
                      
                     </div>
                   </div>
                   <div className="col-lg-4 col-12 px-5">
+                
+                    <div>
+                    <label className={styles.label}>Weight : </label>
+                      <select className={styles.dropdown} name="weight" id="" defaultChecked={basicdetails.weight || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.weight || "None"}</option>
+                        <option value="0-49.999">Under 50 kg</option>
+                        <option value="50-60">50 - 60 kg</option>
+                        <option value="61-70">61 - 70 kg</option>
+                        <option value="71-80">71 - 80 kg</option>
+                        <option value="81-90">81 - 90 kg</option>
+                        <option value="91-100">91 - 100 kg</option>
+                        <option value="101-110">101 - 110 kg</option>
+                        <option value="111-120">111 - 120 kg</option>
+                        <option value="121-">121 kg and above</option>
+                        </select>
+                     
+                    </div>
+                    <div>
+                    <label className={styles.label}>Body type: </label>
+                      <select className={styles.dropdown} name="body_type" id="" defaultChecked={basicdetails.body_type || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.body_type || "None"}</option>
+                        <option value="slim">Slim</option>
+                        <option value="athletic">Athletic</option>
+                        <option value="average">Average</option>
+                        <option value="muscular">Muscular</option>
+                        <option value="overweight">Overweight</option>
+                        <option value="obese">Obese</option>
+                        </select>
+                     
+                    </div>
+                    <div>
+                    <label className={styles.label}>Physical status: </label>
+                      <select className={styles.dropdown} name="physical_status" id="" defaultChecked={basicdetails.physical_status || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.physical_status || "None"}</option>
+                        <option value="normal">Normal</option>
+                        <option value="physically challenged">Physically Challenged</option>
+                        <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                    <label className={styles.label}>Mother toungue : </label>
+                      <select className={styles.dropdown} name="mother_toungue" id="" defaultChecked={basicdetails.mother_toungue || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.mother_toungue || "None"}</option>
+                        <option value="malayalam">malayalam</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Bengali">Bengali</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Marathi">Marathi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Urdu">Urdu</option>
+                        <option value="Gujarati">Gujarati</option>
+                        <option value="Kannada">Kannada</option>
+                        <option value="Odia">Odia</option>
+                        <option value="Punjabi">Punjabi</option>
+                        <option value="Others">Others</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-12 px-5">
                   <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
+                    <label className={styles.label}>Drinking Habits: </label>
+                      <select className={styles.dropdown} name="drinking_habits" id="" defaultChecked={basicdetails.drinking_habits || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.drinking_habits || "None"}</option>
+                        <option value="non-drinker">Non-drinker</option>
+                        <option value="social-drinker">Social drinker</option>
+                        <option value="regular-drinker">Regular drinker</option>
                         </select>
                      
                     </div><div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
+                    <label className={styles.label}>Eating Habits : </label>
+                      <select className={styles.dropdown} name="eating_habits" id="" defaultChecked={basicdetails.eating_habits || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.eating_habits || "None"}</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="non-vegetarian">Non-vegetarian</option>
+                        <option value="eggetarian">Eggetarian</option>
+                        <option value="vegan">Vegan</option>
                         </select>
                      
                     </div>
                     <div>
-                    <label className={styles.label}>Family location: </label>
-                      <select className={styles.dropdown} name="family_location" id="" defaultChecked={details.family_location || "None"} onChange={handleChange} >
-                        <option value=""selected>{details.family_location || "None"}</option>
-                        <option value="Same as my location">Same as my location</option>
-                        <option value="Another location">Another location</option>
+                    <label className={styles.label}>Smoking Habits: </label>
+                      <select className={styles.dropdown} name="smalking_habits" id="" defaultChecked={basicdetails.smalking_habits || "Not specified"} onChange={handleChange} >
+                        <option value=""selected disabled>{basicdetails.smalking_habits || "None"}</option>
+                        <option value="non-smoker">Non-smoker</option>
+                        <option value="social-smoker">Social smoker</option>
+                        <option value="regular-smoker">Regular smoker</option>
                         </select>
                      
                     </div>
                     <div>
-                          <label className={styles.label}>About my partner: </label>
-                          <textarea  className={styles.textarea}  name="about_partner" value={editDetails.about_partner || ''}  onChange={handleChange} />
+                          <label className={styles.label}>Hobbies: </label>
+                          <textarea  className={styles.textarea}  name="hobbies" value={editDetails.hobbies || ''}  placeholder={basicdetails.hobbies || "Not specified"}onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className=''>
                             <button className={styles.savebutton} onClick={handleSave}>Save</button>
+                            <button className={styles.savebutton} onClick={gobacktodetails}>Go back</button>
+
                         </div>
                     </div>
               </div>
@@ -166,28 +298,31 @@ function BasicDetails({user}) {
         <div className={`container ${styles.basic_details}`}>
           <div className="row">
             <div className="col-lg-4 col-6 px5">
-             <h4 className={styles.items}>Email :  <span className={styles.info}> {!user.email ? "null" : user.email}</span></h4>
-              <h4 className={styles.items}>Phone :   <span className={styles.info}>{!user.phone ? "null" : user.phone}</span></h4>
-              <h4 className={styles.items}>Marital status :   <span className={styles.info}>{!basicdetails.marital_status ? "null" : basicdetails.marital_status}</span></h4>
-              <h4 className={styles.items}>Date of Birth :   <span className={styles.info}>{!basicdetails.dob  ? "None" : basicdetails.dob}</span></h4> 
+             <h4 className={styles.items}>Email :  <span className={styles.info}> {!userdetais.email ? "Not specified" : userdetais.email}</span></h4>
+              <h4 className={styles.items}>Phone :   <span className={styles.info}>{!userdetais.phone ? "Not specified" : userdetais.phone}</span></h4>
+              <h4 className={styles.items}>Marital status :   <span className={styles.info}>{!basicdetails.marital_status ? "Not specified" : basicdetails.marital_status}</span></h4>
+              <h4 className={styles.items}>Date of Birth :   <span className={styles.info}>{!basicdetails.dob  ? "Not specified" : basicdetails.dob}</span></h4> 
+              <h4 className={styles.items}>Hobbies :   <span className={styles.info}>{!basicdetails.hobbies ? "Not specified" :basicdetails.hobbies}</span></h4>
+
             </div>
             <div className="col-lg-4 col-6 px5">
-              <h4 className={styles.items}>Height :   <span className={styles.info}>{!basicdetails.height ? "None" : basicdetails.height}</span></h4>
-              <h4 className={styles.items}>Weight :   <span className={styles.info}>{!basicdetails.weight ? "None" : basicdetails.weight}</span></h4>
-              <h4 className={styles.items}>Body type :   <span className={styles.info}>{!basicdetails.body_type ? "None" :basicdetails.body_type }</span></h4>
-              <h4 className={styles.items}>Physical status :  <span className={styles.info}> {!basicdetails.physical_status ? "None" :basicdetails.physical_status}</span></h4>
+              <h4 className={styles.items}>Height :   <span className={styles.info}>{!basicdetails.height ? "Not specified" : basicdetails.height}</span></h4>
+              <h4 className={styles.items}>Weight :   <span className={styles.info}>{!basicdetails.weight ? "Not specified" : basicdetails.weight}</span></h4>
+              <h4 className={styles.items}>Body type :   <span className={styles.info}>{!basicdetails.body_type ? "Not specified" :basicdetails.body_type }</span></h4>
+              <h4 className={styles.items}>Physical status :  <span className={styles.info}> {!basicdetails.physical_status ? "Not specified" :basicdetails.physical_status}</span></h4>
+              <h4 className={styles.items}>Mother toungue :   <span className={styles.info}>{!basicdetails.mother_toungue  ? "Not specified" : basicdetails.mother_toungue}</span></h4> 
               </div>
           <div className="col-lg-4 col-6 px5">
-              <h4 className={styles.items}>Drinking Habits :   <span className={styles.info}>{!basicdetails.drinking_habits ? "None" :basicdetails.drinking_habits}</span></h4>
-              <h4 className={styles.items}>Eating Habits :   <span className={styles.info}>{!basicdetails.eating_habits ? "None" :basicdetails.eating_habits}</span></h4>
-              <h4 className={styles.items}>Smoking Habits :   <span className={styles.info}>{!basicdetails.smalking_habits ? "None" :basicdetails.smalking_habits }</span></h4>
-              <h4 className={styles.items}>Hobbies :   <span className={styles.info}>{!basicdetails.hobbies ? "None" :basicdetails.hobbies}</span></h4>
+              <h4 className={styles.items}>Drinking Habits :   <span className={styles.info}>{!basicdetails.drinking_habits ? "Not specified" :basicdetails.drinking_habits}</span></h4>
+              <h4 className={styles.items}>Eating Habits :   <span className={styles.info}>{!basicdetails.eating_habits ? "Not specified" :basicdetails.eating_habits}</span></h4>
+              <h4 className={styles.items}>Smoking Habits :   <span className={styles.info}>{!basicdetails.smalking_habits ? "Not specified" :basicdetails.smalking_habits }</span></h4>
              </div>
              
           </div>
 
         </div>
         <Link to="" className="m-3"  onClick={handleEditButton}><i className="fa fa-edit  text-white" title='Edit'>edit</i></Link>
+
         </div>
         )}
     </div>

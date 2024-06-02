@@ -1,15 +1,16 @@
-
-
-.nav {
+.nav1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #641842!important;
+  /* background-image: linear-gradient(to bottom, #4b1130, #68284b) !important; */
+  background-color: #72194a;
   height: 10vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  z-index: 2;
+
 }
-.navbarLogo{
-  width: 20vh;  /* Set the desired width */
+.navbarLogo {
+  width: 20vh; 
   height: 10vh;
   padding: 8px;
 }
@@ -25,7 +26,6 @@
   cursor: pointer;
 }
 
-
 .hamburger .line {
   display: block;
   width: 40px;
@@ -40,6 +40,8 @@
   top: 5rem;
   left: 18px;
   background-color: #641842;
+  position: absolute;
+
 }
 
 .nav__link a {
@@ -48,7 +50,6 @@
   padding: 10px 0;
   color: white;
   text-decoration: none;
-  
 }
 
 .nav__link a:hover {
@@ -67,6 +68,8 @@
     margin-right: 100px;
     background: none;
     color: white;
+    z-index: 2;
+    
   }
 
   .nav__link a {
@@ -76,20 +79,19 @@
     text-decoration: none;
     font-weight: 400;
   }
-  .nav__link  a:hover {
+  .nav__link a:hover {
     display: inline-block;
     padding: 15px 20px;
   }
- 
+
   .hamburger {
     display: none;
   }
-  .nav {
+  .nav1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #40183A, #A63E96);
     height: 10vh;
-
+    z-index: 2;
   }
 }

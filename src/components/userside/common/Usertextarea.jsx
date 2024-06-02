@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './usertextarea.module.css';
+import React from 'react'
+import styles from './usertextarea.module.css'
 
 const Usertextarea = ({ name, value, onChange, placeholder }) => {
   return (
@@ -12,7 +12,7 @@ const Usertextarea = ({ name, value, onChange, placeholder }) => {
         onChange={onChange}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Usertextarea;
+export default Usertextarea

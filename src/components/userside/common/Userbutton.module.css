@@ -1,31 +1,30 @@
-.userButton{
-    background: linear-gradient(to right, #40183A, #A63E96);
-    padding: 2px 40px ;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    margin:10px
-
+.userButton {
+  background: linear-gradient(to right, #40183a, #a63e96);
+  padding: 2px 40px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  margin: 10px;
 }
-.userButton:hover{
-    border:1px solid #40183A;
-    padding: 2px 40px ;
-    border-radius: 20px;
-    color: black;
-    background-color: white !important;
+.userButton:hover {
+  border: 1px solid #40183a;
+  padding: 2px 40px;
+  border-radius: 20px;
+  color: black;
+  background-color: white !important;
 }
-.adminbutton{
-    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
-    padding: 2px 40px ;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    margin:10px
+.adminbutton {
+  background: linear-gradient(to right, #773f32, #3b3531, #773f32);
+  padding: 2px 40px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  margin: 10px;
 }
-.adminbutton:hover{
-    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
-    padding: 2px 40px ;
-    border-radius: 20px;
-    color: black;
-    background-color: white !important;
+.adminbutton:hover {
+  background: linear-gradient(to right, #773f32, #3b3531, #773f32);
+  padding: 2px 40px;
+  border-radius: 20px;
+  color: black;
+  background-color: white !important;
 }

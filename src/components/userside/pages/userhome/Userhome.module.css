@@ -1,4 +1,41 @@
-.fullbody{
-    background-color: #40183A;
-    height: 100vh;
+.fullbody {
+  background-color: #40183a;
 }
+
+
+.head{
+  background-image: url('../../../../assets/images/pexels-caio-45960.jpg');
+  height: 500px;
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.para{
+  /* position: absolute; */
+  max-width: 300px;
+  text-align: center;
+  padding: 30px;
+  color: white;
+  
+}
+
+.preferencebutton{
+  padding: 2px 30px;
+  border:none;
+  border-radius: 10px;
+  background-color: #cc3882;
+  color: white;
+  
+}
+
+.preferencebutton:hover{
+  color: black;
+}
+
+

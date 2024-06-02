@@ -1,0 +1,12 @@
+.my-custom-popup-class {
+    border-radius: 30px;
+    background-color: rgb(249, 249, 249);
+}
+
+.my-custom-title-class {
+    color: #440a23;
+}
+
+.my-custom-content-class {
+    font-size: 5px;
+}

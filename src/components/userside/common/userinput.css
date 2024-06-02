@@ -1,20 +1,20 @@
 input {
-    border: none; 
-    outline: none; 
-    padding: 3px;
-    font-size: 16px;
-    border-bottom: 1px solid #e0e0e0;
-    line-height: 24px; 
-    text-align: center;
+  border: none;
+  outline: none;
+  padding: 3px;
+  font-size: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  line-height: 24px;
+  text-align: center;
 }
 
 input::placeholder {
-    text-align: center;
+  text-align: center;
 }
 
 input:focus {
-    border: 1px solid #e0e0e0;
-    border-radius: 10px; 
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
 }
 
 .input1::-webkit-outer-spin-button,

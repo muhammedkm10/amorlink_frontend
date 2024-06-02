@@ -1,17 +1,14 @@
-.navbar1{
-    background: linear-gradient(to right, #40183A, #A63E96);
-    text-align:center
-    
-
+.navbar1 {
+  background: linear-gradient(to right, #40183a, #a63e96);
+  text-align: center;
 }
 .logo {
-    margin: auto;
-    width: 15vh;  /* Set the desired width */
-    height: 6vh;
-    padding: 4px; /* Set the desired height */
+  margin: auto;
+  width: 15vh; /* Set the desired width */
+  height: 6vh;
+  padding: 4px; /* Set the desired height */
 }
-.adminnavbar{
-    background: linear-gradient(to right, #773f32, #3b3531,#773f32);
-    text-align:center
+.adminnavbar {
+  background: linear-gradient(to right, #773f32, #3b3531, #773f32);
+  text-align: center;
 }
-

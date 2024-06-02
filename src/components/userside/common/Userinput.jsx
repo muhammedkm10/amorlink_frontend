@@ -1,18 +1,19 @@
 import React from 'react'
 import './userinput.css'
 
-
-function Userinput({placeholder, type, name, value, onChange }) {
-  const classname = type === "number"? "input1":"input2"
-    return (
+function Userinput({ placeholder, type, name, value, onChange }) {
+  const classname = type === 'number' ? 'input1' : 'input2'
+  return (
     <div>
-          <input className={classname}
-          placeholder={placeholder}
-          type={type}
-          name={name}
-          value={value}
-          onChange={onChange} />
-          </div>
+      <input
+        className={classname}
+        placeholder={placeholder}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
   )
 }
 
