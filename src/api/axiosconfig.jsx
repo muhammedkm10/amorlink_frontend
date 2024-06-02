@@ -147,12 +147,14 @@ admin_authentcatedApiClient.interceptors.response.use(
     const redirectUrl = error.config;
     if (error.response && error.response.status === 401) {
       redirectUrl._retry = true;
+      console.log("response is working")
       // Retrieve the current tokens from localStorage
       const userTokens = localStorage.getItem('authAdminTokens');
       const token = JSON.parse(userTokens);
       const refreshToken = token.refresh;
+      console.log(refreshToken)
       // Call the async function to refresh the access token
-      refreshAccessToken(refreshToken,"user",redirectUrl);
+      refreshAccessToken(refreshToken,"admin",redirectUrl);
     }
     return new Promise(() => {});
   }

@@ -4,6 +4,7 @@ import UserRouter from './components/userside/UserRouter';
 import {Provider} from 'react-redux'
 import store from './store/store';
 import AdminRouter from './components/adminside/AdminRouter';
+import NotFoundPage from './components/userside/UI/Error';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
           <Routes>
             <Route path="/*" element={<UserRouter />} />
             <Route path="/admin/*" element={<AdminRouter/>}></Route>
+           <Route path="/notfound" element={<NotFoundPage/>} />
+
           </Routes>
         </Router>
     </Provider>

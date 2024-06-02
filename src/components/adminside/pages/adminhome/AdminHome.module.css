@@ -1,0 +1,37 @@
+
+
+/* side bar styles */
+
+.sidebar1{
+    height: 100vh !important;
+    background-color: rgb(197, 201, 197) !important;
+    color: black!important;
+
+}
+
+.sidebar_content{
+    color: black!important;
+
+}
+.links{
+    color: black!important;
+
+}
+.links:hover{
+    color: rgb(132, 128, 128)!important;
+    background-color: rgb(42, 41, 41);
+
+}
+
+
+/* main part styling */
+
+.maincontent{
+    height: auto;
+    width: 100%;
+   
+}
+
+.body{
+    display: flex;
+}

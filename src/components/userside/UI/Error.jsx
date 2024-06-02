@@ -8,7 +8,7 @@ function NotFoundPage() {
       <img src={PageNotFound} alt="Page Not Found" style={{ width: '300px', height: '300px' }} />
       <h1 style={{ fontSize: '2em', color: '#333' }}>Oops! Page not found.</h1>
       <p style={{ fontSize: '1.2em', color: '#666' }}>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-      <Link to="" style={{ color: '#007bff', textDecoration: 'none' }}>Go back to Home</Link>
+      <Link to="/admin/adminlogin" style={{ color: '#007bff', textDecoration: 'none' }}>Go back to login</Link>
     </div>
  );
 }

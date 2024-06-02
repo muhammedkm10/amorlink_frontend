@@ -1,0 +1,56 @@
+/* table and main area styles */
+
+.body {
+    padding: 20px;
+    background-color: #f8f9fa; 
+    margin-top: 10vh;
+    text-align: center;
+  }
+  
+  .table_responsive {
+    margin-top: 20px; 
+  }
+  .table td {
+    word-wrap: break-word; 
+    word-break: break-all; 
+    white-space: normal;  
+  }
+  
+  .table p {
+    margin: 0; 
+  }
+
+
+
+  .add{
+    padding: 10px ;
+    background-color: green;
+    color: white;
+    border-radius: 2px;
+    border: none;
+
+  }
+
+
+
+  /* adding subscription form styles */
+
+
+  .addform{
+    margin-top: 21vh;
+    padding: 20px;
+    background-color: #f8f9fa; 
+
+  }
+
+
+  .formelement{
+    width: 30vw !important;
+    margin:auto;
+    min-width: 30vw !important;
+  }
+
+  button:hover{
+     border: 1px black solid !important;
+     color:black !important;
+  }

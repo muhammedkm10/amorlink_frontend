@@ -19,7 +19,7 @@ import { ClipLoader } from 'react-spinners';
 
 function AdminLogin() {
 
-
+// notification handling
     const notify = (data) => toast.error(
         <div>
           <i className="fas  "></i>
@@ -32,7 +32,7 @@ function AdminLogin() {
         }
       );
 
-
+// handling email and password
     const [isemailvalid,setisEmailvalid] = useState(false)
     const [ispasswordvalid,setisPasswordvalid] = useState(false)
     const [formData2,setformdata] = useState({

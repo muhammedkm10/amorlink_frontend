@@ -14,6 +14,7 @@ function AdminRouter() {
     <Routes>
            <Route path="/adminlogin" element={<Adminloginpageprotection><AdminLogin/></Adminloginpageprotection>} />
            <Route path="/adminhome" element={<Adminpagesprotection><AdminHome/></Adminpagesprotection>} />
+
            <Route path="*" element={<NotFoundPage/>}></Route>
 
 

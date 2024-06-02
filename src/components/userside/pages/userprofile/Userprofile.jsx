@@ -272,7 +272,6 @@ const handlesubmit = async () =>{
                     onClick={() => handSidebarItemsCick('location')}
                     icon=""
                   >
-                    {' '}
                     Location Details
                   </CDBSidebarMenuItem>
                 </NavLink>

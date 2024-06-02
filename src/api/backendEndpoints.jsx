@@ -1,9 +1,16 @@
 export const backendurls = { 
+        // authapp
         "signup" :'/authapp/usersignup',
         "loginurl":"/authapp/userlogin",
         "accesstokenurl":"/authapp/api/token",
         "refreshtokenurl":"/authapp/api/token/refresh",
         "otpverification":"/authapp/otpverification",
-        "userprofile":"/profileapp/profiledetails"
+
+        // userprofile app
+        "userprofile":"/profileapp/profiledetails",
+
+        // admin app
+        "subscription":"/adminapp/add_edit_subscription",
+        "usermanagement":"/adminapp/usermanagement"
 }
 
