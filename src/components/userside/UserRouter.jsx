@@ -10,16 +10,22 @@ import Usersiderouteprotection from '../../routprotections/Usersiderouteprotecti
 import Userloginpageprotection from '../../routprotections/Userloginpageprotection';
 import NotFoundPage from './UI/Error';
 import { useSelector } from 'react-redux';
+import Preferences from './pages/preference/Preferences';
 
 
 function UserRouter() {
   const state = useSelector(state=>state.otppage.isvisible)
   return (
     <Routes>
+      {/* login router */}
       <Route path="" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
+      {/* other authentication need routes*/}
       <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
       <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
       <Route path="/profile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
+      <Route path="/preferences" element={<Usersiderouteprotection><Preferences/></Usersiderouteprotection>} />
+
+      {/* other pages routers */}
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>
       <Route path="*" element={<NotFoundPage/>}></Route>
 

@@ -1,0 +1,200 @@
+
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid #181818;
+  border-radius: 8px;
+  padding: 16px;
+   right: 0px;
+   color: white;
+   margin-top: 4vh;
+   background-image: linear-gradient(to bottom, #40183a, #671d37, #B72B5D, #D1316A) !important;
+   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.75);
+
+
+
+
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20%;
+  margin-left: 10vh;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+
+
+
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  margin-left:5vw;
+}
+
+.cardTitle {
+  margin-bottom: 8px;
+  font-weight: 700 ;
+  
+}
+
+.cardTitle::first-letter {
+  text-transform: uppercase;
+}
+
+.cardText {
+  margin: 4px 0;
+  font-size: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.button1{
+  padding: 5px 20px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  background-color: #B72B5D;
+  border: 1px white solid;
+}
+
+.button1:hover {
+  color: #181818;
+  border: 0.5px solid   #181818;;
+}
+.heart{
+  color: white;
+}
+.heart:hover{
+  color: #181818;
+
+}
+
+.buttonwrapper{
+  display: inline;
+  margin-left: 13vw;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match{
+  margin-top: 4px;
+  margin-left: 15px;
+  color: #cc3882;
+  background-color: none;
+
+}
+
+.heart{
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+.editprofile{
+  text-align: center;
+  margin-top: 4vh;
+  padding: 20px;
+  border-radius: 20px;
+  width: 20vw;
+  color: white;
+
+}
+.para{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 2vh;
+  
+}
+.head{
+    font-weight:700;
+    text-decoration: underline;
+}
+.profilelinking{
+   padding: 4px 20px;
+   background-color: #cc3882;
+   border: none;
+   border-radius: 10px;
+   color: white;
+}
+
+.profilelinking:hover{
+  color: #181818;
+}
+@media (max-width: 1000px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+  .editprofile{
+    text-align: center;
+    margin-top: 4vh;
+    padding: 20px;
+    border-radius: 20px;
+    width: 20vw;
+    color: white;
+    margin: auto;
+  
+  }
+  
+  .image {
+    margin-bottom: 16px; 
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10%;
+    margin-right: 16px;
+    margin: auto;
+  }
+  .cardBody{
+    margin: auto;
+    align-items: center;
+    padding: 0;
+  }
+  .firstside{
+    display: none;
+    
+  }
+  .button{
+    display: inline;
+   margin-left: 20vw;
+   padding-top: 2vh;
+   margin: auto;  
+  }
+  .card{
+    text-align: center;
+  }
+  
+}
+.secondside{
+  overflow-y: scroll;
+  height: 100vh;
+   border-top: 1px solid #551d4d; 
+  border-radius: 20px;
+}
+
+.secondside::-webkit-scrollbar {
+  display: none;
+}
+
+
+.firstside{
+  border: 1px solid #551d4d;
+  border-radius: 20px;
+}
+
+.goto_profile{
+  color: rgb(92, 76, 76);
+  margin: auto;
+  text-align: center;
+  margin-top: 30vh;
+}
+

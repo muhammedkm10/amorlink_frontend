@@ -58,6 +58,7 @@ function FamilyDetails() {
     // edit details handle function
 
     const handleEditButton = () =>{
+      setEditedDetails(details)
       setIsEditing(true)
     }
 
@@ -74,7 +75,6 @@ function FamilyDetails() {
 
   }
 
-console.log(editDetails)
 
   // saving the data to the data base to store in the database
 
@@ -185,21 +185,21 @@ console.log(editDetails)
               <div className="col-lg-4 col-12 px-5">
                     <div>
                       <label className={styles.label}>No  brothers: </label>
-                      <input  className={styles.inputfield} type="number"   name="no_of_brothers"  placeholder={details.no_of_brothers || "Not specified"} value={editDetails.no_of_brothers || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="number"   name="no_of_brothers"   value={editDetails.no_of_brothers || ''}   onChange={handleChange}/>
                     </div>
                     <div>
                       <label className={styles.label}>No of married brothers: </label>
-                      <input  className={styles.inputfield} type="number"   name="no_of_brothers_married"  placeholder={details.no_of_brothers_married || "Not specified"}  value={editDetails.no_of_brothers_married || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="number"   name="no_of_brothers_married"   value={editDetails.no_of_brothers_married || ''}   onChange={handleChange}/>
                     </div>
                     <div>
                       <label className={styles.label}>No of sisters: </label>
-                      <input className={styles.inputfield} type="number" name="no_of_sisters" placeholder={details.no_of_sisters || "Not specified"} value={editDetails.no_of_sisters || ''}   onChange={handleChange} />
+                      <input className={styles.inputfield} type="number" name="no_of_sisters"  value={editDetails.no_of_sisters || ''}   onChange={handleChange} />
                     </div>
 
 
                     <div>
                       <label className={styles.label}>No of sisters married: </label>
-                      <input className={styles.inputfield}  type="number" name="no_of_sisters_married" placeholder={details.no_of_sisters_married || "Not specified"}  value={editDetails.no_of_sisters_married || ''} onChange={handleChange}/>
+                      <input className={styles.inputfield}  type="number" name="no_of_sisters_married"   value={editDetails.no_of_sisters_married || ''} onChange={handleChange}/>
                     </div>
 
 

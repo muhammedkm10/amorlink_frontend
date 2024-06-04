@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../../userside/pages/loginpage/custom-toastify.css';
+import '../../../../assets/css/custom-toastify.css'
 import RegistatinNavbar from '../../../userside/layout/regnavbar';
 import Registrationfooter from '../../../userside/layout/regfooter';
 import Userbutton from '../../../userside/common/Userbutton';
 import Userinput from '../../../userside/common/Userinput';
 import styles from  './AdminLogin.module.css'
 import adminApiClient from '../../../../api/axiosconfig';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
@@ -67,7 +66,7 @@ function AdminLogin() {
 
     //email validation  for the front end
     const  validateEmail = (value) =>{
-        const gmailRegex = /^(?! )[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const gmailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$/
         setisEmailvalid(gmailRegex.test(value));
     
     }

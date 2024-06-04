@@ -50,7 +50,8 @@
     min-width: 30vw !important;
   }
 
-  button:hover{
+  .add:hover {
      border: 1px black solid !important;
      color:black !important;
   }
+

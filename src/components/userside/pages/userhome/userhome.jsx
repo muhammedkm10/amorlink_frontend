@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Homenavbar from '../../layout/Homenavbar'
 import { authentcatedApiClient } from '../../../../api/axiosconfig'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Userhome.module.css'
 import { backendurls } from '../../../../api/backendEndpoints'
-import headimage from '../../../../assets/images/pexels-caio-45960.jpg'
 
 function Userhome() {
   const [user, setUser] = useState({})
@@ -39,7 +38,7 @@ function Userhome() {
                                </p>
                           </div>
                                
-                               <button className={styles.preferencebutton}>find your partner</button>
+                               <Link to = "/preferences"><button  className={styles.preferencebutton}>find your partner</button></Link>
                         </div>
                     </div>
             </div>

@@ -8,6 +8,8 @@ export const backendurls = {
 
         // userprofile app
         "userprofile":"/profileapp/profiledetails",
+        // show preferences
+        'showpreference':"/profileapp/preferences",
 
         // admin app
         "subscription":"/adminapp/add_edit_subscription",

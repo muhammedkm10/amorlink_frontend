@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-image: linear-gradient(to bottom, #4b1130, #68284b) !important; */
   background-color: #72194a;
   height: 10vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -91,7 +90,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: 9vh;
     z-index: 2;
+  }
+  .navbarLogo {
+    width: 18vh; 
+    height: 8vh;
+    padding: 8px;
   }
 }

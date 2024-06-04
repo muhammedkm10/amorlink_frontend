@@ -25,7 +25,6 @@ function ReligionInformation() {
             });
             
             if (response.data.message === 'success') {
-              console.log(response.data.religional_information)
               setDetails(response.data.religional_information)
             }
           } catch (error) {
@@ -38,6 +37,7 @@ function ReligionInformation() {
 
       // handling edit button
   const handleEditButton = () =>{
+    setEditedDetails(details)
     setIsEditing(true)
   }
 
@@ -54,31 +54,47 @@ function ReligionInformation() {
 }
 
 
-
 // saving the data to the data base to store in the database
 
 const handleSave  = async() =>{
-  const response = await authentcatedApiClient.put(backendurls.userprofile,editDetails,{
-    headers :{
-      "details" : "religional_information"
-    }
-  })
-  if (response.data.message == "success")
-    {
-      Swal.fire({
-        title: 'Edited successfully',
-        text: 'Details edited succesfully',
-        icon: 'success',
-        customClass: {
-            popup: 'my-custom-popup-class',
-            title: 'my-custom-title-class',
-            content: 'my-custom-content-class',
-        
-        },
-    });
-     setIsEditing(false)
 
-    }
+  try{
+    const response = await authentcatedApiClient.put(backendurls.userprofile,editDetails,{
+      headers :{
+        "details" : "religional_information"
+      }
+    })
+    if (response.data.message == "success")
+      {
+        Swal.fire({
+          title: 'Edited successfully',
+          text: 'Details edited succesfully',
+          icon: 'success',
+          customClass: {
+              popup: 'my-custom-popup-class',
+              title: 'my-custom-title-class',
+              content: 'my-custom-content-class',
+          
+          },
+      });
+       setIsEditing(false)
+  
+      }
+  }
+  catch(error){
+        Swal.fire({
+          title: 'ener valid details ',
+          icon: 'eroor',
+          customClass: {
+              popup: 'my-custom-popup-class',
+              title: 'my-custom-title-class',
+              content: 'my-custom-content-class',
+          
+          },
+      });
+            
+  }
+ 
   
 
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import RegistatinNavbar from '../../layout/regnavbar'
 import Registrationfooter from '../../layout/regfooter'
 import loginimage from '../../../../assets/images/pexels-imagestudio-1488315.jpg'
-import './userlogin.css'
+import '../../../.././assets/css/custom-toastify.css'
 import Userbutton from '../../common/Userbutton'
 import Userinput from '../../common/Userinput'
 import { Link, useAsyncError, useNavigate } from 'react-router-dom'
@@ -10,7 +10,6 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import './custom-toastify.css'
 import { ClipLoader } from 'react-spinners'
 import apiClient from '../../../../api/axiosconfig'
 import { backendurls } from '../../../../api/backendEndpoints'
@@ -66,7 +65,7 @@ function UserLogin() {
   }
 
   const validateEmail = (value) => {
-    const gmailRegex = /^(?! )[a-zA-Z0-9._%+-]+@gmail\.com$/
+    const gmailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$/
     setisEmailvalid(gmailRegex.test(value))
   }
   const validatePassword = (value) => {
@@ -75,7 +74,7 @@ function UserLogin() {
   }
 
   const [loading, setLoading] = useState(false)
-  const [isinvalid, setisinvalid] = useState(false)
+  const [isinvalid, setisinvalid] = useState("")
   const Navigate = useNavigate()
   const dispatch1 = useDispatch()
 
@@ -95,7 +94,8 @@ function UserLogin() {
             .post(backendurls.accesstokenurl, formData1)
             .then((response) => {
               const p = response.data
-              if (resp.role === 'user') {
+              
+             if (resp.role === 'user') {
                 localStorage.setItem('authUserTokens', JSON.stringify(p))
                 localStorage.setItem('role', 'user')
                 dispatch({
@@ -112,8 +112,13 @@ function UserLogin() {
         //  catching error from the backend and taking proper actions here
         if (error.response && error.response.data.error === 'notpresent') {
           setLoading(false)
-          setisinvalid(true)
-        } else if (error.response.data.error === 'notverified') {
+          setisinvalid("enter currect email and password")
+        } 
+        else if (error.response.data.error === 'blocked'){
+          setLoading(false)
+          setisinvalid("you are blocked")
+        }
+        else if (error.response.data.error === 'notverified') {
           setLoading(true)
           dispatch1({ type: 'SHOW OTP PAGE' })
 
@@ -190,7 +195,7 @@ function UserLogin() {
                   )}
                   {isinvalid && (
                     <p className="text-danger">
-                      Please enter the correct email and password
+                      {isinvalid}
                     </p>
                   )}
 

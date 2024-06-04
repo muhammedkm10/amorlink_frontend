@@ -128,13 +128,10 @@ function Userprofile() {
 
 //  handling the submit button  and saving the backend
 const handlesubmit = async () =>{
-             console.log(formData);
         if (formData.name && !namevalid){
           setmessage("Enter a valid name")
-          console.log("valid name");
         }
         else if (!formData.name && !formData.about && !formData.image1){
-          console.log("nothing is there");
           setmessage("Add any details or press close button")
 
         }

@@ -54,6 +54,7 @@ function PartnerPreferences() {
 
      // handling edit button
      const handleEditButton = () =>{
+      setEditedDetails(details)
       setIsEditing(true)
     }
 
@@ -69,13 +70,12 @@ function PartnerPreferences() {
     )
   }
 
-  console.log(editDetails)
 
   // saving the data to the data base to store in the database
 
   const handleSave  = async () =>{
-    if (editDetails.patner_age && (editDetails.patner_age > 60 || editDetails.patner_age < 0)){
-       notify("enter  valid no of brothers")
+    if (editDetails.patner_age && (editDetails.patner_age > 60 || editDetails.patner_age < 18)){
+       notify("enter  valid  age between 18 and 60")
     }
     else{
       const response = await authentcatedApiClient.put(backendurls.userprofile,editDetails,{
@@ -124,7 +124,7 @@ function PartnerPreferences() {
                   <div className="col-lg-4 col-12 px-5">
                   <div>
                       <label className={styles.label}>Age: </label>
-                      <input  className={styles.inputfield} type="number"   name="patner_age" placeholder={details.patner_age || "Not specified"}  value={editDetails.patner_age || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="number"   name="patner_age"   value={editDetails.patner_age || ''}   onChange={handleChange}/>
                     </div>
                     <div>
                     <label className={styles.label}>Height: </label>
@@ -353,7 +353,7 @@ function PartnerPreferences() {
                     </div>
                         <div>
                           <label className={styles.label}>About my partner: </label>
-                          <textarea  className={styles.textarea}  name="about_partner"  onChange={handleChange} placeholder={details.about_partner || 'Not specified'}></textarea>
+                          <textarea  className={styles.textarea}  name="about_partner"  onChange={handleChange} value={editDetails.about_partner || ''}   ></textarea>
                         </div>
                         <div>
                             <button className={styles.savebutton} onClick={handleSave}>Save</button>

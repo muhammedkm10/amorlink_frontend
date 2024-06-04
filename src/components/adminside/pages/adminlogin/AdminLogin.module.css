@@ -1,14 +1,12 @@
-/* Prevent vertical scrolling and set full height for html and body */
 html, body {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: auto;   /* Allow vertical scrolling */
+    overflow-x: hidden; 
+    overflow-y: auto;   
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
   }
 
-/* Wrapper settings to ensure full height */
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -16,13 +14,11 @@ html, body {
     overflow-y: hidden;
 }
 
-/* Ensure the main content takes full height minus the footer */
 .main {
     flex: 1;
     display: flex;
 }
 
-/* Prevent container fluid from causing vertical overflow */
 .containerfluid {
     width: 100%;
     height: 100%;
@@ -32,7 +28,6 @@ html, body {
 }
 
 
-/* Inner wrapper adjustments */
 .innerwrapper {
     display: flex;
     width: 100%;
@@ -42,7 +37,6 @@ html, body {
     align-items: center;
 }
 
-/* Side sections to occupy full height */
 .secondside1 {
     width: 50%;
     display: flex;
@@ -56,7 +50,6 @@ html, body {
     color: #3a0933;
 }
 
-/* Styling for the login form */
 .login1 > * {
     padding: 10px;
     text-align: center;
@@ -75,8 +68,6 @@ html, body {
     border-radius: 20px;
     padding: 2rem 4rem;
 }
-
-/* Transition effects */
 .login {
     opacity: 0;
     transform: translateX(200px);

@@ -43,6 +43,7 @@ function Location() {
 
     // handling edit button
     const handleEditButton = () =>{
+      setEditedDetails(details)
       setIsEditing(true)
     }
 
@@ -58,7 +59,6 @@ function Location() {
     )
   }
 
-  console.log(editDetails)
 
 
   // saving the data to the data base to store in the database
@@ -107,7 +107,6 @@ function Location() {
     // finding the name of the districts from the data using the state name selected by this function
     
     const District_function = (value) => {
-      console.log("fuction called")
       const selectedState = statesData.find(state => state.state === value);
       if (selectedState) {
         setDistricts([
@@ -119,7 +118,6 @@ function Location() {
       } 
     };
 
-    console.log(districts)
     
 // going back to details component
   const gobacktodetails = () =>{
@@ -157,18 +155,18 @@ function Location() {
                     </div>
                     <div>
                       <label className={styles.label}>Ancesters origin : </label>
-                      <input  className={styles.inputfield} type="text"   name="ancesters_origin"  placeholder={details.ancesters_origin || "Not specified"} value={editDetails.ancesters_origin || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="text"   name="ancesters_origin"  value={editDetails.ancesters_origin || ''}   onChange={handleChange}/>
                     </div>
                   </div>
                   <div className="col-lg-6 col-12 px-5">
                  
                     <div>
                       <label className={styles.label}>City: </label>
-                      <input  className={styles.inputfield} type="text"   name="city" placeholder={details.city || "Not specified"}   value={editDetails.city || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="text"   name="city"   value={editDetails.city || ''}   onChange={handleChange}/>
                     </div>
                     <div>
                       <label className={styles.label}>Woriking in : </label>
-                      <input  className={styles.inputfield} type="text"   name="work_place" placeholder={details.work_place || "Not specified"}   value={editDetails.work_place || ''}   onChange={handleChange}/>
+                      <input  className={styles.inputfield} type="text"   name="work_place"   value={editDetails.work_place || ''}   onChange={handleChange}/>
                     </div>
                         <div>
                             <button className={styles.savebutton} onClick={handleSave}>Save</button>

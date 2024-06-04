@@ -121,7 +121,6 @@ function BasicDetails() {
       })
       if (response.data.message == "success")
         {
-         console.log("updated")
          Swal.fire({
           title: 'Edited successfully',
           text: 'Details edited succesfully',
@@ -133,6 +132,7 @@ function BasicDetails() {
           
           },
       });
+      setIsEditing(false)
 
         }
 

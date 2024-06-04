@@ -4,8 +4,6 @@ import styles from'./AdminHome.module.css'
 import { admin_authentcatedApiClient } from '../../../../api/axiosconfig'
 import { NavLink, useNavigate } from 'react-router-dom'
 import RegistrationNavbar from '../../../userside/layout/regnavbar'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import {
   CDBSidebar,
   CDBSidebarContent,
