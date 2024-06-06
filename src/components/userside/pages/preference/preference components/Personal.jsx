@@ -93,7 +93,7 @@ function Personal() {
           </div>
         ))
       ) : (
-        <div className={styles.goto_profile}><p>No preferences change your preferences <Link to="/profile">to you  profile</Link></p></div>
+        <div className={styles.goto_profile}><p>It looks like we don't have any matches for you at the moment. You can update your <Link to="/profile">profile preferences</Link> </p></div>
 
 
       )}

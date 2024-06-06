@@ -29,6 +29,7 @@
 }
 
 .firstside {
+  background: linear-gradient(to right, #40183a, #89397d);
   text-align: center !important;
   background-color: #40183a;
   position: relative;
@@ -48,6 +49,8 @@
   }
 }
 .secondside {
+  background: linear-gradient(to right, #89397d, #40183a);
+
   /* border-radius: 0 30px 30px 0; */
   height: auto;
   text-align: left !important;

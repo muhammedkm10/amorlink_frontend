@@ -2,12 +2,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #72194a;
+  background-color: #d32772;
   height: 10vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   z-index: 2;
+  /* opacity: 0.4; */
 
 }
+
+
+.nav2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: fixed;
+  z-index: 2;
+  /* background-color: black; */
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+
+/* eb116f */
 .navbarLogo {
   width: 20vh; 
   height: 10vh;

@@ -4,14 +4,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-top: 1px solid #181818;
+  /* border-top: 1px solid #181818; */
   border-radius: 8px;
-  padding: 16px;
+  padding: 5vh;
    right: 0px;
    color: white;
    margin-top: 4vh;
-   background-image: linear-gradient(to bottom, #40183a, #671d37, #B72B5D, #D1316A) !important;
-   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.75);
+   /* background-image: linear-gradient(to bottom, #77296b, #671d37, #B72B5D, #D1316A) !important; */
+   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.75);
+   
 
 
 
@@ -19,15 +20,9 @@
 }
 
 .image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20%;
-  margin-left: 10vh;
-  padding-top: 4vh;
-  padding-bottom: 4vh;
-
-
+  width: 34vh !important;
+  height: 30vh !important;
+  border-radius:15px;
 
 }
 
@@ -35,11 +30,13 @@
   display: flex;
   flex-direction: column;
   margin-left:5vw;
+  margin-top: 2vh;
 }
 
 .cardTitle {
   margin-bottom: 8px;
   font-weight: 700 ;
+  padding: 20px;
   
 }
 
@@ -59,19 +56,19 @@
   border: none;
   border-radius: 20px;
   color: white;
-  background-color: #B72B5D;
+  background-color: #40183a;
   border: 1px white solid;
 }
 
 .button1:hover {
-  color: #181818;
-  border: 0.5px solid   #181818;;
+  color: #a49696;
+  border: 0.5px solid   #a49696;;
 }
 .heart{
   color: white;
 }
 .heart:hover{
-  color: #181818;
+  color: #a49696;
 
 }
 
@@ -87,7 +84,7 @@
 .match{
   margin-top: 4px;
   margin-left: 15px;
-  color: #cc3882;
+  color: #eb116f;
   background-color: none;
 
 }
@@ -109,6 +106,7 @@
   color: white;
 
 }
+
 .para{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-top: 2vh;
@@ -120,7 +118,7 @@
 }
 .profilelinking{
    padding: 4px 20px;
-   background-color: #cc3882;
+   background-color: #eb116f;
    border: none;
    border-radius: 10px;
    color: white;

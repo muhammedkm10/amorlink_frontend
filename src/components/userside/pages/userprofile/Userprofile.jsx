@@ -170,6 +170,9 @@ const handlesubmit = async () =>{
     <div>
       <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} />
       <div className={styles.fullbody}>
+        <div className={`container-fluid  ${styles.background}`}>
+          
+        </div>
       
         <div className={`container ${styles.head}`}>
           <div className="row">
@@ -209,7 +212,7 @@ const handlesubmit = async () =>{
 
             <div className={`col-lg-6 col-12 ${showSecondSide ? `${styles.secondside} show` : styles.secondside}`}>
               <div className={styles.basic}>
-                <h1>{userdetails.username}</h1>
+                <h1 className={styles.name}>{userdetails.username}</h1>
                 <h4>{userbasicdetails.age} years old</h4>
                 <h4>India</h4>
               </div>
@@ -223,7 +226,7 @@ const handlesubmit = async () =>{
                   </i>
                 </Link>
               </div>
-            <a href="#other details" className='text-white mt-5'>go to other details</a>
+            <a href="#other details" className=' mt-5'>go to other details</a>
 
             </div>
           </div>

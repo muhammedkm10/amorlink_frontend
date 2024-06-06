@@ -5,7 +5,7 @@ import { backendurls } from '../../../../../api/backendEndpoints'
 import {Link} from 'react-router-dom'
 import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './custom-toastify.css';
+import '../../../../../assets/css/custom-toastify.css'
 import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
 
@@ -131,6 +131,9 @@ function BasicDetails() {
               content: 'my-custom-content-class',
           
           },
+      }).then(() => {
+        // Refresh the page after the user clicks "OK" on the alert
+        window.location.reload();
       });
       setIsEditing(false)
 
@@ -142,6 +145,8 @@ function BasicDetails() {
   
   }
 
+
+  console.log(editDetails)
 
   // going back to details component
   const gobacktodetails = () =>{

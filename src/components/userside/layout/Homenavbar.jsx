@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Tooltip } from 'react-tooltip'
 
-function Homenavbar({ name }) {
+function Homenavbar({ name ,page}) {
   const [isNavVisible, setIsNavVisible] = useState(false)
   const dispatch = useDispatch()
   const handleHamburgerClick = () => {
@@ -18,10 +18,11 @@ function Homenavbar({ name }) {
     localStorage.removeItem('role')
     ;<Navigate to="/" replace />
   }
+  console.log(page);
 
   return (
     <div>
-      <nav className={`container-fluid ${styles.nav1}`}>
+      <nav className={!page ? `container-fluid ${styles.nav1}` : `container-fluid ${styles.nav2}`}>
         <img src={logo} className={styles.navbarLogo} alt="Logo" />
         <div className={styles.hamburger1} onClick={handleHamburgerClick}>
           <div className={styles.hamburger}>

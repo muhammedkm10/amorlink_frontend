@@ -29,17 +29,18 @@ function Userhome() {
   }, [])
   return (
     <div className={styles.fullbody}>
-        <Homenavbar name={user.username} />
+        <Homenavbar name={user.username} page={"home"}/>
             <div className={styles.main}>
                     <div className={`container-fluid ${styles.head}`}>
                         <div className={styles.para}>
-                          <div>
                                 <p className={styles.lines}>"In the garden of love, we plant seeds of trust and nurture them with patience, for a beautiful journey begins when hearts unite."
                                </p>
-                          </div>
                                
                                <Link to = "/preferences"><button  className={styles.preferencebutton}>find your partner</button></Link>
                         </div>
+                    </div>
+                    <div className={`container-fluid ${styles.about}`}>
+
                     </div>
             </div>
     </div>

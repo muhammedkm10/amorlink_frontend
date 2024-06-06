@@ -1,18 +1,18 @@
+
+/* head part styling */
+
 .fullbody {
-  background-color: #40183a;
+  /* background-color: #40183a; */
 }
 
 
 .head{
   background-image: url('../../../../assets/images/pexels-caio-45960.jpg');
-  height: 500px;
+  height: 60vh;
   background-size: cover; 
   background-position: center;
   background-repeat: no-repeat;
-  /* position: relative; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 
@@ -22,14 +22,21 @@
   text-align: center;
   padding: 30px;
   color: white;
+  margin-left: 70vw;
+  padding-top: 20vh;
   
+  
+}
+.lines{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .preferencebutton{
   padding: 2px 30px;
   border:none;
   border-radius: 10px;
-  background-color: #cc3882;
+  background-color: #eb116f;
   color: white;
   
 }
@@ -37,5 +44,14 @@
 .preferencebutton:hover{
   color: black;
 }
+
+
+/* about part styling */
+
+.about{
+  height: 40vh;
+  background-color: rgb(70, 53, 31);
+}
+
 
 
