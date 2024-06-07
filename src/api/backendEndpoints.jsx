@@ -13,6 +13,10 @@ export const backendurls = {
 
         // admin app
         "subscription":"/adminapp/add_edit_subscription",
-        "usermanagement":"/adminapp/usermanagement"
+        "usermanagement":"/adminapp/usermanagement",
+
+        // lookup profiles url
+        'profileshow':"/profileapp/profilelookup",
+
 }
 

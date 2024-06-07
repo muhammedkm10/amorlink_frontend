@@ -11,6 +11,7 @@ import Userloginpageprotection from '../../routprotections/Userloginpageprotecti
 import NotFoundPage from './UI/Error';
 import { useSelector } from 'react-redux';
 import Preferences from './pages/preference/Preferences';
+import ShowProfileDetails from './pages/profile lookup/ShowProfileDetails';
 
 
 function UserRouter() {
@@ -24,6 +25,8 @@ function UserRouter() {
       <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
       <Route path="/profile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
       <Route path="/preferences" element={<Usersiderouteprotection><Preferences/></Usersiderouteprotection>} />
+      <Route path="/shoeprofiles/:id" element={<Usersiderouteprotection><ShowProfileDetails/></Usersiderouteprotection>} />
+
 
       {/* other pages routers */}
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>

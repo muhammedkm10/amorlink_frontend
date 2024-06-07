@@ -1,0 +1,40 @@
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px wheat solid;
+
+    /* background-color: rgb(225, 156, 156); */
+  }
+  
+  .card_body {
+    /* text-align: center; */
+    padding-left: 2vw;
+    padding-top: 1vh;
+    color: white;
+  }
+  
+  .card_title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card_subtitle {
+    font-size: 0.875rem;
+    color: white;
+
+  }
+  
+  .card_text {
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: gold !important;
+  }
+  .card_text1 {
+    margin-top: 1rem;
+    font-size: 12px;
+  }
+  
+  .card_text div {
+    font-size: 1.5rem;
+    color: gold !important;
+  }

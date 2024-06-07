@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from './common.module.css'
+import styles from './common1.module.css'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import {Link} from 'react-router-dom'
@@ -11,7 +11,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function BasicDetails() {
+function BasicDetailsLookup() {
   const [basicdetails,setBasicdetails] = useState({})
   const [userdetais,setUserdetails] = useState({})
 
@@ -383,4 +383,4 @@ function BasicDetails() {
   )
 }
 
-export default BasicDetails
+export default BasicDetailsLookup

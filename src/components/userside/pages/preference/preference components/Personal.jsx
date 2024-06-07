@@ -84,7 +84,8 @@ function Personal() {
                 </p>
               </div>
               <div className={styles.buttonwrapper}>
-                <button className={styles.button1}>Go to Profile</button>
+              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`}><button className={styles.button1}>Go to Profile</button></Link>
+
                 <Link className={styles.match}>
                   <i className={`fas fa-heart fa-2x ${styles.heart}`}></i>
                 </Link>

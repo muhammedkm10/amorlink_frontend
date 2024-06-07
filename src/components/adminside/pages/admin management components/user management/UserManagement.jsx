@@ -38,25 +38,44 @@ function UserManagement() {
 //  block and unblock user function
 const BlockAndUnBlocking = async (user_id,type) =>{
 
-  try{
-    const response = await admin_authentcatedApiClient.put(backendurls.usermanagement,{
-      headers : {
-          "user_id":user_id,
-          "type":type
-      }
-      
-     })
-     if (response.data.message === "success"){
-      setBlocking(!blckoperation)
-      Swal.fire({
-        title: `${type}ed successfully`,
-        icon: 'success',
+ 
+    const result = await Swal.fire({
+      title: `Are you sure you want to ${type === 'block' ? 'block' : 'unblock'} this user?`,
+      text: "This action cannot be undone.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, proceed',
+      cancelButtonText: 'No, cancel',
+      reverseButtons: true
     });
-     }
-  }
-  catch(error){
-    console.log(error)
-  }
+    if (result.isConfirmed)
+      {
+        try{
+        const response = await admin_authentcatedApiClient.put(backendurls.usermanagement,{
+          headers : {
+              "user_id":user_id,
+              "type":type
+          }
+          
+         })
+         console.log(response.data.message)
+         if (response.data.message === "success"){
+          setBlocking(!blckoperation)
+          Swal.fire({
+            title: `${type}ed successfully`,
+            icon: 'success',
+        });
+         }
+        }
+        catch(error){
+          console.log(error)
+        }
+      }
+    
+
+   
+  
+ 
   
 
 

@@ -5,18 +5,19 @@
   flex-direction: row;
   align-items: center;
   /* border-top: 1px solid #181818; */
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 5vh;
    right: 0px;
    color: white;
    margin-top: 4vh;
-   /* background-image: linear-gradient(to bottom, #77296b, #671d37, #B72B5D, #D1316A) !important; */
-   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.75);
-   
-
-
-
-
+  border: 1px solid #3e0936;
+  background-image: linear-gradient(
+    to bottom,
+    #60122d,
+    #6e1d3a,
+    #b72b5d,
+    #60122d
+  );
 }
 
 .image {
@@ -56,19 +57,20 @@
   border: none;
   border-radius: 20px;
   color: white;
-  background-color: #40183a;
+  background-color: #b72b5d;
   border: 1px white solid;
 }
 
 .button1:hover {
   color: #a49696;
   border: 0.5px solid   #a49696;;
+  background-color: #3e0936;
 }
 .heart{
   color: white;
 }
 .heart:hover{
-  color: #a49696;
+  color: #3e0936;
 
 }
 

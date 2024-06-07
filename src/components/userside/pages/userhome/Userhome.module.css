@@ -1,34 +1,44 @@
 
 /* head part styling */
 
-.fullbody {
-  /* background-color: #40183a; */
-}
-
 
 .head{
-  background-image: url('../../../../assets/images/pexels-caio-45960.jpg');
-  height: 60vh;
-  background-size: cover; 
-  background-position: center;
-  background-repeat: no-repeat;
+  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+  background-size: 20px 20px;
+
 
 }
+.firstside{
+  height: 85vh;
+  border-radius: 100% 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+}
+
+.secondside{
+  height: 85vh;
+  background-color: white;
+  border-radius: 88% 0 0 0;
+  background-image: url('../../../../assets/images/home fixed.jpg');
+  background-size: cover; 
+  
+}
+
 
 
 .para{
-  /* position: absolute; */
   max-width: 300px;
   text-align: center;
   padding: 30px;
-  color: white;
-  margin-left: 70vw;
-  padding-top: 20vh;
-  
   
 }
 .lines{
-  color: white;
+  color: wheat;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -49,9 +59,187 @@
 /* about part styling */
 
 .about{
-  height: 40vh;
-  background-color: rgb(70, 53, 31);
+  text-align: center;
+  padding: 10vh;
+  background-color: #eb116f;
+
+}
+.welcome{
+  max-width: 30vw;
+  margin: auto;
+  text-align: center;
+
+
+}
+.heading1{
+  text-decoration: underline;
+  color: white;
+  font-family: 'Times New Roman', Times, serif
+}
+
+
+.welcomecontent{
+  margin: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: white;
+}
+
+
+/* complete profile sessioin */
+
+.complete_profile{
+  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+  background-size: 20px 20px;
+  padding: 2vh;
+
+}
+
+.give_details{
+  margin-left: 6vw;
+ padding-bottom: 4vh;
+ border-radius: 5%;
+
+
+}
+.preferences{
+  margin-left: 6vw;
+  margin-top: 6vh;
+  border-radius: 5%;
+
+
 }
 
 
 
+/* features and services provided by the site */
+
+.forbodybackground{
+  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+  background-size: 20px 20px;
+
+}
+.features{
+  /* border-radius: 10%; */
+  padding: 2vh;
+  margin-bottom: 10vh;
+  border-left: 3px solid #40183a;
+  border-right: 3px solid #40183a;
+  border-radius: 3%;
+
+}
+
+.featuresfirstpart{
+ 
+   display: flex;
+   text-align: center;
+  align-items: center;
+  }
+
+
+.featuressecondpart{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper_feature{
+  margin-top: 20px;
+  
+
+}
+.row_wrapper{
+  margin: auto;
+}
+.feature1{
+  border: 1px solid black;
+   padding: 5vh;
+  margin-left: 3vw;
+  margin-bottom: 3vh;
+  border: 1px solid rgb(189, 175, 175);
+  border-radius: 20px;
+}
+
+.image_wrapper{
+  width: 20vw;
+  height: 35vh;
+  margin: auto;
+   background-image: url('../../../../assets/images/rty.jpeg');
+   background-repeat: no-repeat;
+   background-size: cover;
+
+
+}
+.heading2{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+/* review section styles */
+
+.review_part{
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+  padding: 2rem 0;
+  border-radius: 20px;
+  border: 2px solid white;
+  padding: 2vh;
+}
+
+.review_part::-webkit-scrollbar {
+  display: none;
+}
+
+
+.smallfooter{
+  height: 20vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* afterr the 1000 maxwith */
+
+@media (max-width: 1000px){
+     
+  .secondside{
+    border-radius: 0 0 0 0 !important;
+  }
+  .image_wrapper{
+    width: 40vw;
+    height: 35vh;
+  }
+  .give_details{
+    margin-left: 0vw;
+  }
+  .preferences{
+    margin-left: 0vw;
+    margin-top: 6px;
+  }
+ 
+}

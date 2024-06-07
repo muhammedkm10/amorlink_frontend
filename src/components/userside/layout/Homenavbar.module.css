@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #77143f;
   height: 10vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   z-index: 2;
-  /* opacity: 0.4; */
+  background: linear-gradient(to right,#40183a ,#69265f );
+  
 
 }
 
@@ -17,10 +17,10 @@
   align-items: center;
   height: 10vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  position: fixed;
   z-index: 2;
-  /* background-color: black; */
-  background-color: rgba(0, 0, 0, 0.5)
+  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+  background-size: 20px 20px;
 }
 
 

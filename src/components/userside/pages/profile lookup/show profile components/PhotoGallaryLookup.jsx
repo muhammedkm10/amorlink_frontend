@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import styles from './common.module.css'
+import styles from './common1.module.css'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import profile from '../../../../../assets/images/pppp.jpg';
@@ -11,7 +11,7 @@ import {  faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function PhotoGallary() {
+function PhotoGallaryLookup() {
   const [details,setDetails] = useState({})
   const [isEditing,setIsEditing]  = useState(false)
   const [editDetails,setEditedDetails] = useState({})
@@ -268,7 +268,7 @@ const deleteImage = async (img,name) =>{
   )
 }
 
-export default PhotoGallary
+export default PhotoGallaryLookup
 
 
 

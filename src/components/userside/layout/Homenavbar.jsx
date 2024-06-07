@@ -42,6 +42,7 @@ function Homenavbar({ name ,page}) {
             ></i>
           </Link>
           <Link to="#">Matches</Link>
+          <Link to="/preferences">Preferences</Link>
           <Link to="#">Chat</Link>
           <Link to="#">PRO*</Link>
           <Link to="#">Search</Link>

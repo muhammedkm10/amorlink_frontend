@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Userprofile.module.css'
 import Homenavbar from '../../layout/Homenavbar'
-import profile from '../../../../assets/images/pppp.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../api/axiosconfig'
 import { backendurls } from '../../../../api/backendEndpoints'
@@ -168,17 +167,18 @@ const handlesubmit = async () =>{
 
   return (
     <div>
-      <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} />
+      <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} page="home1" />
       <div className={styles.fullbody}>
         <div className={`container-fluid  ${styles.background}`}>
           
         </div>
       
-        <div className={`container ${styles.head}`}>
+        <div className={`container-fluid ${styles.head}`}>
           <div className="row">
-            <div className={`col-md-6 col-12 ${styles.firstside}`}>
+            <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
               {!usergallarydetails.image1 ? (
-                <img src={profile} alt="" className={styles.profile} />
+                // <img src={profile} alt="" className={styles.profile} />
+                <p >No profile photo please add it....!</p>
               ) : (
                 <img
                   src={`${import.meta.env.VITE_IMAGE}${usergallarydetails.image1}`} 
@@ -198,7 +198,7 @@ const handlesubmit = async () =>{
                   <input type="text" id={styles.inputfield} placeholder={userdetails.username}  name='name' className={styles.modal_input} onChange={handlechange} />
                   {selectedImage ? (<img src={selectedImage.image1}  width="200px" height="200px"alt="Selected" className={styles.selectedImage} />): ""}
                   <input type="file" id="file1" className={styles.fileinput} name="image1" onChange={handlechange}/>
-                  <label htmlFor="file1" className={`${styles.customFileLabel} ${styles.modal_input}`}>Change your profile</label>
+                  <label htmlFor="file1" className={`${styles.customFileLabel} ${styles.modal_input}`}>add a  full length photo</label>
                   <textarea placeholder={userdetails.about_groom} id={styles.textarea} name="about"className={styles.modal_textarea} onChange={handlechange}></textarea>
                   <div className='p-3'>
                   <button id={styles.fileinput} className={styles.modal_close} onClick={onClose}>close</button>
@@ -212,7 +212,7 @@ const handlesubmit = async () =>{
 
             <div className={`col-lg-6 col-12 ${showSecondSide ? `${styles.secondside} show` : styles.secondside}`}>
               <div className={styles.basic}>
-                <h1 className={styles.name}>{userdetails.username}</h1>
+                <h1 className={styles.name}>Hi, I am {userdetails.username}</h1>
                 <h4>{userbasicdetails.age} years old</h4>
                 <h4>India</h4>
               </div>
@@ -323,7 +323,7 @@ const handlesubmit = async () =>{
             </div>
           </div>
 
-          <div  className={`container${styles.showdetails}`}>
+          <div  className={`container ${styles.showdetails}`}>
             {selectedItem === 'basic' || selectedItem === null ? (
               <BasicDetails  />
             ) : null}

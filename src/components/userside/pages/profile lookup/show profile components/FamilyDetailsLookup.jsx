@@ -1,5 +1,5 @@
 import React ,{useEffect,useState}from 'react'
-import styles from './common.module.css'
+import styles from './common1.module.css'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ import '../../../../../assets/css/custom-toastify.css'
 
 
 
-function FamilyDetails() {
+function FamilyDetailsLookup() {
   const [details,setDetails] = useState({})
   const [isEditing,setIsEditing] = useState(false)
   const [editDetails,setEditedDetails] = useState({})
@@ -369,7 +369,7 @@ function FamilyDetails() {
   )
 }
 
-export default FamilyDetails
+export default FamilyDetailsLookup
 
 
 

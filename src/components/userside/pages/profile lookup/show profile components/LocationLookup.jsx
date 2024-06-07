@@ -1,5 +1,5 @@
 import React ,{useEffect,useState}from 'react'
-import styles from './common.module.css'
+import styles from './common1.module.css'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import {Link} from 'react-router-dom'
@@ -9,7 +9,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function Location() {
+function LocationLookup() {
   const [details,setDetails] = useState({})
   const [isEditing,setIsEditing]  = useState(false)
   const [editDetails,setEditedDetails] = useState({})
@@ -223,7 +223,7 @@ function Location() {
   )
 }
 
-export default Location
+export default LocationLookup
 
 
 
