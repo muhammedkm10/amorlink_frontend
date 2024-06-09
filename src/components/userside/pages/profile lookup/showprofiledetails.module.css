@@ -1,0 +1,397 @@
+.fullbody {
+    text-align: center;
+    background-color: white;
+    height: auto;
+    overflow: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .afterbreakpoint{
+    position: absolute;
+  }
+  
+  .head {
+  /* padding: 3vh; */
+
+    background-color: #ffffff;
+    color: rgb(241, 241, 240);
+    /* border-top: 1px solid rgb(65, 64, 64); */
+    /* box-shadow: 0 25px 25px black; */
+  }
+  
+  .firstside,
+  .secondside {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    /* z-index: 10 */
+  }
+  
+  
+  .firstside {
+    text-align: center !important;
+    /* height: 80vh; */
+    border-radius: 0px 0px 0px 70%;
+    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+                radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px;
+    position: relative;
+    right: 100%; 
+    animation: slideFromRight 2s forwards; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Ensure any overflow is hidden */
+  }
+  
+  @keyframes slideFromRight {
+    0% {
+        right: -100%; 
+    }
+    100% {
+        right: 0;
+    }
+  }
+  .secondside {
+    padding-top: 15vh;
+    /* padding-left: 12vh; */
+    text-align: center;
+    padding-bottom: 15vh;
+    height: auto;
+    /* text-align: left !important; */
+    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px;
+    position: relative;
+    left: -100%;
+    animation: slideFromLeft 2s forwards; 
+    box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.2);
+  
+  
+  }
+  
+  @keyframes slideFromLeft {
+    0% {
+        left: -100%; 
+    }
+    100% {
+        left: 0; 
+    }
+  }
+  .profile {
+    /* margin-top: 10vh; */
+    width: 100%;
+    height: 50vh;
+    border-radius:20%;
+    /* object-fit: cover; */
+    /* border-radius: inherit; */
+  }
+  
+  .basic {
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+  
+  .location {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+  
+  .about {
+    padding-top: 10vh;
+    max-width: 30vw;
+    margin: auto;
+    font-family: monospace;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+  
+  
+  
+  .secondside > *:hover{
+    color: rgb(139, 128, 128);
+  }
+  
+  
+  /* details showing styling */
+  .otherdetails {
+    width: 100%;
+    display: flex;
+    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px;
+    border-radius: 30% 0 0 0 ;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+  
+  }
+  
+  .details {
+    width: 100%;
+    display: flex;
+    /* background-color: #40183a; */
+    flex-direction: column;
+    border-top: 0.2px rgb(250, 255, 234) solid;
+    border-bottom: 0.2px rgb(250, 255, 234) solid;
+    background-image: linear-gradient(to  top #000000 rgb(216, 154, 154));
+  
+  }
+  
+  .wrapper {
+    /* background-color:red; */
+   /* border-radius: 30% 0 0 0 ; */
+  
+    width: 100%;
+    text-align: center;
+  }
+  
+  @media (max-width: 1500px) {
+    .showdetails {
+      padding: 0;
+      border-bottom: 2px solid white;
+      z-index: 0;
+      
+    }
+    .firstside,
+    .secondside{
+      text-align: center!important;
+      padding: 0;
+      animation:none;
+      left:0;
+      right: 0;
+      position: initial;
+      border-radius: 0px;
+      
+    }
+    .afterbreakpoint{
+      position: absolute;
+    }
+  }
+  
+  /* Navigation bar styles */
+  .topnav {
+    display: flex;
+    justify-content: center;
+    margin: auto !important;
+  }
+  
+  .links {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .links:hover {
+    color: wheat;
+    font-weight: 700;
+  }
+  
+  /* Show navigation bar when hamburger menu is clicked */
+  
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+  }
+  
+  @media (max-width: 1000px) {
+    .row {
+      flex-direction: column;
+    }
+    .otherdetails{
+      border-radius: 0 0 0 0 ;
+    }
+  
+    .firstside,
+    .secondside {
+      width: 100%;
+    
+    }
+  
+    .topnav {
+      flex-direction: column;
+      align-items: center;
+      display: none;
+    }
+  
+    .show {
+      display: flex;
+    }
+  
+    .show .links {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .fa-bars {
+      cursor: pointer;
+      font-size: 1.5em;
+      color: white;
+    }
+  
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #210808be;
+      width: 100%;
+    }
+  
+    .wrapper .text-decoration-none {
+      color: white;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+  
+  .primarydetailseditbutton {
+    margin-top: 10vh !important;
+  }
+  
+  
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11
+  
+  }
+  
+  .modal_content {
+  
+    /* background: white; */
+    border: 2px white solid;
+    padding: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal_input, .modal_textarea {
+    margin: 10px 0;
+    /* width: 100%; */
+    max-width: 300px; 
+    width: 200vh;
+    font-size: 13px;
+  }
+  
+  .modal_close,.modal_close1 {
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    color: rgb(255, 247, 247);
+    border: 1px white solid;
+    padding: 2px 4px;
+    border-radius: 5px;
+  }
+  .modal_close:hover {
+     border: 1px rgb(153, 165, 120) solid;
+     padding: 2px 4px;
+     border-radius: 5px;
+  }
+  .modal_close1:hover {
+    border: 1px  rgb(153, 165, 120) solid;
+    padding: 2px 4px;
+    border-radius: 5px;
+  }
+  
+  
+  .modal_close1{
+    margin-left: 20px;
+  }
+  
+  
+  
+  #inputfield {
+    width: 100%;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  #inputfield:focus {
+    border-color: #666;
+    outline: none;
+  }
+  
+  .fileinput {
+    display: none;
+  }
+  
+  /* Style the label to look like a button */
+  .customFileLabel {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .customFileLabel:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  #textarea{
+    height: 8vw;
+    width: 100%;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    text-align: center;
+  
+  }
+  
+
+  /* button of the requestrt  */
+  .button1{
+    padding: 5px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #b72b5d;
+    border: 1px white solid;
+  }
+  
+  .button1:hover {
+    color: #a49696;
+    border: 0.5px solid   #a49696;;
+    background-color: #3e0936;
+  }
+  .otherdetailslink{
+    margin-top: 20px !important;
+  }

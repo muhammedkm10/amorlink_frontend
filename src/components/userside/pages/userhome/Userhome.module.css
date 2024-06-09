@@ -24,8 +24,22 @@
   height: 85vh;
   background-color: white;
   border-radius: 88% 0 0 0;
+  background-size: cover; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.secondsidephotodiv{
+  height: 48vh;
+  width: 27vw;
   background-image: url('../../../../assets/images/home fixed.jpg');
   background-size: cover; 
+  border-radius: 88% 0 0 0;
+
+
+
   
 }
 
@@ -202,33 +216,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* afterr the 1000 maxwith */
 
 @media (max-width: 1000px){
      
   .secondside{
     border-radius: 0 0 0 0 !important;
+    display: none;
   }
   .image_wrapper{
     width: 40vw;

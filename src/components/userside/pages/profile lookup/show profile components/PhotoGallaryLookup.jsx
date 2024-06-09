@@ -11,18 +11,8 @@ import {  faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function PhotoGallaryLookup() {
+function PhotoGallaryLookup({userid}) {
   const [details,setDetails] = useState({})
-  const [isEditing,setIsEditing]  = useState(false)
-  const [editDetails,setEditedDetails] = useState({})
-  const [selectedImage,setSelectedImage] = useState({
-    image2 : null,
-    image3 : null,
-    image4 : null,
-    image5 : null
-  })
-  const [isdeleted,setIsdeleted]  = useState(false)
-  
 
     useEffect(()=>{
   
@@ -30,7 +20,8 @@ function PhotoGallaryLookup() {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                'details': 'photos_gallary', // Replace with your actual header and value
+                "userid":userid,
+                'details': 'photos_gallary',
               },
             });
             
@@ -44,157 +35,20 @@ function PhotoGallaryLookup() {
         };
     
         fetchPhotoGalary();
-    },[isEditing,isdeleted])
+    },[])
 
-     // handling edit button
-     const handleEditButton = () =>{
-      setIsEditing(true)
-    }
-
-
-    // setting editting data into state
-
-    const handleChange = (e) =>{
-        const {name,files} = e.target
-        if (files && files[0]){
-          const reader  = new FileReader()
-          reader.onloadend = () =>{
-
-            setEditedDetails({
-              ...editDetails,
-              [name] : reader.result,
-            });
-
-            setSelectedImage({
-              ...selectedImage,
-              [name]:reader.result           
-             })
-          }
-          reader.readAsDataURL(files[0]);
-        }
-  }
-
-
-  // saving the data to the data base to store in the database
-
-  const handleSave  = async () =>
-    {
-      const response = await authentcatedApiClient.put(backendurls.userprofile,editDetails,{
-        headers :{
-          "details" : "photos_gallary"
-        }
-      })
-      if (response.data.message == "success")
-        {
-          Swal.fire({
-            title: 'Edited successfully',
-            text: 'Images added successfully to your gallary',
-            icon: 'success',
-            customClass: {
-                popup: 'my-custom-popup-class',
-                title: 'my-custom-title-class',
-                content: 'my-custom-content-class',
-            
-            },
-        });
-      setIsEditing(false)
-      setSelectedImage({})
-
-
-        }
-
-
-    }
-    
-
-  
-
-    // going back to details component
-    const gobacktodetails = () =>{
-      setIsEditing(false)
-    }
+ 
   
 // checking any image is present or not
   const hasImages = details.image2 || details.image3 || details.image4 || details.image5;
 
-// handling the deletion of the image
 
-const deleteImage = async (img,name) =>{
-
-      const response = await authentcatedApiClient.delete(backendurls.userprofile,{
-        data :{"img":img,'name':name}
-      })
-      if (response.data.message == "success")
-        {
-          
-          Swal.fire({
-            title: 'Deleted  successfully',
-            text: 'Image deleted  successfully from your gallary',
-            icon: 'info',
-            customClass: {
-                popup: 'my-custom-popup-class',
-                title: 'my-custom-title-class',
-                content: 'my-custom-content-class',
-            
-            },
-        });
-      setIsdeleted(!isdeleted)
-
-        }
-}
 
   return (
     <div className={styles.outerwrapper}>
         <h4 className={styles.heading}>PhotoGallary</h4>
- 
 
- {/* editing part */}
-
-        {isEditing ? (
-           <div className={`container  ${styles.gallary}`}>
-              <div className="row">
-
-                  <div className="col-md-6 col-12 p-4 ">
-                  {selectedImage.image2 ? (
-                <img src={selectedImage.image2} alt="Selected" className={styles.selectedImage} />):   <img src={profile} alt="Selected" className={styles.selectedImage} ></img>}
-                  <input type="file" id="file1" name="image2" className={styles.fileinput} onChange={handleChange} />
-                  <label htmlFor="file1" className={styles.customFileLabel}>Choose File 1</label>
-
-
-
-                     <div className="p-4"></div>
-                  {selectedImage.image3 ? (
-                <img src={selectedImage.image3} alt="Selected" className={styles.selectedImage}/>):  (<img src={profile} alt="Selected" className={styles.selectedImage}></img>)}
-
-                  <input type="file" id="file2" name="image3" className={styles.fileinput} onChange={handleChange} />
-                  <label htmlFor="file2" className={styles.customFileLabel}>Choose File 2</label>
-
-                  </div>
-                <div className="col-md-6 col-12 p-4 ">
-                  {selectedImage.image4 ? (
-                <img src={selectedImage.image4} alt="Selected" className={styles.selectedImage} />)  :(<img src={profile} alt="Selected" className={styles.selectedImage}></img>
-                   )}
-
-                  <input type="file" id="file3" name="image4" className={styles.fileinput} onChange={handleChange} />
-                  <label htmlFor="file3" className={styles.customFileLabel}>Choose File 3</label>
-
-                  <div className="p-4"></div>
-                  {selectedImage.image5 ? (
-                <img src={selectedImage.image5} alt="Selected" className={styles.selectedImage} /> 
-                   ): (<img src={profile} alt="Selected" className={styles.selectedImage}></img>)}
-                  <input type="file" id="file4" name="image5" className={styles.fileinput} onChange={handleChange} />
-                  <label htmlFor="file4" className={styles.customFileLabel}>Choose File 4</label>
-                        <div>
-                            <button className={styles.savebutton} onClick={handleSave}>Save</button>
-                            <button className={styles.savebutton} onClick={gobacktodetails}>Go back</button>
-
-                        </div>
-                    </div>
-              </div>
-         </div>
-        ):(
-          
-          // gallary part 
+          {/* gallary part  */}
           
           
           <div>
@@ -261,9 +115,7 @@ const deleteImage = async (img,name) =>{
       )
      }
         </div>
-             <Link to="" className="m-5"onClick={handleEditButton}><i className="fa fa-edit  text-white p-5" title='Edit'>edit</i></Link>
         </div>
-      )}
     </div>
   )
 }

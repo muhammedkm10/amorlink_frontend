@@ -1,0 +1,88 @@
+.fullbody{
+    /* background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px; */
+    height: 100vh;
+    
+
+
+}
+.wrapper{
+    width: 60% !important;
+    /* background-color: red; */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 20px;
+    min-width: 355px !important;
+    margin-top: 3px;
+
+
+}
+.details{
+   display: flex;
+   justify-content:space-between;
+   color: white;
+}
+
+
+.closebutton{
+    background: none;
+    /* padding: 2px; */
+    border: none;
+    /* margin-top: 7px; */
+    color: rgb(0, 0, 0);
+    /* font-weight: 200; */
+}
+.closebutton:hover{
+    background: none;
+    /* padding: 2px; */
+    border: none;
+    /* margin-top: 7px; */
+    color: rgb(255, 255, 255);
+    /* font-weight: 200; */
+}
+
+
+
+.button1{
+    margin-left: 20px;
+    padding: 2px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #2b68b7;
+    /* border: 1px white solid; */
+  }
+  .showprofile{
+    margin-left: 20px;
+    padding: 2px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #8a3389;
+
+  }
+  .showprofile:hover {
+    color: #a49696;
+    border: 0.5px solid   #a49696;;
+    background-color: #3e0936;
+  }
+
+  .button1:hover {
+    color: #a49696;
+    border: 0.5px solid   #a49696;;
+    background-color: #3e0936;
+  }
+
+
+  @media (max-width:1200px){
+    .details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+  }

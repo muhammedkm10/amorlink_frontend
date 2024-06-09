@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
+import Swal from 'sweetalert2'
+
 
 
 function Personal() {
@@ -37,6 +39,42 @@ function Personal() {
      fetchUsers()
         
   },[])
+
+
+
+  // handling match requests
+  const matchRequestHandle  = async (id)=>{
+    const result = await Swal.fire({
+      title: "do you wanto request to match?",
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, proceed',
+      cancelButtonText: 'No, cancel',
+      reverseButtons: true
+    });
+    if (result.isConfirmed){
+      try{
+        const response = await authentcatedApiClient.post(`${backendurls.matchrequests}/${id}`)
+        if (response.data.message === "success"){
+          Swal.fire({
+            title: "Request sent successfully",
+            icon: 'success',
+        });
+        }
+
+      }
+      catch(error){
+        console.log(error)
+      }
+
+    }
+    
+   
+
+       
+
+  }
+
   return (
               <div className="row">
               <div className={`col-lg-3 col-12 ${styles.firstside}`}>
@@ -56,7 +94,7 @@ function Personal() {
     <>
       {userPreferences.length > 0? (
         userPreferences.map((element) => (
-          <div key={element.id} className={styles.card}>
+          <div key={element.main_detail_of_user.id}  className={styles.card}>
             <img
               src={
                 element.image.image1
@@ -86,9 +124,8 @@ function Personal() {
               <div className={styles.buttonwrapper}>
               <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`}><button className={styles.button1}>Go to Profile</button></Link>
 
-                <Link className={styles.match}>
-                  <i className={`fas fa-heart fa-2x ${styles.heart}`}></i>
-                </Link>
+              <Link onClick={()=>matchRequestHandle(element.main_detail_of_user.id)} className='ms-2'><button className={styles.button1}>Request to match</button></Link>
+
               </div>
             </div>
           </div>

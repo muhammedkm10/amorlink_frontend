@@ -86,7 +86,7 @@ const BlockAndUnBlocking = async (user_id,type) =>{
   return (
     <div>
          <div  className={`container ${styles.body}`}>
-         <h3>Your plan details</h3>
+         <h3>User management</h3>
 
               <div className="row mt-4">
                       <div className="col-12">

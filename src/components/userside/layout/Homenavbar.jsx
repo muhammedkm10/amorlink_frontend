@@ -41,7 +41,7 @@ function Homenavbar({ name ,page}) {
               style={{ color: 'white' }}
             ></i>
           </Link>
-          <Link to="#">Matches</Link>
+          <Link to="/matches">Matches</Link>
           <Link to="/preferences">Preferences</Link>
           <Link to="#">Chat</Link>
           <Link to="#">PRO*</Link>

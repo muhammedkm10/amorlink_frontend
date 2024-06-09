@@ -16,7 +16,7 @@ export const backendurls = {
         "usermanagement":"/adminapp/usermanagement",
 
         // lookup profiles url
-        'profileshow':"/profileapp/profilelookup",
+        'matchrequests':"/matchesmanagementapp/matchesmanagement",
 
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import profile from '../../../../assets/images/pppp.jpg'
+import profile from '../../../../assets/images/selfie.jpg'
 import styles from './showprofiledetails.module.css'
 import { useParams } from 'react-router-dom'
 import ReligionInformationLookup from './show profile components/ReligionInformationLookup'
@@ -10,39 +10,105 @@ import PhotoGallaryLookup from './show profile components/PhotoGallaryLookup'
 import ProfessionaldetailsLookup from './show profile components/ProfessionaldetailsLookup'
 import { authentcatedApiClient } from '../../../../api/axiosconfig'
 import { backendurls } from '../../../../api/backendEndpoints'
+import Homenavbar from '../../layout/Homenavbar'
+import { Link,NavLink } from 'react-router-dom'
+import { CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from 'cdbreact'
+import BasicDetailsLookup from './show profile components/UserbasicdetailsLookup'
+import Swal from 'sweetalert2'
+
 
 function ShowProfileDetails() {
     const {id} = useParams()
     const [userdetails,setUserDetails] = useState({})
+    const [userbasicdetails,setUserBasicDetails] = useState({})
+    const [usergallaryDetails,setUsergallarydetails] = useState({})
+    const [menuOpen, setMenuOpen] = useState(false) 
+    const [selectedItem,setselectedItem] = useState(null)
+
+    const [showSecondSide, setShowSecondSide] = useState(false);
+ 
+
 
 
     // fetching user data
     useEffect (()=>{
-        fetchUserData()
+        fetchUserData(id)
     },[])
     
-    const fetchUserData = async () =>{
-        try{
-            const response = authentcatedApiClient.get(backendurls.profileshow , {
-                headers :{
-                    'user_id':id
-                }
-            })
-            if (response.data.message === "success"){
-                console.log(success)
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
+    const fetchUserData = async (id) =>{
+      try {
+        authentcatedApiClient.get(backendurls.signup,{
+          headers:{
+            "userid":id
+          }
+        })
+        .then((response) => {
+          if (response.data.message === 'unauthorized') {
+            navigate('/unauthorized')
+          }
+          if (response.data.message === 'Success') {
+            setUserDetails(response.data.user)
+            setUserBasicDetails(response.data.basicdetails)
+            setUsergallarydetails(response.data.usergallary)
+          }
+        })
+      } catch (error) {
+        console.log('error')
+      }
     }
 
+
+    // showing details based on the clicking in the second navbar
+      const handSidebarItemsCick = (selected) => {
+      setselectedItem(selected)
+    }
+  
+
+
+    // toggle bar controlling
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen)
+      }
+    
+
+      // match request sending to the backend
+
+      const matchRequestHandle  = async ()=>{
+        const result = await Swal.fire({
+          title: "do you wanto request to match?",
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, proceed',
+          cancelButtonText: 'No, cancel',
+          reverseButtons: true
+        });
+        if (result.isConfirmed){
+          try{
+            const response = await authentcatedApiClient.post(`${backendurls.matchrequests}/${id}`)
+            if (response.data.message === "success"){
+              Swal.fire({
+                title: "Request sent successfully",
+                icon: 'success',
+            });
+            }
+  
+          }
+          catch(error){
+            console.log(error)
+          }
+  
+        }
+        
+       
+
+           
+
+      }
     
   return (
     
 
 <div>
-    <div>ShowProfileDetails {id}</div> 
       <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} page="home1" />
       <div className={styles.fullbody}>
         <div className={`container-fluid  ${styles.background}`}>
@@ -52,16 +118,16 @@ function ShowProfileDetails() {
         <div className={`container-fluid ${styles.head}`}>
           <div className="row">
             <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
-              {!usergallarydetails.image1 ? (
+              {!usergallaryDetails.image1 ? (
                 <img src={profile} alt="" className={styles.profile} />
          
-              ) : (
+               ) : (
                 <img
-                  src={`${import.meta.env.VITE_IMAGE}${usergallarydetails.image1}`} 
+                  src={`${import.meta.env.VITE_IMAGE}${usergallaryDetails.image1}`} 
                   alt="image1"
                   className={styles.profile}
                 />
-              )}
+              )} 
             </div>
 
 
@@ -78,21 +144,21 @@ function ShowProfileDetails() {
               <div className={styles.about}>
                 <h3>About me</h3>
                 <p>{userdetails.about_groom}</p>
-                <Link className={styles.primarydetailseditbutton}>
-                  <i  onClick={editMaindetails}className="fa fa-edit mt-5 text-white" title="Edit">
-                    edit
-                  </i>
-                </Link>
+               
               </div>
-            <a href="#other details" className=' mt-5'>go to other details</a>
+            <Link className='m-3' onClick={matchRequestHandle}><button className={styles.button1}>Request to match</button></Link>
+            <br />
+             <br />
+            <a href="#other details" className={styles.otherdetailslink}>other details</a>
+
 
             </div>
           </div>
 
 
         </div>
-        <div id="other details"className={styles.otherdetails}>
-          <div className={styles.details}>
+        <div  id="other details" className={styles.otherdetails}>
+          <div  className={styles.details}>
             <div className={styles.wrapper}>
               <button className={styles.hamburger} onClick={toggleMenu}>
                 <i className="fa fa-bars"></i>
@@ -152,7 +218,7 @@ function ShowProfileDetails() {
                     onClick={() => handSidebarItemsCick('preference')}
                     icon=""
                   >
-                    Your preferences
+                     Preference details
                   </CDBSidebarMenuItem>
                 </NavLink>
                 <NavLink
@@ -183,14 +249,14 @@ function ShowProfileDetails() {
 
           <div  className={`container ${styles.showdetails}`}>
             {selectedItem === 'basic' || selectedItem === null ? (
-              <BasicDetails  />
+              <BasicDetailsLookup  userid={id}/>
             ) : null}
-            {selectedItem === 'religion' && <ReligionInformationLookup />}
-            {selectedItem === 'location' && <LocationLookup />}
-            {selectedItem === 'family' && <FamilyDetailsLookup />}
-            {selectedItem === 'preference' && <PartnerPreferencesLookup />}
-            {selectedItem === 'gallary' && <PhotoGallaryLookup />}
-            {selectedItem === 'profession' && <ProfessionaldetailsLookup />}
+            {selectedItem === 'religion' && <ReligionInformationLookup userid={id} />}
+            {selectedItem === 'location' && <LocationLookup userid={id} />}
+            {selectedItem === 'family' && <FamilyDetailsLookup userid={id} />}
+            {selectedItem === 'preference' && <PartnerPreferencesLookup userid={id} />}
+            {selectedItem === 'gallary' && <PhotoGallaryLookup userid={id} />}
+            {selectedItem === 'profession' && <ProfessionaldetailsLookup userid={id} />}
           </div>
         </div>
       </div>

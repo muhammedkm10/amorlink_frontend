@@ -21,6 +21,7 @@
   background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
   radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
   background-size: 20px 20px;
+  border-bottom: 1px solid #442b40;
 }
 
 
@@ -53,10 +54,9 @@
 .nav__link {
   position: fixed;
   width: 94%;
-  top: 5rem;
-  left: 18px;
+  top: 3rem;
   background-color: #641842;
-  position: absolute;
+  z-index: 1;
 
 }
 
@@ -110,6 +110,7 @@
     height: 9vh;
     z-index: 2;
   }
+
   .navbarLogo {
     width: 18vh; 
     height: 8vh;

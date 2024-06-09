@@ -31,7 +31,12 @@ function Userprofile() {
 
   useEffect(() => {
     try {
-      authentcatedApiClient.get(backendurls.signup).then((response) => {
+      authentcatedApiClient.get(backendurls.signup,{
+        headers:{
+          "userid":null
+        }
+    })
+      .then((response) => {
         if (response.data.message === 'unauthorized') {
           navigate('/unauthorized')
         }
@@ -46,6 +51,14 @@ function Userprofile() {
       console.log('error')
     }
   }, [isModalShowed])
+
+  console.log("userdetails",userdetails)
+  console.log("userbasicdetails",userbasicdetails)
+  console.log("usergallary details",usergallarydetails)
+
+
+
+
 
   const [selectedItem, setSelection] = useState(null)
   const handSidebarItemsCick = (selected) => {
@@ -177,7 +190,6 @@ const handlesubmit = async () =>{
           <div className="row">
             <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
               {!usergallarydetails.image1 ? (
-                // <img src={profile} alt="" className={styles.profile} />
                 <p >No profile photo please add it....!</p>
               ) : (
                 <img

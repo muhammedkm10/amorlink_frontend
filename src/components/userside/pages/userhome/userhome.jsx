@@ -49,8 +49,10 @@ function Userhome() {
 
                             </div>
                             <div className={`col-md-7 col-12 ${styles.secondside}`}>
-                            
-
+                             <div className={styles.secondsidephotodiv}>
+                              
+                             </div>
+ 
                             </div>
                          </div>
                     </div>

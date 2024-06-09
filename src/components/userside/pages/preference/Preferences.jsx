@@ -27,6 +27,9 @@ function Preferences() {
     const toggleMenu = () =>{
         setMenuOpen(!menuOpen)
     }
+
+
+  
   return (
     <div className={styles.body}>
         <Homenavbar/>
@@ -88,7 +91,7 @@ function Preferences() {
             </div>
           </div>
           <div  className={`container  p-1 ${styles.showdetails}`}>
-            {selectedItem === 'personal' || selectedItem === null ? (<Personal/> ) : null}
+            {selectedItem === 'personal' || selectedItem === null ? (<Personal /> ) : null}
             {selectedItem === 'lifestyle' && <Lifestyle />}
             {selectedItem === 'religional' && <Religion />}
             {selectedItem === 'profession' && <Profession/>}

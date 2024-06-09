@@ -12,6 +12,7 @@ import NotFoundPage from './UI/Error';
 import { useSelector } from 'react-redux';
 import Preferences from './pages/preference/Preferences';
 import ShowProfileDetails from './pages/profile lookup/ShowProfileDetails';
+import Matches from './pages/match request management/Matches';
 
 
 function UserRouter() {
@@ -26,6 +27,8 @@ function UserRouter() {
       <Route path="/profile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
       <Route path="/preferences" element={<Usersiderouteprotection><Preferences/></Usersiderouteprotection>} />
       <Route path="/shoeprofiles/:id" element={<Usersiderouteprotection><ShowProfileDetails/></Usersiderouteprotection>} />
+      <Route path="/matches" element={<Usersiderouteprotection><Matches/></Usersiderouteprotection>} />
+
 
 
       {/* other pages routers */}
