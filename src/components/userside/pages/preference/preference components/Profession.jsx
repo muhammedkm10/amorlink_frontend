@@ -13,6 +13,7 @@ function Profession() {
 
   const [userPreferences,setuserPreferences] = useState([])
   const [isLoading,setLoading] = useState(false)
+  const [requested,setrequested] = useState(false)
 
   // fetch data
 
@@ -38,7 +39,7 @@ function Profession() {
   useEffect (()=>{
      fetchUsers()
         
-  },[])
+  },[requested])
 
 
   // handling match requests
@@ -59,6 +60,8 @@ function Profession() {
             title: "Request sent successfully",
             icon: 'success',
         });
+        setrequested(!requested)
+
         }
 
       }
@@ -123,7 +126,7 @@ function Profession() {
                 </p>
               </div>
               <div className={styles.buttonwrapper}>
-              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`}><button className={styles.button1}>Go to Profile</button></Link>
+              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`} state={{ comingfrom: "preferences" }}><button className={styles.button1}>Go to Profile</button></Link>
               <Link  className='ms-2'><button onClick={()=>matchRequestHandle(element.main_detail_of_user.id)} className={styles.button1}>Request to match</button></Link>
 
               </div>

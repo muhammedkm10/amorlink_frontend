@@ -13,6 +13,7 @@ function Personal() {
 
   const [userPreferences,setuserPreferences] = useState([])
   const [isLoading,setLoading] = useState(false)
+  const [requested,setrequested] = useState(false)
 
   // fetch data
 
@@ -38,7 +39,7 @@ function Personal() {
   useEffect (()=>{
      fetchUsers()
         
-  },[])
+  },[requested])
 
 
 
@@ -60,6 +61,8 @@ function Personal() {
             title: "Request sent successfully",
             icon: 'success',
         });
+        setrequested(!requested)
+
         }
 
       }
@@ -122,7 +125,7 @@ function Personal() {
                 </p>
               </div>
               <div className={styles.buttonwrapper}>
-              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`}><button className={styles.button1}>Go to Profile</button></Link>
+              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`} state={{ comingfrom: "preferences" }}><button className={styles.button1}>Go to Profile</button></Link>
 
               <Link onClick={()=>matchRequestHandle(element.main_detail_of_user.id)} className='ms-2'><button className={styles.button1}>Request to match</button></Link>
 

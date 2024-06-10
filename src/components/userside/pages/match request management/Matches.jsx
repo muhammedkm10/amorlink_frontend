@@ -5,6 +5,7 @@ import { CDBSidebarMenu, CDBSidebarMenuItem } from 'cdbreact'
 import { NavLink } from 'react-router-dom'
 import AcceptedMatches from './match components/AcceptedMatches'
 import RequestedUsers from './match components/RequestedUsers'
+import RequestedByCurrentUser from './match components/RequestedByCurrentUser'
 
 function Matches() {
     const [selectedItem,setSelectedItem] = useState("matches")
@@ -33,7 +34,6 @@ function Matches() {
         <div className={styles.body}>
 
            <div className={styles.head}>
-               <h4 className='text-white '>Find your partner based on your preferences</h4>
 
 
 
@@ -66,7 +66,18 @@ function Matches() {
                     onClick={() => handSidebarItemsCick('requests')}
                     icon=""
                   >
-                    Requested for matches
+                    Requested for match
+                  </CDBSidebarMenuItem>
+                </NavLink>
+                <NavLink
+                  activeClassName="activeClicked"
+                  className={selectedItem === "current_user_requests" ? styles.selected : styles.links}
+                >
+                  <CDBSidebarMenuItem
+                    onClick={() => handSidebarItemsCick('current_user_requests')}
+                    icon=""
+                  >
+                Your requests
                   </CDBSidebarMenuItem>
                 </NavLink>
               </CDBSidebarMenu>
@@ -85,11 +96,13 @@ function Matches() {
               <AcceptedMatches/>
             ) : null}
             {selectedItem === 'requests' && <RequestedUsers/>}
+            {selectedItem === 'current_user_requests' && <RequestedByCurrentUser/>}
           </div>
 
         </div>
     </div>
   )
 }
+
 
 export default Matches

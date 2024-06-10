@@ -1,14 +1,9 @@
 .fullbody{
-    /* background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-    background-size: 20px 20px; */
+
     height: 100vh;
-    
-
-
 }
 .wrapper{
-    width: 60% !important;
+    width: 70% !important;
     /* background-color: red; */
     padding: 10px;
     border: 1px solid white;
@@ -27,19 +22,13 @@
 
 .closebutton{
     background: none;
-    /* padding: 2px; */
     border: none;
-    /* margin-top: 7px; */
-    color: rgb(0, 0, 0);
-    /* font-weight: 200; */
+    color: rgb(255, 255, 255);
 }
 .closebutton:hover{
     background: none;
-    /* padding: 2px; */
     border: none;
-    /* margin-top: 7px; */
-    color: rgb(255, 255, 255);
-    /* font-weight: 200; */
+    color: rgb(0, 0, 0);
 }
 
 
@@ -51,8 +40,16 @@
     border: none;
     border-radius: 20px;
     color: white;
-    background-color: #2b68b7;
-    /* border: 1px white solid; */
+    background:linear-gradient(to right,#2b68b7 ,#1b3961,#2b68b7 );
+  }
+  .button2{
+    margin-left: 20px;
+    padding: 2px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background:linear-gradient(to right,#dd0d0d ,#920e0e,#dd0d0d );
   }
   .showprofile{
     margin-left: 20px;
@@ -70,7 +67,7 @@
     background-color: #3e0936;
   }
 
-  .button1:hover {
+  .button2:hover , .button1:hover {
     color: #a49696;
     border: 0.5px solid   #a49696;;
     background-color: #3e0936;
@@ -86,3 +83,68 @@
     }
 
   }
+  .chat{
+    background: none;
+    border: none !important;
+    color: rgb(202, 191, 191);
+  }
+
+  .chat:hover{
+    background: none;
+    border: none;
+    color: rgb(0, 0, 0);
+}
+
+
+
+
+/* first side styles */
+
+.profilelinking{
+  padding: 4px 20px;
+  background-color: #eb116f;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.para{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 2vh;
+  
+}
+
+.head{
+  font-weight:700;
+  text-decoration: underline;
+}
+
+
+
+.editprofile{
+  text-align: center;
+  margin-top: 4vh;
+  padding: 20px;
+  border-radius: 20px;
+  width: 20vw;
+  color: white;
+
+}
+.secondside{
+  border: 1px solid #551d4d;
+  border-radius: 20px;
+  padding-top: 2vh;
+}
+
+.firstside{
+  border: 1px solid #551d4d;
+  border-radius: 20px;
+}
+@media (max-width:1000px){
+  .firstside{
+    display: none
+  }
+  .secondside{
+    margin: auto;
+  }
+}

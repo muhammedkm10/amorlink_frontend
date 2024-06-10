@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import profile from '../../../../assets/images/selfie.jpg'
 import styles from './showprofiledetails.module.css'
-import { useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import ReligionInformationLookup from './show profile components/ReligionInformationLookup'
 import LocationLookup from './show profile components/LocationLookup'
 import FamilyDetailsLookup from './show profile components/FamilyDetailsLookup'
@@ -24,8 +24,12 @@ function ShowProfileDetails() {
     const [usergallaryDetails,setUsergallarydetails] = useState({})
     const [menuOpen, setMenuOpen] = useState(false) 
     const [selectedItem,setselectedItem] = useState(null)
+    const navigate  = useNavigate()
 
     const [showSecondSide, setShowSecondSide] = useState(false);
+    const location = useLocation();
+    const { comingfrom } = location.state || {};
+    console.log("coming from",comingfrom)
  
 
 
@@ -91,6 +95,7 @@ function ShowProfileDetails() {
                 icon: 'success',
             });
             }
+            navigate('/preferences')
   
           }
           catch(error){
@@ -146,7 +151,11 @@ function ShowProfileDetails() {
                 <p>{userdetails.about_groom}</p>
                
               </div>
+              {
+                comingfrom === "preferences" &&
             <Link className='m-3' onClick={matchRequestHandle}><button className={styles.button1}>Request to match</button></Link>
+
+              }
             <br />
              <br />
             <a href="#other details" className={styles.otherdetailslink}>other details</a>

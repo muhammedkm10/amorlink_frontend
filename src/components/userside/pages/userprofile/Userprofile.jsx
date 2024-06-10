@@ -224,7 +224,7 @@ const handlesubmit = async () =>{
 
             <div className={`col-lg-6 col-12 ${showSecondSide ? `${styles.secondside} show` : styles.secondside}`}>
               <div className={styles.basic}>
-                <h1 className={styles.name}>Hi, I am {userdetails.username}</h1>
+                <h1 className={styles.name}>{userdetails.username}</h1>
                 <h4>{userbasicdetails.age} years old</h4>
                 <h4>India</h4>
               </div>
