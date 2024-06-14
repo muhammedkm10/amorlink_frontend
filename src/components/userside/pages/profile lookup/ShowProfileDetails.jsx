@@ -15,6 +15,7 @@ import { Link,NavLink } from 'react-router-dom'
 import { CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from 'cdbreact'
 import BasicDetailsLookup from './show profile components/UserbasicdetailsLookup'
 import Swal from 'sweetalert2'
+import SubscriptionNeededModal from '../preference/preference components/SubscriptionNeededModal'
 
 
 function ShowProfileDetails() {
@@ -29,10 +30,15 @@ function ShowProfileDetails() {
     const [showSecondSide, setShowSecondSide] = useState(false);
     const location = useLocation();
     const { comingfrom } = location.state || {};
-    console.log("coming from",comingfrom)
- 
 
+    
+    // subscription taken or not 
+    const [subscribed,setSubscribed] = useState(null)
 
+      // subscription modal showing state
+  const [isvisibleModal, setIsvisibleModal] = useState(false)
+
+console.log(comingfrom,"i am coming from");
 
     // fetching user data
     useEffect (()=>{
@@ -54,13 +60,17 @@ function ShowProfileDetails() {
             setUserDetails(response.data.user)
             setUserBasicDetails(response.data.basicdetails)
             setUsergallarydetails(response.data.usergallary)
+            setSubscribed(response.data.subscribed)
+            if (!response.data.subscribed){
+              setIsvisibleModal(true)
+            }
+
           }
         })
       } catch (error) {
         console.log('error')
       }
     }
-
 
     // showing details based on the clicking in the second navbar
       const handSidebarItemsCick = (selected) => {
@@ -109,18 +119,27 @@ function ShowProfileDetails() {
            
 
       }
+    console.log("subscription status",subscribed)
     
+      const modalshowSubscribed = () => {
+           setIsvisibleModal(true)
+
+      }
   return (
     
 
 <div>
-      <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} page="home1" />
+      <Homenavbar className={styles.afterbreakpoint}  page="home1" />
       <div className={styles.fullbody}>
         <div className={`container-fluid  ${styles.background}`}>
           
         </div>
       
         <div className={`container-fluid ${styles.head}`}>
+        
+        {isvisibleModal && (
+                 <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/> 
+              )}
           <div className="row">
             <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
               {!usergallaryDetails.image1 ? (
@@ -151,11 +170,19 @@ function ShowProfileDetails() {
                 <p>{userdetails.about_groom}</p>
                
               </div>
-              {
-                comingfrom === "preferences" &&
-            <Link className='m-3' onClick={matchRequestHandle}><button className={styles.button1}>Request to match</button></Link>
 
-              }
+              {
+                    ((comingfrom === "preferences") || (comingfrom === undefined))
+                    && (
+                        !subscribed? (
+                          <Link  onClick={modalshowSubscribed} className='ms-2 '><button className={styles.button3}><i className="fas fa-lock me-2 text-warning"></i>Request to match</button></Link>
+
+                        ) : (
+                            <Link  onClick={matchRequestHandle} className='ms-2'><button className={styles.button1}>Request to match</button></Link>
+
+                        )
+                    )
+                }
             <br />
              <br />
             <a href="#other details" className={styles.otherdetailslink}>other details</a>
@@ -238,34 +265,50 @@ function ShowProfileDetails() {
                     onClick={() => handSidebarItemsCick('profession')}
                     icon=""
                   >
-                    Your professional details
+                     Professional details
                   </CDBSidebarMenuItem>
                 </NavLink>
-                <NavLink
-                  activeClassName="activeClicked"
-                  className={styles.links}
-                >
-                  <CDBSidebarMenuItem
-                    onClick={() => handSidebarItemsCick('gallary')}
-                    icon=""
-                  >
-                    Your gallery
-                  </CDBSidebarMenuItem>
-                </NavLink>
+                {!subscribed ? (
+                   <NavLink
+                   
+                   activeClassName="activeClicked"
+                   className={styles.links}
+                 >
+                   <CDBSidebarMenuItem
+                     icon=""
+                     onClick={modalshowSubscribed}
+                   >
+                     <span><i className='fas fa-lock text-warning me-1'></i></span><span className='text-warning'>Photos</span> 
+                   </CDBSidebarMenuItem>
+                 </NavLink>
+                ) : (
+                   <NavLink
+                   activeClassName="activeClicked"
+                   className={styles.links}
+                 >
+                   <CDBSidebarMenuItem
+                     onClick={() => handSidebarItemsCick('gallary')}
+                     icon=""
+                   >
+                      Photos
+                   </CDBSidebarMenuItem>
+                 </NavLink>
+                )}
+               
               </CDBSidebarMenu>
             </div>
           </div>
 
           <div  className={`container ${styles.showdetails}`}>
             {selectedItem === 'basic' || selectedItem === null ? (
-              <BasicDetailsLookup  userid={id}/>
+              <BasicDetailsLookup  userid={id} subscribed={subscribed}/>
             ) : null}
-            {selectedItem === 'religion' && <ReligionInformationLookup userid={id} />}
-            {selectedItem === 'location' && <LocationLookup userid={id} />}
-            {selectedItem === 'family' && <FamilyDetailsLookup userid={id} />}
-            {selectedItem === 'preference' && <PartnerPreferencesLookup userid={id} />}
-            {selectedItem === 'gallary' && <PhotoGallaryLookup userid={id} />}
-            {selectedItem === 'profession' && <ProfessionaldetailsLookup userid={id} />}
+            {selectedItem === 'religion' && <ReligionInformationLookup userid={id} subscribed={subscribed} />}
+            {selectedItem === 'location' && <LocationLookup userid={id} subscribed={subscribed} />}
+            {selectedItem === 'family' && <FamilyDetailsLookup userid={id} subscribed={subscribed} />}
+            {selectedItem === 'preference' && <PartnerPreferencesLookup userid={id}subscribed={subscribed}  />}
+            {selectedItem === 'gallary' && <PhotoGallaryLookup userid={id} subscribed={subscribed} />}
+            {selectedItem === 'profession' && <ProfessionaldetailsLookup userid={id} subscribed={subscribed} />}
           </div>
         </div>
       </div>

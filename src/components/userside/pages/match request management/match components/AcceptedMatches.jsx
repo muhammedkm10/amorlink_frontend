@@ -102,7 +102,7 @@ const RemoveFromMatches = async (userid) =>{
                   !isLoading ? (
                     
                       matches &&  matches.length === 0 ?(
-                          <p className='text-center text-white'>Oops.....!  There is no matches for you</p>
+                          <p className='text-center text-white'>Oops.....!  There is no matches for you <Link to="/preferences">go to your preferences</Link></p>
                         ):(
                           
                           matches.map((user)=>(

@@ -6,15 +6,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './Userhome.module.css'
 import { backendurls } from '../../../../api/backendEndpoints'
 import ReviewCard from './review card/ReviewCard'
-
 import image1 from '../../../../assets/images/selfie.jpg'
 import image2 from '../../../../assets/images/give details.jpeg.png'
 
 
 function Userhome() {
   const [user, setUser] = useState({})
+  const [isvisibleModal, setIsvisibleModal] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+
 
   useEffect(() => {
     try {
@@ -26,17 +28,61 @@ function Userhome() {
         if (response.data.message === 'Success') {
           setUser(response.data.user)
           dispatch({ type: 'userdetails', payload: response.data.user })
+          
+          
+         
         }
       })
     } catch (error) {
       console.log('erroorrrrr')
     }
   }, [])
+
+
+  useEffect(() => {
+    let intervalId;
+
+    if (!user.subscribed) {
+      intervalId = setInterval(() => {
+        setIsvisibleModal(true);
+        console.log('Showing modal for non-subscribed user');
+      }, 10000);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [user.subscribed]);
+
+
+
+  
+  console.log(user);
+
+
+
   return (
     <div className={styles.fullbody}>
-        <Homenavbar name={user.username} page={"home"}/> 
+        <Homenavbar  page={"home"}  /> 
         {/* header part of the home */}
             <div className={styles.main}>
+            {isvisibleModal && (
+                 <div className={styles.modal}>
+                 <div className={styles.modal_content}>
+                   <h3 className='text-warning'>🌟 Why Upgrade to a Premium Subscription? 🌟</h3>
+                    <p className={styles.para_for_subscription}> At AmorLink, we believe that finding a meaningful and lasting relationship should be an enriching and enjoyable experience. Our free membership provides access to basic features and services, but by upgrading to our Premium Subscription, you unlock a suite of exclusive benefits designed to enhance your journey towards love and companionship. </p>
+
+                  <div className={`${styles.buttonContainer} p-3 `}>
+                    <button id={styles.fileinput} className={styles.modal_close} onClick={()=>setIsvisibleModal(false)}>close</button>
+                    <Link to="/subscriptions"><button id={styles.fileinput} className={styles.modal_close1} >go to our plans</button></Link>
+                  </div>
+
+ 
+                 </div>
+               </div>
+              )}
                     <div className={`container-fluid ${styles.head}`}>
                          <div className="row">
                             <div className={`col-md-5 col-12 ${styles.firstside}`}>

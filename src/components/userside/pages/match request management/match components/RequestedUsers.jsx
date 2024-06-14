@@ -130,7 +130,7 @@ const RemoveFromRequests = async (userid) =>{
           !isLoading ? (
             
               requestedusers &&  requestedusers.length === 0 ?(
-                 <p className='text-center text-white'>Oops.....! There is no requstes to match</p>
+                 <p className='text-center text-white'>Oops.....! No requests for you <Link to="/preferences">go to your preferences</Link></p>
                ):(
                  
                    requestedusers.map((user)=>(

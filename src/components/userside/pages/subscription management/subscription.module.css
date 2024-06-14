@@ -1,0 +1,48 @@
+.subscription_details{
+    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px; 
+    /* height:91vh; */
+    
+}
+.firstplan{
+    border:2px white solid;
+    color: white;
+    border-radius: 20px;
+    padding: 5vh;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20vh;
+}
+
+.plandetails{
+    margin-top: 5vh;
+}
+.heading{
+  text-align: center;
+}
+
+.purchase_button{
+    background:linear-gradient(to right,#eb116f ,#890e43,#eb116f );
+    padding: 4px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    display: block;
+    margin: auto;
+
+}
+
+.purchase_button:hover {
+    color: #a49696;
+    border: 0.5px solid   #a49696;;
+    background-color: #3e0936;
+  }
+
+.moredetails:hover{
+    cursor: pointer;
+}

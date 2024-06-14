@@ -11,7 +11,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function BasicDetailsLookup({userid}) {
+function BasicDetailsLookup({userid,subscribed}) {
   const [basicdetails,setBasicdetails] = useState({})
   const [userdetais,setUserdetails] = useState({})
 
@@ -40,7 +40,7 @@ function BasicDetailsLookup({userid}) {
       fetchBasicDetails();
   },[])
 
-
+  console.log("basice_details",subscribed);
   return (
     <div className={styles.outerwrapper}>
         <h4 className={styles.heading}>Basic detais</h4>
@@ -51,11 +51,12 @@ function BasicDetailsLookup({userid}) {
                   <tbody>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Email:</td>
-                      <td className={styles.info}>{!userdetais.email ? "Not specified" : userdetais.email}</td>
+                     
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!userdetais.email ? "Not specified" : userdetais.email}</td>
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Phone:</td>
-                      <td className={styles.info}>{!userdetais.phone ? "Not specified" : userdetais.phone}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!userdetais.phone ? "Not specified" : userdetais.phone}</td>
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Marital status:</td>
@@ -63,11 +64,11 @@ function BasicDetailsLookup({userid}) {
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Date of Birth:</td>
-                      <td className={styles.info}>{!basicdetails.dob ? "Not specified" : basicdetails.dob}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!basicdetails.dob ? "Not specified" : basicdetails.dob}</td>
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Hobbies:</td>
-                      <td className={styles.info}>{!basicdetails.hobbies ? "Not specified" : basicdetails.hobbies}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!basicdetails.hobbies ? "Not specified" : basicdetails.hobbies}</td>
                     </tr>
                   </tbody>
                 </table>

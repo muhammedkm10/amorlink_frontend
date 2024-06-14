@@ -395,3 +395,19 @@
   .otherdetailslink{
     margin-top: 20px !important;
   }
+  .button3{
+    padding: 5px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #b72b5d;
+    border: 1px white solid;
+  }
+  .button3:hover{
+    color: yellow;
+  }
+
+
+
+
+  

@@ -18,5 +18,12 @@ export const backendurls = {
         // lookup profiles url
         'matchrequests':"/matchesmanagementapp/matchesmanagement",
 
+        // payment urls
+        'createintent':'/adminapp/create_checkout_session',
+        
+        // subscription details for each users
+        
+        "user_subscription_details":"/adminapp/subscription_details",
+
 }
 

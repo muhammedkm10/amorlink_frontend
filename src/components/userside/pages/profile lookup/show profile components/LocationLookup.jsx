@@ -9,7 +9,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function LocationLookup({userid}) {
+function LocationLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
 
 
@@ -55,11 +55,11 @@ function LocationLookup({userid}) {
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>District</td>
-                      <td className={styles.info}>{!details.district ? "Not specified" : details.district}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.district ? "Not specified" : details.district}</td>
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Ancesters origin</td>
-                      <td className={styles.info}>{!details.ancesters_origin ? "Not specified" : details.ancesters_origin}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.ancesters_origin ? "Not specified" : details.ancesters_origin}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -69,11 +69,11 @@ function LocationLookup({userid}) {
                   <tbody>
                     <tr className={styles.rows}>
                       <td className={styles.items}>City</td>
-                      <td className={styles.info}>{!details.city ? "Not specified" : details.city}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.city ? "Not specified" : details.city}</td>
                     </tr>
                     <tr className={styles.rows}>
                       <td className={styles.items}>Working in</td>
-                      <td className={styles.info}>{!details.work_place ? "Not specified" : details.work_place}</td>
+                      <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.work_place ? "Not specified" : details.work_place}</td>
                     </tr>
                   </tbody>
                 </table>

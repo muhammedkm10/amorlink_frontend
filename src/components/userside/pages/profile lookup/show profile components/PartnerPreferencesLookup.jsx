@@ -6,7 +6,7 @@ import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 
 
 
-function PartnerPreferencesLookup({userid}) {
+function PartnerPreferencesLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
  
 
@@ -60,11 +60,11 @@ function PartnerPreferencesLookup({userid}) {
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Mother tongue:</td>
-                        <td className={styles.info}>{!details.mother_toungue ? "Not specified" : details.mother_toungue}</td>
+                        <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.mother_toungue ? "Not specified" : details.mother_toungue}</td>
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Eating Habits:</td>
-                        <td className={styles.info}>{!details.eating_habits ? "Not specified" : details.eating_habits}</td>
+                        <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.eating_habits ? "Not specified" : details.eating_habits}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -86,7 +86,7 @@ function PartnerPreferencesLookup({userid}) {
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Religion:</td>
-                        <td className={styles.info}>{!details.religion ? "Not specified" : details.religion}</td>
+                        <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.religion ? "Not specified" : details.religion}</td>
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Cast:</td>
@@ -100,7 +100,7 @@ function PartnerPreferencesLookup({userid}) {
                     <tbody>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Highest Education:</td>
-                        <td className={styles.info}>{!details.highest_education ? "Not specified" : details.highest_education}</td>
+                        <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.highest_education ? "Not specified" : details.highest_education}</td>
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>Employed in:</td>
@@ -112,7 +112,7 @@ function PartnerPreferencesLookup({userid}) {
                       </tr>
                       <tr className={styles.rows}>
                         <td className={styles.items}>About partner:</td>
-                        <td className={styles.info}>{!details.about_partner ? "Not specified" : details.about_partner}</td>
+                        <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.about_partner ? "Not specified" : details.about_partner}</td>
                       </tr>
                     </tbody>
                   </table>

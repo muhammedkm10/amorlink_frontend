@@ -30,7 +30,7 @@ function Matches() {
 
   return (
     <div className={styles.fullend}>
-        <Homenavbar/>
+        <Homenavbar />
         <div className={styles.body}>
 
            <div className={styles.head}>

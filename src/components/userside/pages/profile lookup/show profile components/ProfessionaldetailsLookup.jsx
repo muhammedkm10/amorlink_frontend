@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
 
 
-function ProfessionaldetailsLookup({userid}) {
+function ProfessionaldetailsLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
 
 
@@ -47,11 +47,11 @@ function ProfessionaldetailsLookup({userid}) {
                 <tbody>
                   <tr className={styles.rows}>
                     <td className={styles.items}>Employed in:</td>
-                    <td className={styles.info}>{!details.employed_in ? "Not specified" : details.employed_in}</td>
+                    <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.employed_in ? "Not specified" : details.employed_in}</td>
                   </tr>
                   <tr className={styles.rows}>
                     <td className={styles.items}>Annual Income:</td>
-                    <td className={styles.info}>{!details.annual_income ? "Not specified" : details.annual_income}</td>
+                    <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.annual_income ? "Not specified" : details.annual_income}</td>
                   </tr>
                   <tr className={styles.rows}>
                     <td className={styles.items}>Education:</td>
@@ -77,7 +77,7 @@ function ProfessionaldetailsLookup({userid}) {
                   </tr>
                   <tr  className={styles.rows}>
                     <td className={styles.items}>Organization:</td>
-                    <td className={styles.info}>{!details.organization ? "Not specified" : details.organization}</td>
+                    <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.organization ? "Not specified" : details.organization}</td>
                   </tr>
                 </tbody>
               </table>

@@ -1,27 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './../../../assets/images/logo-removebg-preview.png'
 import styles from './Homenavbar.module.css' // Import your CSS module
 import { Link, Navigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Tooltip } from 'react-tooltip'
+import { authentcatedApiClient } from '../../../api/axiosconfig'
+import { backendurls } from '../../../api/backendEndpoints'
+import SubscriptionNeededModal from '../pages/preference/preference components/SubscriptionNeededModal'
 
-function Homenavbar({ name ,page}) {
+function Homenavbar({ page}) {
   const [isNavVisible, setIsNavVisible] = useState(false)
   const dispatch = useDispatch()
+
+
   const handleHamburgerClick = () => {
-    setIsNavVisible(!isNavVisible)
+          setIsNavVisible(!isNavVisible)
   }
 
+  const [user, setUser] = useState({})
+
+//  modal showing
+  const [isvisibleModal, setIsvisibleModal] = useState(false)
+
+
+  useEffect(() => {
+    try {
+      authentcatedApiClient.get(backendurls.signup).then((response) => {
+        if (response.data.message === 'unauthorized') {
+          console.log(response.data.message)
+         
+        }
+        if (response.data.message === 'Success') {
+          setUser(response.data.user)
+          
+          
+         
+        }
+      })
+    } catch (error) {
+      console.log('erroorrrrr')
+    }
+  }, [])
+
+
+   
   const logout = () => {
     dispatch({ type: 'LOGIN FAILURE' })
     localStorage.removeItem('authUserTokens')
-    localStorage.removeItem('role')
-    ;<Navigate to="/" replace />
+    localStorage.removeItem('role');
+    <Navigate to="/" replace />
   }
-  console.log(page);
 
   return (
     <div>
+      {
+        isvisibleModal && 
+               ( <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/>)
+      }
+
       <nav className={!page ? `container-fluid ${styles.nav1}` : `container-fluid ${styles.nav2}`}>
         <img src={logo} className={styles.navbarLogo} alt="Logo" />
         <div className={styles.hamburger1} onClick={handleHamburgerClick}>
@@ -41,15 +77,31 @@ function Homenavbar({ name ,page}) {
               style={{ color: 'white' }}
             ></i>
           </Link>
-          <Link to="/matches">Matches</Link>
+          {
+            !user.subscribed ? (
+              <Link onClick={()=>setIsvisibleModal(true)} > <i className='fas fa-lock text-warning'></i><span className='text-warning'> Matches</span></Link>
+            ):(
+              <Link to="/matches">Matches</Link>
+            )
+          }
+          
           <Link to="/preferences">Preferences</Link>
           <Link to="#">Chat</Link>
-          <Link to="#">PRO*</Link>
+          {
+            !user.subscribed ? (
+              <Link to="/subscriptions">PRO*</Link>
+
+            ) : (
+              <Link to="/subscriptions">Plan details</Link>
+            )
+
+          }
+         
           <Link to="#">Search</Link>
           <Link
             to="/profile"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content={name}
+            data-tooltip-content={user.username}
           >
             {' '}
             <i className="fas fa-user" style={{ color: 'white' }}></i>{' '}

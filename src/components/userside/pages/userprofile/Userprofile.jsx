@@ -45,16 +45,13 @@ function Userprofile() {
           setUserbasicdetails(response.data.basicdetails)
           setUsergallarydetails(response.data.usergallary)
           setShowSecondSide(true);
+
         }
       })
     } catch (error) {
       console.log('error')
     }
   }, [isModalShowed])
-
-  console.log("userdetails",userdetails)
-  console.log("userbasicdetails",userbasicdetails)
-  console.log("usergallary details",usergallarydetails)
 
 
 
@@ -180,7 +177,7 @@ const handlesubmit = async () =>{
 
   return (
     <div>
-      <Homenavbar className={styles.afterbreakpoint}name={userdetails.username} page="home1" />
+      <Homenavbar className={styles.afterbreakpoint}  page="home1" />
       <div className={styles.fullbody}>
         <div className={`container-fluid  ${styles.background}`}>
           

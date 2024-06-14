@@ -308,6 +308,7 @@
   border: 1px white solid;
   padding: 2px 4px;
   border-radius: 5px;
+  display: block;
 }
 .modal_close:hover {
    border: 1px rgb(153, 165, 120) solid;

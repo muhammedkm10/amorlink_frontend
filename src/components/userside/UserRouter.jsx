@@ -13,6 +13,9 @@ import { useSelector } from 'react-redux';
 import Preferences from './pages/preference/Preferences';
 import ShowProfileDetails from './pages/profile lookup/ShowProfileDetails';
 import Matches from './pages/match request management/Matches';
+import Subscriptions from './pages/subscription management/Subscriptions';
+import Thanks from './UI/Thanks';
+import NotFoundPageforUser from './UI/UserNotFound';
 
 
 function UserRouter() {
@@ -21,6 +24,7 @@ function UserRouter() {
     <Routes>
       {/* login router */}
       <Route path="" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
+
       {/* other authentication need routes*/}
       <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
       <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
@@ -28,12 +32,20 @@ function UserRouter() {
       <Route path="/preferences" element={<Usersiderouteprotection><Preferences/></Usersiderouteprotection>} />
       <Route path="/shoeprofiles/:id" element={<Usersiderouteprotection><ShowProfileDetails/></Usersiderouteprotection>} />
       <Route path="/matches" element={<Usersiderouteprotection><Matches/></Usersiderouteprotection>} />
+      <Route path="/subscriptions" element={<Usersiderouteprotection><Subscriptions/></Usersiderouteprotection>} />
+      <Route path="/thanks" element={<Usersiderouteprotection><Thanks/></Usersiderouteprotection>} />
+
+
+
+
 
 
 
       {/* other pages routers */}
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>
       <Route path="*" element={<NotFoundPage/>}></Route>
+      <Route path="/usernotfoundpage" element={<NotFoundPageforUser/>}></Route>
+
 
     </Routes>
   );

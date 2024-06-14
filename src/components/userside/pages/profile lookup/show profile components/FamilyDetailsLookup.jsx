@@ -11,7 +11,7 @@ import '../../../../../assets/css/custom-toastify.css'
 
 
 
-function FamilyDetailsLookup({userid}) {
+function FamilyDetailsLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
 
 

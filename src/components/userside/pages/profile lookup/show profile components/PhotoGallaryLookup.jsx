@@ -11,7 +11,7 @@ import {  faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function PhotoGallaryLookup({userid}) {
+function PhotoGallaryLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
 
     useEffect(()=>{

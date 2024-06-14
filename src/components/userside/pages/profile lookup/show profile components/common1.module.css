@@ -200,3 +200,10 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 
+/* blurring details */
+.blurringinfo{
+  filter: blur(5px); /* Adjust the blur intensity */
+  /* color: transparent; */
+  color: white;
+  text-shadow: 0 0 5px white
+}

@@ -32,7 +32,7 @@ function Preferences() {
   
   return (
     <div className={styles.body}>
-        <Homenavbar/>
+        <Homenavbar />
         <div id="other details"className={styles.otherdetails}>
         <h4 className='text-white '>Find your partner based on your preferences</h4>
 

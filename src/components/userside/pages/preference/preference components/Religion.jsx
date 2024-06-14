@@ -6,6 +6,7 @@ import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
 import Swal from 'sweetalert2'
+import SubscriptionNeededModal from './SubscriptionNeededModal'
 
 
 function Religion() {
@@ -13,6 +14,12 @@ function Religion() {
   const [userPreferences,setuserPreferences] = useState([])
   const [isLoading,setLoading] = useState(false)
   const [requested,setrequested] = useState(false)
+  const [subscribed,setSubscribed] = useState(null)
+
+
+    // subscription modal showing state
+    const [isvisibleModal, setIsvisibleModal] = useState(false)
+
   
 
   // fetch data
@@ -28,6 +35,8 @@ function Religion() {
       })
       setLoading(false)
       setuserPreferences(response.data.users)
+      setSubscribed(response.data.subscribed)
+
 
     }
     catch(error){
@@ -79,6 +88,10 @@ function Religion() {
   
   return (
     <div className="row">
+      {isvisibleModal && (
+              <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/>   
+
+              )}
     <div className={`col-lg-3 col-12 ${styles.firstside}`}>
       <div className={styles.editprofile}>
             <h5 className={styles.head}>Change your preferences</h5>
@@ -125,7 +138,14 @@ function Religion() {
               </div>
               <div className={styles.buttonwrapper}>
               <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`} state={{ comingfrom: "preferences" }}><button className={styles.button1}>Go to Profile</button></Link>
-              <Link onClick={()=>matchRequestHandle(element.main_detail_of_user.id)} className='ms-2'><button className={styles.button1}>Request to match</button></Link>
+              {!subscribed ? (
+                   <Link  onClick={()=>setIsvisibleModal(true)} className='ms-2'><button className={styles.button3}><i className="fas fa-lock me-2 text-warning"></i>Request to match</button></Link>
+                ):
+                (
+                  <Link  onClick={()=>matchRequestHandle(element.main_detail_of_user.id)} className='ms-2'><button className={styles.button1}>Request to match</button></Link>
+                )
+              }
+
 
               </div>
             </div>

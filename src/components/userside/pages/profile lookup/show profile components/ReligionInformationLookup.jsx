@@ -8,7 +8,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
-function ReligionInformationLookup({userid}) {
+function ReligionInformationLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
 
 
@@ -46,7 +46,7 @@ function ReligionInformationLookup({userid}) {
               <tbody>
                 <tr className={styles.rows}>
                   <td className={styles.items}>Religion:</td>
-                  <td className={styles.info}>{!details.religion ? "Not specified" : details.religion}</td>
+                  <td className={subscribed ? `${styles.info}`: `${styles.blurringinfo}`}>{!details.religion ? "Not specified" : details.religion}</td>
                 </tr>
                 <tr className={styles.rows}>
                   <td className={styles.items}>Cast:</td>

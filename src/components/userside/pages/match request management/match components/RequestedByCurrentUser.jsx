@@ -103,7 +103,7 @@ function RequestedByCurrentUser() {
             !isLoading ? (
               
                 requestedusers &&  requestedusers.length === 0 ?(
-                   <p className='text-center text-white'>Oops.....! There is no requstes to match</p>
+                   <p className='text-center text-white'>Oops.....!   No requstes, please make some requests <Link to="/preferences">go to your preferences</Link></p>
                  ):(
                    
                      requestedusers.map((user)=>(
