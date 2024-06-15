@@ -141,7 +141,7 @@ console.log(comingfrom,"i am coming from");
                  <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/> 
               )}
           <div className="row">
-            <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
+            <div className={`col-lg-6 col-12  p-0 ${styles.firstside}`}>
               {!usergallaryDetails.image1 ? (
                 <img src={profile} alt="" className={styles.profile} />
          

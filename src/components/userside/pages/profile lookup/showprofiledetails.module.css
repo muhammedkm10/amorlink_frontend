@@ -36,9 +36,7 @@
     background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
                 radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
     background-size: 20px 20px;
-    position: relative;
-    right: 100%; 
-    animation: slideFromRight 2s forwards; 
+   
     padding: 0;
     display: flex;
     justify-content: center;
@@ -47,14 +45,7 @@
     overflow: hidden; /* Ensure any overflow is hidden */
   }
   
-  @keyframes slideFromRight {
-    0% {
-        right: -100%; 
-    }
-    100% {
-        right: 0;
-    }
-  }
+
   .secondside {
     padding-top: 15vh;
     /* padding-left: 12vh; */
@@ -65,22 +56,13 @@
     background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
     radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
     background-size: 20px 20px;
-    position: relative;
-    left: -100%;
-    animation: slideFromLeft 2s forwards; 
+   
     box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.2);
   
   
   }
   
-  @keyframes slideFromLeft {
-    0% {
-        left: -100%; 
-    }
-    100% {
-        left: 0; 
-    }
-  }
+
   .profile {
     /* margin-top: 10vh; */
     width: 100%;

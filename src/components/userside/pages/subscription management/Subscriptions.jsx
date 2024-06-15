@@ -142,14 +142,52 @@ const formatDate = (dateString) => {
                             (
 
                               <div className={` col-12 ms-3 ${styles.firstplan}`}>
+                                      <div className="row">
                                 
-                                            <div className={`${styles.heading}`}>
-                                              <h5 className="text-warning text-decoration-underline">Your plan details</h5>
-                                               <p className='py-2'>Plan name  : {individualplan.plan_name}</p>
-                                               <p className='py-2'>Plan started :  {formatDate(userSubscriptionDetails.date_started)}</p>
-                                               <p className='py-2'>Expiry date :  {formatDate(userSubscriptionDetails.expiry_date)}</p>
-                                               <p className='py-2'>Amount paid : {individualplan.amount}</p>
-                                           </div>
+                                            <div className={`col-lg-6 ${styles.userplandetails}`}>
+                                              <h5 className="text-warning ">Your plan details</h5>
+                                              <table className={` ${styles.tableBackgroundAlternate}`}>
+                                                      <tbody>
+                                                        <tr className={styles.rows}>
+                                                          <td className={styles.items}><h4>Plan name </h4></td>
+                                                          <td className={styles.info}><h5>{individualplan.plan_name}</h5></td>
+                                                        </tr>
+                                                        <tr className={styles.rows}>
+                                                          <td className={styles.items}>Plan started  </td>
+                                                          <td className={styles.info}> {formatDate(userSubscriptionDetails.date_started)}</td>
+                                                        </tr>
+                                                        <tr className={styles.rows}>
+                                                          <td className={styles.items}>Expiry date </td>
+                                                          <td className={styles.info}>{formatDate(userSubscriptionDetails.expiry_date)}</td>
+                                                        </tr>
+                                                        <tr className={styles.rows}>
+                                                          <td className={styles.items}>Amount paid</td>
+                                                          <td className={styles.info}>{individualplan.amount}</td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                            </div>
+                                            <div className={`col-lg-6 text-center py-3 ${styles.aboutsubscription}`}>
+                                            <h3 className='text-warning'>Premium Subscription! </h3>
+                                        <p className={styles.para_for_subscription}>
+                                              At AmorLink, we understand that finding a meaningful and lasting relationship requires the right tools and opportunities. While our free membership gives you access to basic features, upgrading to our Premium Subscription allows you to unlock the full potential of our platform, including the ability to request matches with your ideal partners. 
+                                              </p>
+                                              <p className={styles.para_for_subscription}>
+                                              By upgrading to a Premium Subscription, you gain exclusive benefits designed to enhance your journey towards finding love:
+                                              </p>
+                                              
+                                              <p className={styles.para_for_subscription}>
+                                              Don't miss out on the chance to make meaningful connections. Upgrade to a Premium Subscription today and start requesting matches with confidence!
+                                              </p>
+
+                                                  <div className={`${styles.buttonContainer} p-3 `}>
+                                                  <button  className={styles.purchase_button}>Upgrade your plan</button>
+                                                  </div>
+                                                  
+                                            </div>
+                                            
+                                          </div>
+
                                             
         
                                         </div>

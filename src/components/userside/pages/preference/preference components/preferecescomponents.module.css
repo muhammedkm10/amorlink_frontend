@@ -9,12 +9,17 @@
   padding: 2vh;
   padding-left: 3vw;
    right: 0px;
-   color: rgb(0, 0, 0);
+   color: white;
    margin-top: 4vh;
   border: 1px solid #3e0936;
-  background-color: white;
-  /* box-shadow: -10px 0 20px 5px rgba(0, 0, 0, 0.3); /* Left side shadow */
-  /* background: linear-gradient(to right, rgb(103, 15, 153), rgb(110, 14, 99)) !important;   */
+  background-image: linear-gradient(
+    to bottom,
+    #531027,
+    #9e2550,
+    #b72b5d,
+    #d1316a
+  );
+   /* background: linear-gradient(to right, rgb(103, 15, 153), rgb(110, 14, 99)) !important;   */
 }
 
 .image {

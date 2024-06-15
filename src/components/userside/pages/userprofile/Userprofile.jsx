@@ -177,15 +177,14 @@ const handlesubmit = async () =>{
 
   return (
     <div>
-      <Homenavbar className={styles.afterbreakpoint}  page="home1" />
+      <Homenavbar className={styles.afterbreakpoint} />
       <div className={styles.fullbody}>
-        <div className={`container-fluid  ${styles.background}`}>
-          
-        </div>
+      
       
         <div className={`container-fluid ${styles.head}`}>
-          <div className="row">
-            <div className={`col-md-6 col-12  p-0 ${styles.firstside}`}>
+          <div className="row p-0">
+            <div className={`col-lg-3 col-12  p-0 ${styles.firstside}`}>
+              <div className={styles.firstsideDetails}>
               {!usergallarydetails.image1 ? (
                 <p >No profile photo please add it....!</p>
               ) : (
@@ -195,6 +194,23 @@ const handlesubmit = async () =>{
                   className={styles.profile}
                 />
               )}
+               <div className={styles.basic}>
+                <h3 className={styles.name}>{userdetails.username}</h3>
+                <h6>{userbasicdetails.age} years old</h6>
+                <h6>India</h6>
+              </div>
+
+              <div className={styles.about}>
+                <h3>About me</h3>
+                <p>{userdetails.about_groom}</p>
+                <Link className={styles.primarydetailseditbutton}>
+                  <i  onClick={editMaindetails}className="fa fa-edit mt-3 text-info" title="Edit">
+                    edit
+                  </i>
+                </Link>
+              </div>
+
+            </div>
             </div>
 
 
@@ -219,30 +235,8 @@ const handlesubmit = async () =>{
                 }
 
 
-            <div className={`col-lg-6 col-12 ${showSecondSide ? `${styles.secondside} show` : styles.secondside}`}>
-              <div className={styles.basic}>
-                <h1 className={styles.name}>{userdetails.username}</h1>
-                <h4>{userbasicdetails.age} years old</h4>
-                <h4>India</h4>
-              </div>
-
-              <div className={styles.about}>
-                <h3>About me</h3>
-                <p>{userdetails.about_groom}</p>
-                <Link className={styles.primarydetailseditbutton}>
-                  <i  onClick={editMaindetails}className="fa fa-edit mt-5 text-white" title="Edit">
-                    edit
-                  </i>
-                </Link>
-              </div>
-            <a href="#other details" className=' mt-5'>go to other details</a>
-
-            </div>
-          </div>
-
-
-        </div>
-        <div id="other details"className={styles.otherdetails}>
+            <div className={`col-lg-9 col-12 ${showSecondSide ? `${styles.secondside} show` : styles.secondside}`}>
+            <div id="other details"className={styles.otherdetails}>
           <div className={styles.details}>
             <div className={styles.wrapper}>
               <button className={styles.hamburger} onClick={toggleMenu}>
@@ -253,7 +247,7 @@ const handlesubmit = async () =>{
               >
                 <NavLink
                   activeClassName="activeClicked"
-                  className={styles.links}
+                  className={styles.links1}
                 >
                   <CDBSidebarMenuItem
                     onClick={() => handSidebarItemsCick('basic')}
@@ -344,6 +338,13 @@ const handlesubmit = async () =>{
             {selectedItem === 'profession' && <Professionaldetails />}
           </div>
         </div>
+             
+            </div>
+          </div>
+
+
+        </div>
+        
       </div>
     </div>
   )

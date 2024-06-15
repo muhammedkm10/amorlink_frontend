@@ -1,9 +1,7 @@
 
 
 .outerwrapper {
-  margin-top: 15vh !important;
   padding: 10vh;
-  margin-bottom: 5vh !important ;
   border-radius: 8px;
   background-image: linear-gradient(
     to bottom,
@@ -15,6 +13,7 @@
   /* max-width: 600px; */
   /* margin: auto; */
   text-align: center;
+
 }
 
 .heading {
@@ -37,7 +36,7 @@
 .info1{
   color: white;
   padding: 20px !important;
-  max-width:100px;
+  max-width:200px;
 }
 
 .tableBackgroundAlternate {

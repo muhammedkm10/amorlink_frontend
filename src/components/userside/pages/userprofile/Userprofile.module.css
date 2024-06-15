@@ -1,8 +1,9 @@
 .fullbody {
   text-align: center;
-  background-color: white;
-  height: auto;
-  overflow: auto !important;
+ 
+  height: 100vh;
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,9 @@
 }
 
 .head {
-  background-color: #ffffff;
+  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+background-size: 20px 20px;
   color: rgb(241, 241, 240);
 
 }
@@ -21,39 +24,36 @@
 
 .firstside {
   text-align: center !important;
-  
-  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-              radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-  background-size: 20px 20px;
-  height: 80vh;
-  padding-bottom: 15vh;
+  border: 1px solid rgb(99, 19, 91);
+  border-radius: 20px;
+  height: 100vh;
+ 
+}
+.firstsideDetails{
+  padding: 20px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; 
-  position: relative;
 }
 
 .secondside {
-  padding-top: 15vh;
-  height: 80vh;
   text-align: center;
-  padding-bottom: 15vh;
-  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-  background-size: 20px 20px;
+  text-align: center;
+  border: 1px solid rgb(99, 19, 91);
 
+  border-radius: 20px;
+}
 
-
+.name{
+  color: wheat;
 }
 
 
 .profile {
-  width: 500px;
-  
+  width: 17vw;
+  margin: auto;
 background-size: cover;
-  height: 500px;
+  height: 28vh;
+  padding: 2vh 0 2vh 0;
+  border-radius: 50%;
 }
 
 
@@ -74,8 +74,8 @@ background-size: cover;
 }
 
 .about {
-  padding-top: 10vh;
-  max-width: 30vw;
+  padding-top: 5vh;
+  max-width: 25vw;
   margin: auto;
   font-family: monospace;
   transition:
@@ -94,14 +94,9 @@ background-size: cover;
 .otherdetails {
   width: 100%;
   display: flex;
-  background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-  radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-  background-size: 20px 20px;
   /* border-radius: 30% 0 0 0 ; */
   flex-direction: column;
   align-items: center;
-  padding-top: 20vh;
-  padding-bottom: 20vh;
 
 }
 
@@ -110,8 +105,9 @@ background-size: cover;
   display: flex;
   /* background-color: #40183a; */
   flex-direction: column;
-  border-top: 0.2px rgb(250, 255, 234) solid;
-  border-bottom: 0.2px rgb(250, 255, 234) solid;
+  
+  /* border-top: 0.2px rgb(250, 255, 234) solid; */
+  /* border-bottom: 0.2px rgb(250, 255, 234) solid; */
   background-image: linear-gradient(to  top #000000 rgb(216, 154, 154));
 
 }
@@ -124,7 +120,7 @@ background-size: cover;
   text-align: center;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1000px) {
   .showdetails {
     padding: 0;
     border-bottom: 2px solid white;
@@ -140,11 +136,13 @@ background-size: cover;
     right: 0;
     position: initial;
     border-radius: 0px;
+    height: auto;
     
   }
   .afterbreakpoint{
     position: absolute;
   }
+
 }
 
 /* Navigation bar styles */
@@ -152,18 +150,30 @@ background-size: cover;
   display: flex;
   justify-content: center;
   margin: auto !important;
+
 }
 
 .links {
   color: white;
   text-decoration: none;
   display: inline-block;
+  font-size: 14px;
+
+}
+.links1 {
+  color: wheat;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .links:hover {
   color: wheat;
   font-weight: 700;
+  border-bottom: 1px solid wheat;
 }
+
 
 /* Show navigation bar when hamburger menu is clicked */
 
