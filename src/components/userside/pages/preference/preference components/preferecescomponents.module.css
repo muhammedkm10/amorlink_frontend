@@ -5,19 +5,16 @@
   flex-direction: row;
   align-items: center;
   /* border-top: 1px solid #181818; */
-  border-radius: 20px;
-  padding: 5vh;
+  border-radius: 10px;
+  padding: 2vh;
+  padding-left: 3vw;
    right: 0px;
-   color: white;
+   color: rgb(0, 0, 0);
    margin-top: 4vh;
   border: 1px solid #3e0936;
-  background-image: linear-gradient(
-    to bottom,
-    #60122d,
-    #6e1d3a,
-    #b72b5d,
-    #60122d
-  );
+  background-color: white;
+  /* box-shadow: -10px 0 20px 5px rgba(0, 0, 0, 0.3); /* Left side shadow */
+  /* background: linear-gradient(to right, rgb(103, 15, 153), rgb(110, 14, 99)) !important;   */
 }
 
 .image {
@@ -46,9 +43,10 @@
 }
 
 .cardText {
-  margin: 4px 0;
-  font-size: 15px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 2px 0;
+  font-size: 17px;
+  font-weight:900;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 
@@ -223,9 +221,10 @@
 }
 
 .modal_content {
+  background: linear-gradient(to right, rgb(140, 34, 201), rgb(205, 25, 184)) !important; 
 
   /* background: white; */
-  border: 2px white solid;
+  /* border: 2px white solid; */
   padding: 40px;
   border-radius: 5px;
   display: flex;

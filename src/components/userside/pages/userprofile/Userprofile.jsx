@@ -209,7 +209,7 @@ const handlesubmit = async () =>{
                   <input type="file" id="file1" className={styles.fileinput} name="image1" onChange={handlechange}/>
                   <label htmlFor="file1" className={`${styles.customFileLabel} ${styles.modal_input}`}>add a  full length photo</label>
                   <textarea placeholder={userdetails.about_groom} id={styles.textarea} name="about"className={styles.modal_textarea} onChange={handlechange}></textarea>
-                  <div className='p-3'>
+                  <div className='p-3 d-flex'>
                   <button id={styles.fileinput} className={styles.modal_close} onClick={onClose}>close</button>
                   <button id={styles.fileinput} className={styles.modal_close1} onClick={handlesubmit}>save</button>
 

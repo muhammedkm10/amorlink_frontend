@@ -1,29 +1,38 @@
-.subscription_details{
+
+.fullbody{
     background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
     radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
     background-size: 20px 20px; 
-    /* height:91vh; */
-    
+    height: 100vh;
 }
 .firstplan{
-    border:2px white solid;
-    color: white;
-    border-radius: 20px;
+    color: black;
     padding: 5vh;
+    /* border-radius: 20px; */
+    box-shadow: -10px 0 20px 5px rgba(0, 0, 0, 0.3); /* Left side shadow */
+    color: white;
+    background: linear-gradient(to right, rgb(140, 34, 201), rgb(205, 25, 184)) !important; 
 }
 
 .row{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20vh;
+    padding-top:  10vh;
+    /* background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px;  */
 }
 
 .plandetails{
     margin-top: 5vh;
 }
 .heading{
+  padding: 20px;
   text-align: center;
+  /* background-color: rebeccapurple; */
+  color: gold;
+  text-decoration: underline;
 }
 
 .purchase_button{
@@ -43,6 +52,4 @@
     background-color: #3e0936;
   }
 
-.moredetails:hover{
-    cursor: pointer;
-}
+

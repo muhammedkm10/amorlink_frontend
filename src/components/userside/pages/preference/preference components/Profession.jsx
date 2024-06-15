@@ -132,7 +132,7 @@ function Profession() {
               </p>
               <p className={styles.cardText}>India</p>
               <div className="mt-4">
-                <h5 className="fw-accordion">About me</h5>
+                <h5 className="fw-medium fs-4 ">About me</h5>
                 <p className={styles.cardText}>
                   {element.main_detail_of_user.about_groom || 'About groom unknown'}
                 </p>

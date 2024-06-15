@@ -5,7 +5,6 @@ import { admin_authentcatedApiClient, authentcatedApiClient } from '../../../../
 import { backendurls } from '../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
-import SubscriptionNeededModal from '../preference/preference components/SubscriptionNeededModal'
 // import { Link } from 'react-router-dom'
 
 function Subscriptions() {
@@ -13,7 +12,6 @@ function Subscriptions() {
       const [subscriptionPlans,setSubscriptionPlans]  = useState(null)
       const [loading,setLoading] = useState(false)
       const[fetchloading,setfetchloading] = useState(false)
-      const [isvisibleModal, setIsvisibleModal] = useState(false)
       // subscribed user plan details
       const [userSubscriptionDetails,setuserSubscriptionDetails]  = useState({})
       // individual plan details
@@ -84,16 +82,16 @@ const redirectToCheckout = async (sessionId) =>{
       }
 
 } 
+const formatDate = (dateString) => {
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  return new Date(dateString).toLocaleDateString('en-GB', options);
+}
 
   return (
-    <div>
+    <div className={styles.fullbody}>
         <Homenavbar/>
-        <div className={`container-fluid  ${styles.subscription_details}`}>
-          {
-            isvisibleModal &&  (
-              <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/>
-            ) 
-          }
+        <div className={`container  ${styles.subscription_details}`}>
+          
             
 
             <h4 className='text-center text-white pt-4'>Make your experiances good with our plans</h4>
@@ -127,9 +125,9 @@ const redirectToCheckout = async (sessionId) =>{
                                             <h6 className='text-warning pt-2 text-center'>Validity : {plan.vlalidity_months} months </h6>
                                             <div className={styles.plandetails}>
                                               <ul>
-                                                <li>Allow premium users to send unlimited messages to other members</li>
-                                                <li> Facilitating better and more meaningful conversations.</li>
-                                                <li> Subscribed users can see more details about others.</li>
+                                                <li className='py-2'>Allow premium users to send unlimited messages to other members</li>
+                                                <li className='py-2'> Facilitating better and more meaningful conversations.</li>
+                                                <li className='py-2'> Subscribed users can see more details about others.</li>
                                               </ul>
                                             </div>
                                             
@@ -142,12 +140,15 @@ const redirectToCheckout = async (sessionId) =>{
         
                             ):
                             (
-                              <div className={` col-lg-3 col-12 ms-3 ${styles.firstplan}`}>
-                                            <div className={styles.heading}>
-                                              <h5>Your plan details</h5>
-                                               <p>{individualplan.plan_name}</p>
-                                               
-                                                   
+
+                              <div className={` col-12 ms-3 ${styles.firstplan}`}>
+                                
+                                            <div className={`${styles.heading}`}>
+                                              <h5 className="text-warning text-decoration-underline">Your plan details</h5>
+                                               <p className='py-2'>Plan name  : {individualplan.plan_name}</p>
+                                               <p className='py-2'>Plan started :  {formatDate(userSubscriptionDetails.date_started)}</p>
+                                               <p className='py-2'>Expiry date :  {formatDate(userSubscriptionDetails.expiry_date)}</p>
+                                               <p className='py-2'>Amount paid : {individualplan.amount}</p>
                                            </div>
                                             
         
@@ -169,7 +170,6 @@ const redirectToCheckout = async (sessionId) =>{
 
                 
                 
-{subscriptionPlans !== null && <p onClick={()=>setIsvisibleModal(true)} className={`text-center text-info mt-4 ${styles.moredetails}`}>show more details</p>}
                
                 
                 
