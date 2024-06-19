@@ -5,7 +5,8 @@ import { admin_authentcatedApiClient, authentcatedApiClient } from '../../../../
 import { backendurls } from '../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
-// import { Link } from 'react-router-dom'
+import UpgradePlan from './UpgradePlan'
+import redirectToCheckout from './redirection_to_checkout'
 
 function Subscriptions() {
 
@@ -16,6 +17,12 @@ function Subscriptions() {
       const [userSubscriptionDetails,setuserSubscriptionDetails]  = useState({})
       // individual plan details
       const [individualplan,setPlandetails] = useState({})
+
+      // upgrade plan show modal state
+      const [UpgradePlanModal,setUpgradePlanModal] = useState(false)
+
+
+
 
     //   fetching subscription details to store the data in state
 
@@ -28,7 +35,6 @@ const fetchSubscriptionDetails = async () =>{
           if (response.data.message == "subscription_details"){
             setuserSubscriptionDetails(response.data.subscription_details)
             setPlandetails(response.data.plan_details)
-            console.log(individualplan)
           }
           else{
             setSubscriptionPlans(response.data.subscription_details)
@@ -53,35 +59,28 @@ console.log(userSubscriptionDetails);
       },[])
 
     //   payment button for the subscription
-    const paymentHandle =  async (planid)=>{
+    const paymentHandle =  async (vlalidity_months)=>{
         setLoading(true)
 
         try{
-            const response = await authentcatedApiClient.post(`${backendurls.createintent}/${planid}`)
+              const response = await authentcatedApiClient.post(`${backendurls.createintent}/${vlalidity_months}`);
             if (response.status == 200){
                 const session_id = response.data.sessionId
                 setLoading(false)
+                // redirection to the  stripe checkout page
                 redirectToCheckout(session_id)
                 
             }
             
+
         }
         catch(error){
             console.log(error);
         }
 
     }
-// redirecting to the payment page
-const redirectToCheckout = async (sessionId) =>{
-      const stripe = await window.Stripe(import.meta.env.VITE_PUBLISHABLE_KEY);
-      const {error} = await stripe.redirectToCheckout({
-        sessionId : sessionId,
-      })
-      if (error){
-            console.log('error ',error);
-      }
 
-} 
+
 const formatDate = (dateString) => {
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
   return new Date(dateString).toLocaleDateString('en-GB', options);
@@ -90,8 +89,9 @@ const formatDate = (dateString) => {
   return (
     <div className={styles.fullbody}>
         <Homenavbar/>
+      
         <div className={`container  ${styles.subscription_details}`}>
-          
+       
             
 
             <h4 className='text-center text-white pt-4'>Make your experiances good with our plans</h4>
@@ -131,7 +131,7 @@ const formatDate = (dateString) => {
                                               </ul>
                                             </div>
                                             
-                                            <button onClick={()=>paymentHandle(plan.id)} className={styles.purchase_button}>Pay ₹{plan.amount}</button>
+                                            <button onClick={()=>paymentHandle(plan.vlalidity_months)} className={styles.purchase_button}>Pay ₹{plan.amount}</button>
                                             
         
                                         </div>
@@ -142,7 +142,12 @@ const formatDate = (dateString) => {
                             (
 
                               <div className={` col-12 ms-3 ${styles.firstplan}`}>
+                                
                                       <div className="row">
+                                      { UpgradePlanModal && (
+                                        <UpgradePlan modalShowMethod={setUpgradePlanModal} expiry_date={formatDate(userSubscriptionDetails.expiry_date)} formatDate={formatDate} user_plan_id={userSubscriptionDetails.id} setUpgradePlanModal={setUpgradePlanModal}/>
+                                        )
+                                        }
                                 
                                             <div className={`col-lg-6 ${styles.userplandetails}`}>
                                               <h5 className="text-warning ">Your plan details</h5>
@@ -168,7 +173,7 @@ const formatDate = (dateString) => {
                                                     </table>
                                             </div>
                                             <div className={`col-lg-6 text-center py-3 ${styles.aboutsubscription}`}>
-                                            <h3 className='text-warning'>Premium Subscription! </h3>
+                                            <h3 className='text-warning'>Upgrade Premium Subscription! </h3>
                                         <p className={styles.para_for_subscription}>
                                               At AmorLink, we understand that finding a meaningful and lasting relationship requires the right tools and opportunities. While our free membership gives you access to basic features, upgrading to our Premium Subscription allows you to unlock the full potential of our platform, including the ability to request matches with your ideal partners. 
                                               </p>
@@ -181,7 +186,7 @@ const formatDate = (dateString) => {
                                               </p>
 
                                                   <div className={`${styles.buttonContainer} p-3 `}>
-                                                  <button  className={styles.purchase_button}>Upgrade your plan</button>
+                                                  <button onClick={()=>setUpgradePlanModal(true)} className={styles.purchase_button}>Upgrade your plan</button>
                                                   </div>
                                                   
                                             </div>

@@ -34,7 +34,7 @@ const Thanks = () => {
             <h2 style={{ fontSize: '24px', marginBottom: '10px' }}>Thank You for Your Subscription!</h2>
             <p style={{ fontSize: '16px', marginBottom: '10px' }}>Your payment was successful.</p>
             <p style={{ fontSize: '16px', marginBottom: '10px' }}>We appreciate your support.</p>
-            <a href="/" style={{ textDecoration: 'none', color: 'blue', fontSize: '16px', marginTop: '20px', display: 'block' }}>Go to Home Page</a>
+            <a href="/subscriptions" style={{ textDecoration: 'none', color: 'blue', fontSize: '16px', marginTop: '20px', display: 'block' }}>Your plan details</a>
         </div>
     );
 };

@@ -32,24 +32,24 @@ function FamilyDetails() {
   );
 
 // fetching the data from the backend to show in the family details section
-    useEffect(()=>{
-  
-        const fetchFamilyDetails = async () => {
-          try {
-            const response = await authentcatedApiClient.get(backendurls.userprofile, {
-              headers: {
-                'details': 'family_details',
-              },
-            });
-            
-            if (response.data.message === 'success') {
-              setDetails(response.data.family_details)
+const fetchFamilyDetails = async () => {
+  try {
+    const response = await authentcatedApiClient.get(backendurls.userprofile, {
+      headers: {
+        'details': 'family_details',
+      },
+    });
+    
+    if (response.data.message === 'success') {
+      setDetails(response.data.family_details)
 
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+    useEffect(()=>{
     
         fetchFamilyDetails();
     },[isEditing])
