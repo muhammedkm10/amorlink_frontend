@@ -81,7 +81,7 @@ const RemoveFromMatches = async (userid) =>{
 }
 
 
-
+console.log("matches",matches);
   return (
               <div className={`container ${styles.fullbody}`}>
                <div className="row col-3 col-12">
@@ -111,7 +111,7 @@ const RemoveFromMatches = async (userid) =>{
                               <div className={`col-lg-8 col-12 d-flex  align-items-center  ${styles.image}`}>
                                   
                                 { user.image_details ? (
-                                   <Link className='text-white' title='click here' to={`/shoeprofiles/${user.id}`}   state={{ comingfrom: "matched_page" }}> <img src={`${import.meta.env.VITE_IMAGE}/${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
+                                   <Link className='text-white' title='click here' to={`/shoeprofiles/${user.id}`}   state={{ comingfrom: "matched_page" }}> <img src={`${import.meta.env.VITE_IMAGE}${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
                                   ):(
                                     <Link className='text-white ' to={`/shoeprofiles/${user.id}`}   title='click here' state={{ comingfrom: "matched_page" }}><img src={image} width="50px" height="50px" alt="" /></Link>
                                   )

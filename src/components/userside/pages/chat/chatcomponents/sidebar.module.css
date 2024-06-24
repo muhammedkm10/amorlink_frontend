@@ -1,0 +1,78 @@
+.sidebarusers{
+    overflow-y: scroll;
+    height: 83vh;
+    /* background-color: red; */
+
+
+}
+.sidebarusers {
+    overflow: scroll; /* Allow scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent; /* For Firefox */
+    &::-webkit-scrollbar {
+        width: 0; /* Remove the scrollbar in WebKit browsers */
+    }
+}
+.linktochat{
+    text-decoration: none;
+
+}
+
+.user{
+    height: 70px;
+    border-bottom: 1px rgb(84, 82, 82) solid;
+    padding-left: 20px;
+    padding-top: 15px;
+
+}
+.head{
+    padding: 2vh;
+    /* background-color: red; */
+    border-bottom: 1px rgb(175, 175, 175) solid;
+  
+
+
+}
+
+.search{
+    width: 100%;
+    border-radius: 5px;
+    height: 25px;
+    
+}
+.searchcontainer{
+    text-align: center;
+}
+.sidebar{
+    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
+    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
+    background-size: 20px 20px; 
+    /* background: linear-gradient(to right,#771a42 ,#c0105c,#771a42 ); */
+
+}
+.profilePhoto{
+    border-radius: 50%;
+}
+.username{
+    color: white;
+    margin-left: 1vw;
+}
+.mainHeading{
+    margin:auto;
+    width: 90%;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px ;
+    /* background-color: red; */
+
+}
+.searchbutton{
+    margin-top: 2px;
+    cursor: pointer;
+
+}
+.searchbutton :hover{
+    color: #959394;
+}

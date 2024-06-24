@@ -47,7 +47,7 @@ function Homenavbar({ page}) {
   const logout = () => {
     dispatch({ type: 'LOGIN FAILURE' })
     localStorage.removeItem('authUserTokens')
-    localStorage.removeItem('role');
+    localStorage.removeItem('user_id');
     <Navigate to="/" replace />
   }
 
@@ -86,7 +86,7 @@ function Homenavbar({ page}) {
           }
           
           <Link to="/preferences">Preferences</Link>
-          <Link to="#">Chat</Link>
+          <Link to={`/chat/${null}/${null}`}>Chat</Link>
           {
             !user.subscribed ? (
               <Link to="/subscriptions">PRO*</Link>

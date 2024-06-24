@@ -25,5 +25,13 @@ export const backendurls = {
         
         "user_subscription_details":"/adminapp/subscription_details",
 
+   
+
+        // chat urls
+
+        'personalchaturl':"/chatapp/get_useer_chat"
+
+
+
 }
 

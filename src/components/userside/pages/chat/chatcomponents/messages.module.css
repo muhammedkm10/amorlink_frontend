@@ -1,0 +1,27 @@
+.recieve{
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 5vh;
+}
+
+.send{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5vh;
+
+
+}
+.send .message_bubble{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px 20px 0 20px;
+    padding: 20px;
+    /* max-width: 250px; */
+
+}
+.recieve .message_bubble{
+    background-color: rgb(27, 135, 223);
+    border-radius: 20px 20px 20px 0px;
+    padding: 20px;
+    /* max-width: 250px; */
+
+}

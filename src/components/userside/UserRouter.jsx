@@ -16,7 +16,7 @@ import Matches from './pages/match request management/Matches';
 import Subscriptions from './pages/subscription management/Subscriptions';
 import Thanks from './UI/Thanks';
 import NotFoundPageforUser from './UI/UserNotFound';
-
+import ChatPage from './pages/chat/chatPage';
 
 function UserRouter() {
   const state = useSelector(state=>state.otppage.isvisible)
@@ -34,6 +34,8 @@ function UserRouter() {
       <Route path="/matches" element={<Usersiderouteprotection><Matches/></Usersiderouteprotection>} />
       <Route path="/subscriptions" element={<Usersiderouteprotection><Subscriptions/></Usersiderouteprotection>} />
       <Route path="/thanks" element={<Usersiderouteprotection><Thanks/></Usersiderouteprotection>} />
+      <Route path="/chat/:userId/:name" element={<Usersiderouteprotection><ChatPage/></Usersiderouteprotection>} />
+
 
 
 

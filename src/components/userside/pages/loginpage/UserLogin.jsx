@@ -90,14 +90,13 @@ function UserLogin() {
         if (response.status === 200 && response.data.role === 'user') {
           setLoading(true)
           const resp = response.data
-          apiClient
-            .post(backendurls.accesstokenurl, formData1)
+          apiClient.post(backendurls.accesstokenurl, formData1)
             .then((response) => {
               const p = response.data
               
              if (resp.role === 'user') {
                 localStorage.setItem('authUserTokens', JSON.stringify(p))
-                localStorage.setItem('role', 'user')
+                localStorage.setItem('user_id',resp.id)
                 dispatch({
                   type: 'LOGIN SUCCESS',
                   payload: { usertoken: p, admintoken: null, role: resp.role },
