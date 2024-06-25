@@ -1,27 +1,65 @@
 .recieve{
     display: flex;
     justify-content: flex-start;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
 }
 
 .send{
     display: flex;
     justify-content: flex-end;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
 
 
 }
 .send .message_bubble{
-    background-color: rgb(255, 255, 255);
-    border-radius: 20px 20px 0 20px;
-    padding: 20px;
-    /* max-width: 250px; */
+    background: linear-gradient(to left, #882277, #cc40ba);
 
+
+    border-radius: 10px 10px 0 10px;
+    margin: 30px 0 30px 0;
+    padding: 0px 20px ;
+    font-size: 14px;
+    color: wheat;
+    padding-top: 16px;
+    margin-left: 0px;
 }
 .recieve .message_bubble{
-    background-color: rgb(27, 135, 223);
-    border-radius: 20px 20px 20px 0px;
-    padding: 20px;
-    /* max-width: 250px; */
+    background: linear-gradient(to right, #882277, #cc40ba);
+    border-radius: 10px 10px 10px 0px;
+    margin: 30px 0 30px 0;
+    padding: 0px 30px ;
+    font-size: 14px;
+    color: wheat;
+    padding-top: 10px;
 
+}
+
+@media (max-width:800px){
+        .send .message_bubble{
+            margin: 20px 0 20px 0;
+            padding: 7px 20px ;
+            font-size: 10px;
+            color: white;
+            padding-top: 16px;
+        }
+        .recieve .message_bubble{
+            margin: 20px 0 20px 0;
+            padding: 7px 20px ;
+            font-size: 10px;
+            color: white;
+            padding-top: 16px;
+        }
+
+}
+
+.time{
+    font-size: 10px;
+    color: beige;
+    margin-left: 60px;
+    /* background-color: red; */
+}
+.recievetime{
+    font-size: 10px;
+    color: beige;
+    margin-right: 60px;
 }

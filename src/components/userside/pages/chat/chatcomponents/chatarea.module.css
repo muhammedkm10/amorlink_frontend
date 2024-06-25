@@ -1,32 +1,45 @@
 .chatarea{
     /* background-color: aquamarine; */
-    height: 90vh;
+    /* height: 80vh; */
     overflow-y: hidden;
-    background-color: rgb(250, 215, 247);
+    /* background-color: rgb(250, 215, 247); */
+   
+    
 
 
 
 }
 .chatheader{
-  
-    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-    background-size: 20px 20px; 
-    border-left: 0.1px solid white;
+    border-radius: 10px 10px 0px 0px;
+    /* border-left: 0.1px solid white; */
     color: white;
     padding: 19px ;
     display: flex;
+    border: 1px solid rgb(127, 127, 127);
 
 
 }
-.messagearea{
-    height: 60vh;
+.wrapper{
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 20px;
+    border: 1px  solid rgb(127, 127, 127);
+     /* background-image: url('../../../../../assets/images/background.png'); */
+     /* background-color: rgb(249, 223, 247); */
+  
+
 
 }
 
 .messagepart {
-    height: 76vh;
-    background-color: rgb(250, 215, 247);
+    height: 72vh;
+    /* background-image: url('../../../../../assets/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    /* border: 1px solid white; */
+    /* border-radius: 10px; */
+  
+   
     overflow-y: scroll;
     scrollbar-width: thin; 
     scrollbar-color: transparent transparent;
@@ -43,3 +56,22 @@
     margin-left: 20px;
     margin-top: 5px;
 }
+
+.nomessage{
+     height: 90vh;
+     border: 1px solid rgb(127, 127, 127);
+     border-radius: 10px;
+
+    }
+
+    .nomessage{
+        display: flex;
+        justify-content:center ;
+        align-items: center;
+    }
+    .nomessageheading{
+        position: absolute;
+        font-size: 15px;
+        bottom: 13vh;
+        color: rgb(105, 101, 101);
+    }

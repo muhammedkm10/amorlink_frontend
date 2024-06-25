@@ -9,7 +9,8 @@ function ChatPage() {
     const { userId,name } = useParams(); 
 
   return (
-    <div>
+    
+    <div className={styles.fullbody}>
         <Homenavbar  />
         <div className={`container-fluid ${styles.maindiv}`}>
             <div className={`row  ${styles.row}`}>

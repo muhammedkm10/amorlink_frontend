@@ -6,7 +6,6 @@ import { backendurls } from '../../../../../api/backendEndpoints'
 import { Link } from 'react-router-dom'
 
 function Sidebar() {
-  const [seachbar,setSearchbar] = useState(false)
   const [matches,setMatches] = useState([])
   const [loading,setLoading]= useState(false)
 
@@ -33,24 +32,22 @@ function Sidebar() {
     fetchData()
   },[])
 
-console.log(matches);
   return (
     <div className={styles.sidebar}>
 
     <div className={styles.head}>
       <div className={styles.mainHeading}>
-      <h5>Matches</h5>
-        <span className={styles.searchbutton}> <i onClick={()=>setSearchbar(!seachbar)}className='fa fa-search'></i></span>
+        <div className={styles.header1}>
+      <h5 className={styles.match}>Matches</h5>
       </div>
-      {
-        seachbar ?
+        <span className={styles.searchbutton}> <i  className={`fa fa-search ${styles.icon}`}></i></span>
+      </div>
+
         <div className={styles.searchcontainer}>
       <input  className={styles.search} type="text" placeholder='search' />
 
       </div>
-      :""
-      }
-      
+    
         </div>
     <div className={styles.sidebarusers}>
         {

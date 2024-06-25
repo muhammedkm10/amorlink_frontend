@@ -123,7 +123,7 @@ console.log("matches",matches);
                             <div className={`col-lg-4 col-12 ${styles.details}`}>
                                 
                                   <div className='d-flex justify-content-center align-items-center col-12 mt-lg-0 mt-3 '>
-                                    <button className={`fa fa-comment fa-2x  ${styles.chat}`}></button>
+                                    <Link to={`/chat/${user.id}/${user.name}`}> <button className={`fa fa-comments fa-2x  ${styles.chat}`} title='chat'></button></Link>
                                     <button  onClick={()=>RemoveFromMatches(user.id)} className={styles.button2}>Remove</button>
                   
                                   </div>

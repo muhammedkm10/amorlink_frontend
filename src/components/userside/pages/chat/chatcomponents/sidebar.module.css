@@ -1,18 +1,18 @@
 .sidebarusers{
     overflow-y: scroll;
-    height: 83vh;
     /* background-color: red; */
+
+    
 
 
 }
 .sidebarusers {
-    overflow: scroll; /* Allow scrolling */
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: transparent transparent; /* For Firefox */
-    &::-webkit-scrollbar {
-        width: 0; /* Remove the scrollbar in WebKit browsers */
-    }
+    overflow-y: scroll; /* Allow scrolling */
+    
 }
+.sidebarusers::-webkit-scrollbar {
+    display: none;
+  }
 .linktochat{
     text-decoration: none;
 
@@ -20,13 +20,16 @@
 
 .user{
     height: 70px;
-    border-bottom: 1px rgb(84, 82, 82) solid;
+    border-bottom: 1px rgb(86, 34, 82) solid;
     padding-left: 20px;
     padding-top: 15px;
 
 }
+.user:hover{
+    background: linear-gradient(to right, #882277, #5c2154, #6a2161);
+}
 .head{
-    padding: 2vh;
+    padding: 1vh;
     /* background-color: red; */
     border-bottom: 1px rgb(175, 175, 175) solid;
   
@@ -44,10 +47,13 @@
     text-align: center;
 }
 .sidebar{
-    background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
-    radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
-    background-size: 20px 20px; 
-    /* background: linear-gradient(to right,#771a42 ,#c0105c,#771a42 ); */
+
+    /* border: 1px  solid rgb(127, 127, 127); */
+    border-radius: 10px 0px 10px 10px;
+    height: 90vh;
+
+
+
 
 }
 .profilePhoto{
@@ -75,4 +81,29 @@
 }
 .searchbutton :hover{
     color: #959394;
+}
+
+
+
+@media (max-width:900px){
+    .username{
+        display: none;
+    }
+    .match{
+        font-size: 10px;
+    }
+    .search{
+        font-size: 5px;
+
+    }
+    .icon{
+        font-size: 10px;
+        /* display: inline; */
+    }
+  
+    .mainHeading{
+    width: 100%;
+    display: block;
+
+    }
 }

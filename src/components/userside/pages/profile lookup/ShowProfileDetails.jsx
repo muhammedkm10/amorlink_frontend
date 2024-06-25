@@ -128,19 +128,19 @@ console.log(comingfrom,"i am coming from");
   return (
     
 
-<div>
+<div >
       <Homenavbar className={styles.afterbreakpoint}  page="home1" />
       <div className={styles.fullbody}>
         <div className={`container-fluid  ${styles.background}`}>
           
         </div>
       
-        <div className={`container-fluid ${styles.head}`}>
+        <div className={`container ${styles.head}`}>
         
         {isvisibleModal && (
                  <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/> 
               )}
-          <div className="row">
+          <div className={`row ${styles.content}`}>
             <div className={`col-lg-6 col-12  p-0 ${styles.firstside}`}>
               {!usergallaryDetails.image1 ? (
                 <img src={profile} alt="" className={styles.profile} />
