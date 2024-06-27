@@ -23,23 +23,14 @@
     border-radius: 0px 0px 10px 10px;
     padding-bottom: 20px;
     border: 1px  solid rgb(127, 127, 127);
-     /* background-image: url('../../../../../assets/images/background.png'); */
-     /* background-color: rgb(249, 223, 247); */
-  
-
-
+}
+.username{
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 .messagepart {
     height: 72vh;
-    /* background-image: url('../../../../../assets/images/background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; */
-    /* border: 1px solid white; */
-    /* border-radius: 10px; */
-  
-   
     overflow-y: scroll;
     scrollbar-width: thin; 
     scrollbar-color: transparent transparent;

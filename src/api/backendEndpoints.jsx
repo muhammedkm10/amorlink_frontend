@@ -29,7 +29,10 @@ export const backendurls = {
 
         // chat urls
 
-        'personalchaturl':"/chatapp/get_useer_chat"
+        'personalchaturl':"/chatapp/get_useer_chat",
+
+        // notification url
+        'notification':"/chatapp/notification"
 
 
 

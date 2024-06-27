@@ -8,6 +8,7 @@ import { backendurls } from '../../../../api/backendEndpoints'
 import ReviewCard from './review card/ReviewCard'
 import image1 from '../../../../assets/images/selfie.jpg'
 import image2 from '../../../../assets/images/give details.jpeg.png'
+import { ToastContainer } from 'react-toastify'
 
 
 function Userhome() {
@@ -67,6 +68,7 @@ function Userhome() {
     <div className={styles.fullbody}>
         <Homenavbar  page={"home"}  /> 
         {/* header part of the home */}
+       
             <div className={styles.main}>
             {isvisibleModal && (
                  <div className={styles.modal}>

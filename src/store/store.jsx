@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
     auth :authReducer,
     otppage : otppageReducer,
 
+
 })
 
 const store  = createStore(rootReducer, applyMiddleware(thunk))

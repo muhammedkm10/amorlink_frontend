@@ -30,11 +30,7 @@
 }
 .head{
     padding: 1vh;
-    /* background-color: red; */
     border-bottom: 1px rgb(175, 175, 175) solid;
-  
-
-
 }
 
 .search{
@@ -47,14 +43,8 @@
     text-align: center;
 }
 .sidebar{
-
-    /* border: 1px  solid rgb(127, 127, 127); */
     border-radius: 10px 0px 10px 10px;
     height: 90vh;
-
-
-
-
 }
 .profilePhoto{
     border-radius: 50%;
@@ -71,8 +61,6 @@
     display: flex;
     justify-content: space-between;
     padding: 10px ;
-    /* background-color: red; */
-
 }
 .searchbutton{
     margin-top: 2px;
@@ -98,7 +86,6 @@
     }
     .icon{
         font-size: 10px;
-        /* display: inline; */
     }
   
     .mainHeading{

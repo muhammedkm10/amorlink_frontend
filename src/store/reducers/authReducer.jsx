@@ -5,9 +5,6 @@ const initialstate = {
     usertoken: localStorage.getItem('authUserTokens') || null,
     admintoken: localStorage.getItem('authAdminTokens') || null,
     role: localStorage.getItem('role') || null,
-
-
-
 }
 
 

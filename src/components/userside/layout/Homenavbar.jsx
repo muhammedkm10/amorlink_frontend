@@ -7,10 +7,12 @@ import { Tooltip } from 'react-tooltip'
 import { authentcatedApiClient } from '../../../api/axiosconfig'
 import { backendurls } from '../../../api/backendEndpoints'
 import SubscriptionNeededModal from '../pages/preference/preference components/SubscriptionNeededModal'
+import { ToastContainer } from 'react-toastify'
 
 function Homenavbar({ page}) {
   const [isNavVisible, setIsNavVisible] = useState(false)
   const dispatch = useDispatch()
+  const [pagefrom,setpagefrom] = useState(page)
 
 
   const handleHamburgerClick = () => {
@@ -50,9 +52,11 @@ function Homenavbar({ page}) {
     localStorage.removeItem('user_id');
     <Navigate to="/" replace />
   }
+  
 
   return (
     <div>
+     
       {
         isvisibleModal && 
                ( <SubscriptionNeededModal modalvisiblefunction={setIsvisibleModal}/>)

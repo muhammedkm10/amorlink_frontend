@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
   const [matches,setMatches] = useState([])
   const [loading,setLoading]= useState(false)
+ 
 
+  // fetching the current user matches
   const fetchData = async () =>{
     try{
       const response = await authentcatedApiClient.get(backendurls.matchrequests,{

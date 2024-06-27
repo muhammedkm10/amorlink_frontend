@@ -139,7 +139,7 @@ const RemoveFromRequests = async (userid) =>{
                       <div className={`col-lg-6 col-12 d-flex  align-items-center  ${styles.image}`}>
                          
                         { user.image_details ? (
-                           <Link className='text-white ' to={`/shoeprofiles/${user.id}`}  title='click here' state={{ comingfrom: "others_requests" }}><img src={`${import.meta.env.VITE_IMAGE}/${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
+                           <Link className='text-white ' to={`/shoeprofiles/${user.id}`}  title='click here' state={{ comingfrom: "others_requests" }}><img src={`${import.meta.env.VITE_IMAGE}${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
                          ):(
                           <Link className='text-white ' to={`/shoeprofiles/${user.id}`}   title='click here'state={{ comingfrom: "others_requests" }}> <img src={image} width="50px" height="50px" alt="" /></Link>
                          )

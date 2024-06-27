@@ -24,7 +24,6 @@ function UserRouter() {
     <Routes>
       {/* login router */}
       <Route path="" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
-
       {/* other authentication need routes*/}
       <Route path="/usersignup" element={<Userloginpageprotection><Registration/></Userloginpageprotection>} />
       <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
@@ -35,14 +34,6 @@ function UserRouter() {
       <Route path="/subscriptions" element={<Usersiderouteprotection><Subscriptions/></Usersiderouteprotection>} />
       <Route path="/thanks" element={<Usersiderouteprotection><Thanks/></Usersiderouteprotection>} />
       <Route path="/chat/:userId/:name" element={<Usersiderouteprotection><ChatPage/></Usersiderouteprotection>} />
-
-
-
-
-
-
-
-
       {/* other pages routers */}
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>
       <Route path="*" element={<NotFoundPage/>}></Route>

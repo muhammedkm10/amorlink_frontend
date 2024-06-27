@@ -11,7 +11,7 @@ function ChatPage() {
   return (
     
     <div className={styles.fullbody}>
-        <Homenavbar  />
+        <Homenavbar page="chat"  />
         <div className={`container-fluid ${styles.maindiv}`}>
             <div className={`row  ${styles.row}`}>
                 <div className={`col-3 p-0  ${styles.sidebarusers}`}>

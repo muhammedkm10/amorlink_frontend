@@ -444,7 +444,8 @@ const Registration = () => {
                 <img className="loginimage" src={loginimage} alt="Login" />
               </div>
               <div className="col-12 col-md-6 secondside">
-                <ToastContainer position="top-center" />
+         
+          <ToastContainer position="top-center"  style={{ minWidth: '500px' }} />
                 <div className={`login ${isVisible ? 'visible' : ''}`}>
                   <h4 className="heading">Provide your details</h4>
                   <div className="loginform">
