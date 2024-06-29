@@ -2,7 +2,6 @@
 
 .outerwrapper {
   padding: 10vh;
-  border-radius: 8px;
   background-image: linear-gradient(
     to bottom,
     #531027,
@@ -10,8 +9,6 @@
     #b72b5d,
     #d1316a
   );
-  /* max-width: 600px; */
-  /* margin: auto; */
   text-align: center;
 
 }
@@ -40,7 +37,6 @@
 }
 
 .tableBackgroundAlternate {
-  /* background: #b72b5d !important; Replace with your desired background color */
   width: 100%;
 }
 

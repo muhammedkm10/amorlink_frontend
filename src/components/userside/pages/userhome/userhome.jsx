@@ -87,7 +87,7 @@ function Userhome() {
               )}
                     <div className={`container-fluid ${styles.head}`}>
                          <div className="row">
-                            <div className={`col-md-5 col-12 ${styles.firstside}`}>
+                            <div className={`col-lg-5 col-12 ${styles.firstside}`}>
                             <div className={styles.para}>
                               <p className={styles.lines}>"In the garden of love, we plant seeds of trust and nurture them with patience, for a beautiful journey begins when hearts unite."
                               </p>
@@ -96,7 +96,7 @@ function Userhome() {
                               </div>
 
                             </div>
-                            <div className={`col-md-7 col-12 ${styles.secondside}`}>
+                            <div className={`col-lg-7 col-12 ${styles.secondside}`}>
                              <div className={styles.secondsidephotodiv}>
                               
                              </div>
@@ -120,7 +120,7 @@ function Userhome() {
                            <div className={`container-fluid ${styles.editprofilewrapper}`}>
 
                              <div className="row p-5">
-                              <div className={`col-md-5 col-12 bg-white ${styles.give_details}`}>
+                              <div className={`col-md-5 col-12  ${styles.give_details}`}>
                               <div className="row">
                                         <div className="col-6 d-flex justify-content-center align-content-center mt-5">
                                           <img src={image1} alt="" width="100px" height="100px" />
@@ -132,7 +132,7 @@ function Userhome() {
                                   </div>
                                         
                               </div>
-                              <div className={`col-md-5 col-12 bg-white ${styles.preferences}`}>
+                              <div className={`col-md-5 col-12 mt-md-0 mt-3 ${styles.preferences}`}>
                               <div className="row">
                                     <div className="col-6 d-flex justify-content-center align-content-center mt-5">
                                           <img src={image2} alt="" width="100px" height="100px" />

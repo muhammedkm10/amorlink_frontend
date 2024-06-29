@@ -15,12 +15,12 @@ function Messages({send,text,time}) {
   };
   const formattedtime = formatTime(time)
   return (
-    <div className={`px-5 ${send  === "send" ? styles.send : styles.recieve}`}>
 
+    <div className={`px-5 ${send  === "send" ? styles.send : styles.recieve}`}>
         <div className={styles.message_bubble}><p className={styles.para}>{text}</p>
         { formattedtime !== "NaN:NaN" ? <div className={send  === "send" ? styles.time : styles.recievetime}>{formattedtime}</div> : <div className={send  === "send" ? styles.time : styles.recievetime}>just now</div>}
-
         </div>
+        
 
     </div>
   )

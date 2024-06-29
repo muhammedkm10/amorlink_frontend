@@ -16,6 +16,7 @@
   background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
   radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
 background-size: 20px 20px;
+
   color: rgb(241, 241, 240);
 
 }
@@ -141,6 +142,10 @@ background-size: cover;
   }
   .afterbreakpoint{
     position: absolute;
+  }
+  .about{
+  min-width: 75vh;
+
   }
 
 }
@@ -314,6 +319,7 @@ background-size: cover;
   background-color: #f9f9f9;
   font-size: 14px;
   text-align: center;
+
  
 }
 
@@ -330,7 +336,7 @@ background-size: cover;
 .customFileLabel {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50; 
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -340,7 +346,7 @@ background-size: cover;
 }
 
 .customFileLabel:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049; 
 }
 
 #textarea{

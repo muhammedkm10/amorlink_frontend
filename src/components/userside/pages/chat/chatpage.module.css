@@ -3,8 +3,7 @@
 
 }
 
-
-.fullbody{
+.row{
     background: radial-gradient(#40183a 80%, transparent 20%) 0 0,
     radial-gradient(#40183a 20%, transparent 90%) 10px 10px;
     background-size: 20px 20px; 

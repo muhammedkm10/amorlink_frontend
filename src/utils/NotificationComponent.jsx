@@ -1,8 +1,8 @@
 // components/NotificationComponent.js
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 const NotificationComponent = ({ userId}) => {
   const [socket, setSocket] = useState(null);
 
@@ -26,27 +26,31 @@ const NotificationComponent = ({ userId}) => {
       }
   
       // Display the notification using react-toastify
-      toast.info(`${message.notification}`, {
-        closeOnClick: true,
-        pauseOnHover: true,
-        style: {
-            background: "linear-gradient(to right ,#771a42 ,#c0105c,#771a42 )",
-            color: 'white',
-            border:"1px solid #40183a",
-            borderRadius:"10px",
+      toast.info(
+        <div>
+          {`${message.notification}`}
+        <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/chat/${null}/${null}`}><i class="fa fa-arrow-right"></i></a></div>
+        </div>, 
+        {
+          closeOnClick: true,
+          pauseOnHover: true,
+          progressBar: false,
+          
+          style: {
+            background: "linear-gradient(to right, wheat, white, wheat)",
+            color: 'black',
+            border: "1px solid #40183a",
             fontSize: '14px',
             padding: '10px',
-            width:"300px",
-            height:"150px",
-            maxHeight:"150px",
-         
-
+            width: "300px",
+            height: "150px",
+            maxHeight: "150px",
           },
           icon: () => (
-            <FontAwesomeIcon icon={""} style={{ alignSelf: 'center',top:"0" ,right:"0",position:"relative"}}/>
+            <FontAwesomeIcon style={{ alignSelf: 'center', top: "0", right: "0", position: "relative" }} />
           ),
-          
-      });
+        }
+      );
     };
 
     ws.onerror = (error) => {

@@ -33,6 +33,7 @@ export const backendurls = {
 
         // notification url
         'notification':"/chatapp/notification"
+        
 
 
 

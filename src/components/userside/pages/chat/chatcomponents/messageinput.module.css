@@ -2,20 +2,14 @@
 .sendmessage{
     border-radius: 5px;
     text-align: left;
-
-
     color: black;
     font-size: 13px;
     padding: 15px;
     margin: auto;
-
-
-
 }
 .sendmessage::placeholder{
     text-align: left;
     color: rgb(49, 48, 48);
-    
 }
 .sendbutton{
     border:  none;
@@ -28,3 +22,6 @@
 .sendbutton:hover{
     color:rgb(30, 29, 29);
 }
+
+
+

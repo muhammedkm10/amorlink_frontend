@@ -42,7 +42,6 @@ function Sidebar() {
         <div className={styles.header1}>
       <h5 className={styles.match}>Matches</h5>
       </div>
-        <span className={styles.searchbutton}> <i  className={`fa fa-search ${styles.icon}`}></i></span>
       </div>
 
         <div className={styles.searchcontainer}>

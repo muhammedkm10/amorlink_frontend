@@ -11,13 +11,13 @@ function ChatPage() {
   return (
     
     <div className={styles.fullbody}>
-        <Homenavbar page="chat"  />
-        <div className={`container-fluid ${styles.maindiv}`}>
+        <Homenavbar page=""  />
+        <div className={`container-fluid  text-align-center ${styles.maindiv}`}>
             <div className={`row  ${styles.row}`}>
-                <div className={`col-3 p-0  ${styles.sidebarusers}`}>
+                <div className={`col-md-3 p-0 m-auto col-2 ${styles.sidebarusers}`}>
                     <Sidebar/>
                 </div>
-                <div className={`col-9 p-0  ${styles.chatareaforuser}`}>
+                <div className={`col-md-8 p-0 m-auto  col-10 ${styles.chatareaforuser}`}>
                     <Chatarea userId={userId} username={name}/>
                 </div>
             </div>

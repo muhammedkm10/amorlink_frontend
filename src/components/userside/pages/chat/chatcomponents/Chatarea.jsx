@@ -65,7 +65,7 @@ function Chatarea({ userId ,username}) {
     };
 
     ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
+      const message = JSON.parse(event.data);3
       console.log("point of view",message);
       setPrevMessages((prevMessages) => [...prevMessages, message]);
       

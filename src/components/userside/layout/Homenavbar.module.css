@@ -41,6 +41,8 @@
 .hamburger {
   padding-right: 20px;
   cursor: pointer;
+  color: white;
+
 }
 
 .hamburger .line {
@@ -48,14 +50,18 @@
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: black;
+  background-color: white;
+  color: white;
+  
 }
 
 .nav__link {
   position: fixed;
-  width: 94%;
+  left:0 ;
+  right: 0;
+  width: 100%;
   top: 3rem;
-  background-color: #641842;
+  background: linear-gradient(to bottom ,#c0105c,#771a42 );
   z-index: 1;
 
 }
@@ -76,7 +82,7 @@
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   .nav__link {
     display: block;
     position: static;
@@ -102,6 +108,7 @@
 
   .hamburger {
     display: none;
+    color: white;
   }
   .nav1 {
     display: flex;
@@ -116,4 +123,24 @@
     height: 8vh;
     padding: 8px;
   }
+}
+
+
+/* animation code */
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-100px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation for navbar logo */
+.navbarLogo {
+  animation: bounce 5s 1; 
 }

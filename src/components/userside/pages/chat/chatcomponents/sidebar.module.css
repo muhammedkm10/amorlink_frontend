@@ -1,18 +1,16 @@
 .sidebarusers{
     overflow-y: scroll;
-    /* background-color: red; */
-
-    
-
-
 }
 .sidebarusers {
-    overflow-y: scroll; /* Allow scrolling */
+    overflow-y: scroll; 
     
 }
+
 .sidebarusers::-webkit-scrollbar {
     display: none;
   }
+
+  
 .linktochat{
     text-decoration: none;
 
