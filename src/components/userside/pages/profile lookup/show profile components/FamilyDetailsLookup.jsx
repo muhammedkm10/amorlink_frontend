@@ -22,8 +22,9 @@ function FamilyDetailsLookup({userid,subscribed}) {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                "userid":userid,
+                "lookupuserid":userid,
                 'details': 'family_details',
+                'type':'lookup'
               },
             });
             

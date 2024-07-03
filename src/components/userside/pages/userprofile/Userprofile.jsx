@@ -15,6 +15,7 @@ import Location from './Userdetailcomponents/Location.jsx'
 import Professionaldetails from './Userdetailcomponents/Professionaldetails.jsx'
 import Swal from 'sweetalert2';
 import '../../../../assets/css/sweetalert-custom.css'
+import image1 from '../../../../assets/images/ppti.png'
 
 function Userprofile() {
   const [userdetails, setUserdetails] = useState({})
@@ -33,7 +34,8 @@ function Userprofile() {
     try {
       authentcatedApiClient.get(backendurls.signup,{
         headers:{
-          "userid":null
+          "lookupuserid":null,
+          "type":null
         }
     })
       .then((response) => {
@@ -186,7 +188,11 @@ const handlesubmit = async () =>{
             <div className={`col-lg-3 col-12  p-0 ${styles.firstside}`}>
               <div className={styles.firstsideDetails}>
               {!usergallarydetails.image1 ? (
-                <p >No profile photo please add it....!</p>
+                 <img
+                 src={image1} 
+                 alt="image1"
+                 className={styles.profile}
+               />
               ) : (
                 <img
                   src={`${import.meta.env.VITE_IMAGE}${usergallarydetails.image1}`} 

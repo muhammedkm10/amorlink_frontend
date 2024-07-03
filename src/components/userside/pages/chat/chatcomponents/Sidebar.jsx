@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
   const [matches,setMatches] = useState([])
   const [loading,setLoading]= useState(false)
+
+  const user_id = localStorage.getItem('user_id');
  
 
   // fetching the current user matches
@@ -50,16 +52,22 @@ function Sidebar() {
       </div>
     
         </div>
-    <div className={styles.sidebarusers}>
+        {
+          matches.length === 0 ? 
+          <div className={styles.nomatches}><p className={styles.findmatches}>you have no matches, find you matches</p> <Link to='/preferences' className={`text-decoration-none text-white ${styles.linkbutton}`}>preferences</Link></div>:
+          <div className={styles.sidebarusers}>
         {
           matches.map((element)=>(
-            <Link className={styles.linktochat} to={`/chat/${element.id}/${element.name}`}><div className={styles.user}> {!element.image_details ? <img className={styles.profilePhoto}  src={image} width="50px" height="50px" alt="" /> : <img src={`${import.meta.env.VITE_IMAGE}${element.image_details}`} className={styles.profilePhoto}alt="" width="40px" height="40px"/> }<span className={styles.username}>{element.name}</span></div></Link>
+            <Link className={styles.linktochat} to={`/chat/${user_id}/${element.id}`} ><div className={styles.user}> {!element.image_details ? <img className={styles.profilePhoto}  src={image} width="50px" height="50px" alt="" /> : <img src={`${import.meta.env.VITE_IMAGE}${element.image_details}`} className={styles.profilePhoto}alt="" width="40px" height="40px"/> }<span className={styles.username}>{element.name}</span></div></Link>
           ))
         }
+    </div>
+
       
+        }
+    
         
 
-    </div>
     </div>
 
   )

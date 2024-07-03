@@ -6,7 +6,8 @@ import Chatarea from './chatcomponents/Chatarea'
 import { useParams } from 'react-router-dom'
 
 function ChatPage() {
-    const { userId,name } = useParams(); 
+    const { userId,receiverId } = useParams(); 
+    console.log(receiverId);
 
   return (
     
@@ -18,7 +19,7 @@ function ChatPage() {
                     <Sidebar/>
                 </div>
                 <div className={`col-md-8 p-0 m-auto  col-10 ${styles.chatareaforuser}`}>
-                    <Chatarea userId={userId} username={name}/>
+                    <Chatarea userId={userId} receiverId={receiverId}/>
                 </div>
             </div>
              

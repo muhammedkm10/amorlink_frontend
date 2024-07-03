@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import profile from '../../../../assets/images/selfie.jpg'
+import profile from '../../../../assets/images/ppti.png'
 import styles from './showprofiledetails.module.css'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import ReligionInformationLookup from './show profile components/ReligionInformationLookup'
@@ -19,7 +19,7 @@ import SubscriptionNeededModal from '../preference/preference components/Subscri
 
 
 function ShowProfileDetails() {
-    const {id} = useParams()
+    // const {id} = useParams()
     const [userdetails,setUserDetails] = useState({})
     const [userbasicdetails,setUserBasicDetails] = useState({})
     const [usergallaryDetails,setUsergallarydetails] = useState({})
@@ -29,48 +29,54 @@ function ShowProfileDetails() {
 
     const [showSecondSide, setShowSecondSide] = useState(false);
     const location = useLocation();
-    const { comingfrom } = location.state || {};
+    const { comingfrom,userid } = location.state || {};
+    const [lookupuserid,setLookupuserid] = useState(userid)
 
-    
+    console.log("current user id",userid);
     // subscription taken or not 
     const [subscribed,setSubscribed] = useState(null)
-
+  
       // subscription modal showing state
   const [isvisibleModal, setIsvisibleModal] = useState(false)
 
 console.log(comingfrom,"i am coming from");
 
-    // fetching user data
-    useEffect (()=>{
-        fetchUserData(id)
-    },[])
+   
     
     const fetchUserData = async (id) =>{
+      console.log("etho id",);
       try {
-        authentcatedApiClient.get(backendurls.signup,{
+       const response = await authentcatedApiClient.get(backendurls.signup,{
           headers:{
-            "userid":id
+            "lookupuserid":id,
+            'type':'lookup'
+
           }
         })
-        .then((response) => {
+        
           if (response.data.message === 'unauthorized') {
             navigate('/unauthorized')
           }
-          if (response.data.message === 'Success') {
+          if (response.data.message === 'success') {
             setUserDetails(response.data.user)
             setUserBasicDetails(response.data.basicdetails)
             setUsergallarydetails(response.data.usergallary)
             setSubscribed(response.data.subscribed)
+            console.log("current data",userdetails);
             if (!response.data.subscribed){
               setIsvisibleModal(true)
             }
 
           }
-        })
+        
       } catch (error) {
         console.log('error')
       }
     }
+     // fetching user data
+     useEffect (()=>{
+      fetchUserData(lookupuserid)
+  },[])
 
     // showing details based on the clicking in the second navbar
       const handSidebarItemsCick = (selected) => {
@@ -98,7 +104,7 @@ console.log(comingfrom,"i am coming from");
         });
         if (result.isConfirmed){
           try{
-            const response = await authentcatedApiClient.post(`${backendurls.matchrequests}/${id}`)
+            const response = await authentcatedApiClient.post(`${backendurls.matchrequests}/${userid}`)
             if (response.data.message === "success"){
               Swal.fire({
                 title: "Request sent successfully",
@@ -301,14 +307,14 @@ console.log(comingfrom,"i am coming from");
 
           <div  className={`container ${styles.showdetails}`}>
             {selectedItem === 'basic' || selectedItem === null ? (
-              <BasicDetailsLookup  userid={id} subscribed={subscribed}/>
+              <BasicDetailsLookup  userid={lookupuserid} subscribed={subscribed}/>
             ) : null}
-            {selectedItem === 'religion' && <ReligionInformationLookup userid={id} subscribed={subscribed} />}
-            {selectedItem === 'location' && <LocationLookup userid={id} subscribed={subscribed} />}
-            {selectedItem === 'family' && <FamilyDetailsLookup userid={id} subscribed={subscribed} />}
-            {selectedItem === 'preference' && <PartnerPreferencesLookup userid={id}subscribed={subscribed}  />}
-            {selectedItem === 'gallary' && <PhotoGallaryLookup userid={id} subscribed={subscribed} />}
-            {selectedItem === 'profession' && <ProfessionaldetailsLookup userid={id} subscribed={subscribed} />}
+            {selectedItem === 'religion' && <ReligionInformationLookup userid={lookupuserid} subscribed={subscribed} />}
+            {selectedItem === 'location' && <LocationLookup userid={lookupuserid} subscribed={subscribed} />}
+            {selectedItem === 'family' && <FamilyDetailsLookup userid={lookupuserid} subscribed={subscribed} />}
+            {selectedItem === 'preference' && <PartnerPreferencesLookup userid={lookupuserid}subscribed={subscribed}  />}
+            {selectedItem === 'gallary' && <PhotoGallaryLookup userid={lookupuserid} subscribed={subscribed} />}
+            {selectedItem === 'profession' && <ProfessionaldetailsLookup userid={lookupuserid} subscribed={subscribed} />}
           </div>
         </div>
       </div>

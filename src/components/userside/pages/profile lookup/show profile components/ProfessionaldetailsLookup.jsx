@@ -17,8 +17,10 @@ function ProfessionaldetailsLookup({userid,subscribed}) {
       try {
         const response = await authentcatedApiClient.get(backendurls.userprofile, {
           headers: {
-            "userid":userid,
+            "lookupuserid":userid,
             'details': 'profesional_details', 
+            'type':'lookup'
+
           },
         });
         

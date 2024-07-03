@@ -55,6 +55,7 @@ background-size: cover;
   height: 28vh;
   padding: 2vh 0 2vh 0;
   border-radius: 50%;
+  border: 1px white solid;
 }
 
 

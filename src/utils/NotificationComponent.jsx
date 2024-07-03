@@ -29,7 +29,7 @@ const NotificationComponent = ({ userId}) => {
       toast.info(
         <div>
           {`${message.notification}`}
-        <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/chat/${null}/${null}`}><i class="fa fa-arrow-right"></i></a></div>
+        <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/chat/${userId}/${0}`}><i class="fa fa-arrow-right"></i></a></div>
         </div>, 
         {
           closeOnClick: true,

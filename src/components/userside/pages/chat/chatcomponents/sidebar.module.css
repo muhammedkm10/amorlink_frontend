@@ -91,4 +91,45 @@
     display: block;
 
     }
+    .linkbutton{
+        font-size: 4px;
+    }
+    .preferencebutton{
+        padding: 2px 14px;
+        background-color: antiquewhite;
+
+    }
+    .findmatches{
+        font-size: 5px;
+
+    }
+    .nomatches{
+        margin-left: 0px !important;
+
+
+    }
+}
+
+.nomatches{
+    color: white;
+    margin-top: 10vh;
+    margin-left: 3vw;
+    text-align: center;
+    max-width: 20vw;
+    /* margin: auto; */
+}
+
+.linkbutton{
+    background-color: deeppink;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 20px;
+    border: none;
+    margin-top: 50px !important;
+
+    
+
+}
+.linkbutton:hover{
+    color:wheat !important;
 }

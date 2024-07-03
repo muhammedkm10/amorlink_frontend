@@ -17,8 +17,10 @@ function PartnerPreferencesLookup({userid,subscribed}) {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                "userid":userid,
-                'details': 'partner_preferences', 
+                "lookupuserid":userid,
+                'details': 'partner_preferences',
+                'type':'lookup'
+
               },
             });
             

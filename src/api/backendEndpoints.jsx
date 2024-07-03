@@ -14,6 +14,8 @@ export const backendurls = {
         // admin app
         "subscription":"/adminapp/add_edit_subscription",
         "usermanagement":"/adminapp/usermanagement",
+          // admin dashboard
+        "dashboard":'adminapp/dashboard',
 
         // lookup profiles url
         'matchrequests':"/matchesmanagementapp/matchesmanagement",
@@ -32,7 +34,9 @@ export const backendurls = {
         'personalchaturl':"/chatapp/get_useer_chat",
 
         // notification url
-        'notification':"/chatapp/notification"
+        'notification':"/chatapp/notification",
+
+      
         
 
 

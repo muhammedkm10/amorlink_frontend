@@ -1,11 +1,11 @@
 // UserRouter.js
-import React from 'react';
-import UserLogin from './pages/loginpage/UserLogin';
+import React, { Suspense } from 'react';
+// import UserLogin from './pages/loginpage/UserLogin';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './pages/signuppage/Usersignup';
 import Modal from './pages/signuppage/otp/otpmodal';
 import Userhome from './pages/userhome/userhome';
-import Userprofile from './pages/userprofile/Userprofile';
+// import Userprofile from './pages/userprofile/Userprofile';
 import Usersiderouteprotection from '../../routprotections/Usersiderouteprotection';
 import Userloginpageprotection from '../../routprotections/Userloginpageprotection';
 import NotFoundPage from './UI/Error';
@@ -17,10 +17,13 @@ import Subscriptions from './pages/subscription management/Subscriptions';
 import Thanks from './UI/Thanks';
 import NotFoundPageforUser from './UI/UserNotFound';
 import ChatPage from './pages/chat/chatPage';
+const UserLogin = React.lazy(()=>import ('./pages/loginpage/UserLogin'))
+const Userprofile = React.lazy(()=>import ('./pages/userprofile/Userprofile'))
 
 function UserRouter() {
   const state = useSelector(state=>state.otppage.isvisible)
   return (
+    <Suspense fallback={<div>loading...</div>}>
     <Routes>
       {/* login router */}
       <Route path="" element={<Userloginpageprotection><UserLogin/></Userloginpageprotection>} />
@@ -29,18 +32,20 @@ function UserRouter() {
       <Route path="/home" element={<Usersiderouteprotection> <Userhome/> </Usersiderouteprotection>} />
       <Route path="/profile" element={<Usersiderouteprotection><Userprofile/></Usersiderouteprotection>} />
       <Route path="/preferences" element={<Usersiderouteprotection><Preferences/></Usersiderouteprotection>} />
-      <Route path="/shoeprofiles/:id" element={<Usersiderouteprotection><ShowProfileDetails/></Usersiderouteprotection>} />
+      <Route path="/shoeprofiles" element={<Usersiderouteprotection><ShowProfileDetails/></Usersiderouteprotection>} />
       <Route path="/matches" element={<Usersiderouteprotection><Matches/></Usersiderouteprotection>} />
       <Route path="/subscriptions" element={<Usersiderouteprotection><Subscriptions/></Usersiderouteprotection>} />
       <Route path="/thanks" element={<Usersiderouteprotection><Thanks/></Usersiderouteprotection>} />
-      <Route path="/chat/:userId/:name" element={<Usersiderouteprotection><ChatPage/></Usersiderouteprotection>} />
+      <Route path="/chat/:userId/:receiverId" element={<Usersiderouteprotection><ChatPage/></Usersiderouteprotection>} />
       {/* other pages routers */}
       <Route path="/modal" element={ state ? <Modal /> :  <NotFoundPage/> }></Route>
-      <Route path="*" element={<NotFoundPage/>}></Route>
+      <Route path="*" element={<NotFoundPageforUser/>}></Route>
       <Route path="/usernotfoundpage" element={<NotFoundPageforUser/>}></Route>
 
 
     </Routes>
+    </Suspense>
+
   );
 }
 

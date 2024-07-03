@@ -20,8 +20,10 @@ function PhotoGallaryLookup({userid,subscribed}) {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                "userid":userid,
+                "lookupuserid":userid,
                 'details': 'photos_gallary',
+                'type':'lookup'
+
               },
             });
             

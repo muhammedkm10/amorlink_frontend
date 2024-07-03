@@ -10,6 +10,7 @@ import '../../../../../assets/css/sweetalert-custom.css'
 
 function ReligionInformationLookup({userid,subscribed}) {
   const [details,setDetails] = useState({})
+  console.log(details);
 
 
     useEffect(()=>{
@@ -18,8 +19,10 @@ function ReligionInformationLookup({userid,subscribed}) {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                'userid':userid,
+                'lookupuserid':userid,
                 'details': 'religional_information', 
+                'type':'lookup'
+
               },
             });
             

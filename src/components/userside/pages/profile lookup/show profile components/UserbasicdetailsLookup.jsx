@@ -14,6 +14,8 @@ import '../../../../../assets/css/sweetalert-custom.css'
 function BasicDetailsLookup({userid,subscribed}) {
   const [basicdetails,setBasicdetails] = useState({})
   const [userdetais,setUserdetails] = useState({})
+  const [lookupuserid,setLookupuserid] = useState(userid)
+  console.log("lookup user id in the frond end",lookupuserid);
 
 
   useEffect(()=>{
@@ -22,8 +24,10 @@ function BasicDetailsLookup({userid,subscribed}) {
         try {
           const response = await authentcatedApiClient.get(backendurls.userprofile, {
             headers: {
-              'userid':userid,
+              'lookupuserid':lookupuserid,
               'details': 'basic_details', 
+              'type':'lookup'
+
             },
           });
           

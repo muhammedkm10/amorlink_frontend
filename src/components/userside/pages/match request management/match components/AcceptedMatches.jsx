@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import styles from './matchcomponents.module.css'
 import image from '../../../../../assets/images/home fixed.jpg'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
@@ -11,8 +11,10 @@ import Swal from 'sweetalert2'
 
 function AcceptedMatches() {
   const [matches,setMatches] = useState([])
+  const current_user = localStorage.getItem("user_id")
   const [isLoading,setLoading] = useState(false)
   const [isremoved,setisremoved] = useState(false)
+  const navigate = useNavigate()
 
 
 
@@ -26,7 +28,10 @@ function AcceptedMatches() {
           'details':"matched"
         }
       })
-       
+      if (response.status === 204){
+        navigate("/usernotfound")
+      }
+       else 
        if (response.data.message === "success"){
                 setLoading(false)
 
@@ -111,9 +116,9 @@ console.log("matches",matches);
                               <div className={`col-lg-8 col-12 d-flex  align-items-center  ${styles.image}`}>
                                   
                                 { user.image_details ? (
-                                   <Link className='text-white' title='click here' to={`/shoeprofiles/${user.id}`}   state={{ comingfrom: "matched_page" }}> <img src={`${import.meta.env.VITE_IMAGE}${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
+                                   <Link className='text-white' title='click here' to={`/shoeprofiles`}   state={{ comingfrom: "matched_page",userid:user.id }}> <img src={`${import.meta.env.VITE_IMAGE}${user.image_details}`} width="50px" className='d-block' height="50px" alt="" /></Link>
                                   ):(
-                                    <Link className='text-white ' to={`/shoeprofiles/${user.id}`}   title='click here' state={{ comingfrom: "matched_page" }}><img src={image} width="50px" height="50px" alt="" /></Link>
+                                    <Link className='text-white ' to={`/shoeprofiles`}   title='click here' state={{ comingfrom: "matched_page",userid:user.id }}><img src={image} width="50px" height="50px" alt="" /></Link>
                                   )
                                 }
                                   <h6  className='ms-5 text-white'>{user.name} </h6>
@@ -123,7 +128,7 @@ console.log("matches",matches);
                             <div className={`col-lg-4 col-12 ${styles.details}`}>
                                 
                                   <div className='d-flex justify-content-center align-items-center col-12 mt-lg-0 mt-3 '>
-                                    <Link to={`/chat/${user.id}/${user.name}`}> <button className={`fa fa-comments fa-2x  ${styles.chat}`} title='chat'></button></Link>
+                                    <Link to={`/chat/${current_user}/${user.id}`}> <button className={`fa fa-comments fa-2x  ${styles.chat}`} title='chat'></button></Link>
                                     <button  onClick={()=>RemoveFromMatches(user.id)} className={styles.button2}>Remove</button>
                   
                                   </div>

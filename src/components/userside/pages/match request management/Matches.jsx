@@ -68,7 +68,7 @@ function Matches() {
                     onClick={() => handSidebarItemsCick('requests')}
                     icon=""
                   >
-                    Requested for match
+                    Requests recieved
                   </CDBSidebarMenuItem>
                 </NavLink>
                 <NavLink
@@ -79,7 +79,7 @@ function Matches() {
                     onClick={() => handSidebarItemsCick('current_user_requests')}
                     icon=""
                   >
-                Your requests
+                Pending requests
                   </CDBSidebarMenuItem>
                 </NavLink>
               </CDBSidebarMenu>

@@ -23,8 +23,10 @@ function LocationLookup({userid,subscribed}) {
           try {
             const response = await authentcatedApiClient.get(backendurls.userprofile, {
               headers: {
-                "userid":userid,
+                "lookupuserid":userid,
                 'details': 'location_details', 
+                'type':'lookup'
+
               },
             });
             

@@ -90,7 +90,14 @@ function Homenavbar({ page}) {
           }
           
           <Link to="/preferences">Preferences</Link>
-          <Link to={`/chat/${null}/${null}`}>Chat</Link>
+          {
+            !user.subscribed ? (
+              <Link onClick={()=>setIsvisibleModal(true)} > <i className='fas fa-lock text-warning'></i><span className='text-warning'> Chat</span></Link>
+            ):(
+              <Link to={`/chat/${user.id}/${0}`}>Chat</Link>
+            )
+          }
+         
           {
             !user.subscribed ? (
               <Link to="/subscriptions">PRO*</Link>
@@ -101,7 +108,7 @@ function Homenavbar({ page}) {
 
           }
          
-          <Link to="#">Search</Link>
+          
           <Link
             to="/profile"
             data-tooltip-id="my-tooltip"

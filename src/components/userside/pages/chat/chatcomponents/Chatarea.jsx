@@ -6,37 +6,72 @@ import { authentcatedApiClient } from '../../../../../api/axiosconfig';
 import { backendurls } from '../../../../../api/backendEndpoints';
 import image1 from '../../../../../assets/images/pppp.jpg'
 import noimage from '../../../../../assets/images/nomessage.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 
 
-function Chatarea({ userId ,username}) {
-  const user_id = localStorage.getItem('user_id');
-  const receiverId = userId;
-  const [userid,setUserid] = useState(userId)
+function Chatarea({ userId ,receiverId}) {
+  console.log("reciever id",receiverId);
+  
+  // const receiverId = userId;
+  const [userid,setUserid] = useState(receiverId)
+  console.log(userid,"ppppppp");
   const [prevMessages, setPrevMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [socket, setSocket] = useState(null);
   const [image,setImage] = useState(null)
+  const [username,setUsername] = useState(null)
+
   const messageEndRef = useRef(null); // Reference for the end of messages
   const [isconnected,setConnected] = useState(false)
+  const navigate = useNavigate()
   
+
 // fetching messages
   const fetchMessages  = async () =>{
+        
         try{
-          const response  = await authentcatedApiClient.get(`${backendurls.personalchaturl}/${user_id}/${receiverId}`)
-          if (response.data.message === "success"){
+          const response  = await authentcatedApiClient.get(`${backendurls.personalchaturl}/${userId}/${receiverId}`)
+             console.log(response.data);
+             if(response.data.message === "from navbar"){
+              setUserid(0)
+              setImage(null)
+             
+            }
+             if(response.data.message === "no users"){
+              navigate("/usernotfoundpage")
+             
+            }
+          
+             if(response.data.message === "no_subscription"){
+              console.log("no subscription ");
+              navigate("/usernotfoundpage")
+             }
+             else if(response.data.message === "no_matched_each_other"){
+              navigate("/usernotfoundpage")
+            }
+          
+           else if(response.data.message === "no_messages"){
+              setImage(response.data)
+
+              console.log(response.data.message);
+            }
+         else if (response.data.message === "success"){
+                setUserid(receiverId)
+
                 setPrevMessages(response.data.messages)
                 setImage(response.data.image)
-                setUserid(userId)
+                setUsername(response.data.username)
+
           }
           
         }
         catch(error){
-          console.log(error);
+          console.log("our error",error);
         }
             
   }
+  console.log(image);
 // function to scroll bottom
     const scrollToBottom = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -51,11 +86,11 @@ function Chatarea({ userId ,username}) {
 
     // useeffect for connecting the socket while mouting the component
   useEffect(() => {
-
+  
+    
     fetchMessages()
-    console.log("hai");
      
-    const ws = new WebSocket(`ws://localhost:8000/ws/chat/?receiver_id=${receiverId}&user_id=${user_id}`);
+    const ws = new WebSocket(`ws://localhost:8000/ws/chat/?receiver_id=${receiverId}&user_id=${userId}`);
     setSocket(ws)
     ws.onopen = () => {
 
@@ -66,18 +101,17 @@ function Chatarea({ userId ,username}) {
 
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);3
-      console.log("point of view",message);
       setPrevMessages((prevMessages) => [...prevMessages, message]);
       
     };
 
     ws.onerror = (error) => {
-      console.error('WebSocket Error:', error);
+      console.log(error);
     };
 
     ws.onclose = () => {
       setPrevMessages([])
-      setUserid(null)
+      // setUserid(null)
       console.log('WebSocket Disconnected');
       setConnected(false)
 
@@ -86,13 +120,13 @@ function Chatarea({ userId ,username}) {
     return () => {
       ws.close();
     };
-  }, [userId]);
+  }, [receiverId]);
 
   // function api send the notification from the backend 
 
   const sendNotification = async (receiverId) =>{
     try{
-      const response = authentcatedApiClient.post(`${backendurls.notification}/${user_id}/${receiverId}`,{
+      const response = authentcatedApiClient.post(`${backendurls.notification}/${userId}/${receiverId}`,{
         headers :{
           "details":message
         }
@@ -112,23 +146,19 @@ function Chatarea({ userId ,username}) {
     }
     else{
       if (socket && socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify({ type: 'send', content: text, receiver: receiverId ,sender:user_id}));
-
+        socket.send(JSON.stringify({ type: 'send', content: text, receiver: receiverId ,sender:userId}));
            sendNotification(receiverId) //calling the function to send the notification
-      
       }
       setMessage("")
     }
-    
-    
   };
-
+console.log("eeee:",username);
 
   return (
 <>
 {/* page when it mounting */}
      {
-          userid === null ? (
+          userid === 0 ? (
             <div className={styles.chatarea}>
               <div className={`container ${styles.nomessage}`}>
                 <img src={noimage} alt="No messages" />
@@ -152,11 +182,11 @@ function Chatarea({ userId ,username}) {
             <div className={styles.chatarea}>
               <div className={styles.chatheader}>
                 {image ? (
-                  <Link to={`/shoeprofiles/${receiverId}`} state={{ comingfrom: "matched_page" }}>
+                  <Link to={`/shoeprofiles`} state={{ comingfrom: "matched_page" ,userid:receiverId  }}>
                     <img className={styles.profilePhoto} src={`${import.meta.env.VITE_IMAGE}${image}`} width="40px" height="40px" alt="Profile" />
                   </Link>
                 ) : (
-                  <Link to={`/shoeprofiles/${receiverId}`} state={{ comingfrom: "matched_page" }}>
+                  <Link to={`/shoeprofiles`} state={{ comingfrom: "matched_page", userid:receiverId }}>
                     <img className={styles.profilePhoto} src={image1} width="50px" height="50px" alt="Profile" />
                   </Link>
                 )}
@@ -166,7 +196,7 @@ function Chatarea({ userId ,username}) {
               <div className={styles.wrapper}>
                 <div className={styles.messagepart}>
                   {prevMessages.length !== 0 && prevMessages.map((msg, index) => (
-                    <Messages key={index} send={parseInt(msg.sender) === parseInt(userId) ? "receive" : "send"} text={msg.content} time={msg.timestamp} />
+                    <Messages key={index} send={parseInt(msg.sender) === parseInt(receiverId) ? "receive" : "send"} text={msg.content} time={msg.timestamp} />
                   ))}
                   <div ref={messageEndRef} /> {/* The end of the message list */}
                 </div>

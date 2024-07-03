@@ -1,0 +1,31 @@
+
+.head{
+    /* background-color: rebeccapurple; */
+    text-align: center;
+    padding: 2vh;
+}
+.userslist{
+    padding: 4vh;
+}
+.paymentdetails{
+    padding: 4vh;
+}
+.lists{
+    padding:  10px 0px;
+    background-color: white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    
+}
+.details_name{
+   font-size: 20px;
+
+}
+.value{
+   font-size: 26px;
+   color: green;
+   margin-left: 7vw;
+   position: relative;
+} 
+.body{
+    padding: 5vh;
+}

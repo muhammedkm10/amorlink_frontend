@@ -16,6 +16,7 @@ export const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
 
 function App() {
   const user_id = localStorage.getItem("user_id");
+  console.log(user_id);
   const excludePaths = ['/chat/:userId/:name'];
 
   return (

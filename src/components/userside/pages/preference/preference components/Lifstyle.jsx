@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './preferecescomponents.module.css'
-import image from '../../../../../assets/images/pppp.jpg'
+import image from '../../../../../assets/images/ppti.png'
 import { Link } from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
@@ -134,7 +134,7 @@ function Lifstyle() {
                 </p>
               </div>
               <div className={styles.buttonwrapper}>
-              <Link to={`/shoeprofiles/${element.main_detail_of_user.id}`}  state={{ comingfrom: "preferences" }}><button className={styles.button1}>Go to Profile</button></Link>
+              <Link to={`/shoeprofiles`}  state={{ comingfrom: "preferences",userid:element.main_detail_of_user.id }}><button className={styles.button1}>Go to Profile</button></Link>
               
                 {!subscribed ? (
                    <Link  onClick={()=>setIsvisibleModal(true)} className='ms-2'><button className={styles.button3}><i className="fas fa-lock me-2 text-warning"></i>Request to match</button></Link>
