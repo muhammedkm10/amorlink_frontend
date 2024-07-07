@@ -17,40 +17,79 @@ const NotificationComponent = ({ userId}) => {
     };
 
     ws.onmessage = (event) => {
+      console.log("my event",event);
       const message = JSON.parse(event.data);
       console.log("point of view in the app.js", message);
+      if (message.notification_for === 'for_chat'){
+          if (window.location.pathname.startsWith('/chat')) {
+            return;
+          }
+           // Display the notification using react-toastify
+          toast.info(
+            <div>
+              {`${message.notification}`}
+            <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/chat/${userId}/${0}`}><i class="fa fa-arrow-right"></i></a></div>
+            </div>, 
+            {
+              closeOnClick: true,
+              pauseOnHover: true,
+              progressBar: false,
+              
+              style: {
+                background: "linear-gradient(to right, wheat, white, wheat)",
+                color: 'black',
+                border: "1px solid #40183a",
+                fontSize: '14px',
+                padding: '10px',
+                width: "300px",
+                height: "150px",
+                maxHeight: "150px",
+              },
+              icon: () => (
+                <FontAwesomeIcon style={{ alignSelf: 'center', top: "0", right: "0", position: "relative" }} />
+              ),
+            }
+          );
+         
+          
+      }
+     
+       else if (message.notification_for === 'requested' || message.notification_for === 'accepted'){
+        console.log(message.notification);
+        
+        toast.info(
+          <div>
+            {`${message.notification}`}
+          <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/matches`}><i class="fa fa-arrow-right"></i></a></div>
+          </div>, 
+          {
+            closeOnClick: true,
+            pauseOnHover: true,
+            progressBar: false,
+            
+            style: {
+              background: "white",
+              color: 'black',
+              border: "2px solid black",
+              fontSize: '14px',
+              padding: '10px',
+              width: "300px",
+              height: "150px",
+              maxHeight: "150px",
+              borderRadius : "0 !important"
+            },
+            icon: () => (
+              <FontAwesomeIcon style={{ alignSelf: 'center', top: "0", right: "0", position: "relative" }} />
+            ),
+          }
+        );
+            
+      }
 
       // Check if the current route is in the excludePaths
-      if (window.location.pathname.startsWith('/chat')) {
-        return;
-      }
+      
   
-      // Display the notification using react-toastify
-      toast.info(
-        <div>
-          {`${message.notification}`}
-        <div style={{"position":"absolute",'right':"10px",'bottom':"10px",'color':'black'}}><a href={`/chat/${userId}/${0}`}><i class="fa fa-arrow-right"></i></a></div>
-        </div>, 
-        {
-          closeOnClick: true,
-          pauseOnHover: true,
-          progressBar: false,
-          
-          style: {
-            background: "linear-gradient(to right, wheat, white, wheat)",
-            color: 'black',
-            border: "1px solid #40183a",
-            fontSize: '14px',
-            padding: '10px',
-            width: "300px",
-            height: "150px",
-            maxHeight: "150px",
-          },
-          icon: () => (
-            <FontAwesomeIcon style={{ alignSelf: 'center', top: "0", right: "0", position: "relative" }} />
-          ),
-        }
-      );
+     
     };
 
     ws.onerror = (error) => {

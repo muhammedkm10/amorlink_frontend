@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 import '../../../../assets/css/sweetalert-custom.css'
 import image1 from '../../../../assets/images/ppti.png'
 
+
 function Userprofile() {
   const [userdetails, setUserdetails] = useState({})
   const [userbasicdetails, setUserbasicdetails] = useState({})
@@ -152,14 +153,21 @@ const handlesubmit = async () =>{
             if (response.data.message == "success"){
                Swal.fire({
                   title: 'Edited successfully',
-                  text: 'Details edited succesfully',
                   icon: 'success',
                   customClass: {
-                      popup: 'my-custom-popup-class',
-                      title: 'my-custom-title-class',
-                      content: 'my-custom-content-class',
-                  
-                  },
+                    popup: 'swal-custom-container',
+                    title: 'swal-custom-title',
+                    icon: 'swal-custom-icon',
+                    confirmButton: 'swal-custom-confirm-button',
+                    cancelButton: 'swal-custom-cancel-button',
+                    actions: 'swal-custom-buttons-container',
+                    backdrop: `
+                        black
+                        center left
+                        no-repeat
+                      ` 
+                  }
+
               });
               setmessage(false)
               setImage(null)

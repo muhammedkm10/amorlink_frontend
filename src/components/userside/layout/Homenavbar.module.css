@@ -123,6 +123,7 @@
     height: 8vh;
     padding: 8px;
   }
+
 }
 
 
@@ -143,4 +144,120 @@
 /* Animation for navbar logo */
 .navbarLogo {
   animation: bounce 5s 1; 
+}
+
+.notification_section {
+  position: absolute;
+  right: 15px;
+  top: 83px;
+  z-index: 4;
+  width: 27vw;
+  height: auto;
+  /* height: 85vh; */
+  overflow-y: scroll;
+  animation: slideIn 0.5s ease-out forwards;
+  background-color:  rgb(244, 233, 233);
+  padding: 2px;
+}
+.notification_section::-webkit-scrollbar {
+  display: none;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+  }
+  to {
+    transform: translateX(0); 
+  }
+}
+.notification_section_without_message{
+  position: absolute;
+  right: 15px;
+  top: 83px;
+  z-index: 4;
+  width: 27vw;
+  height: 40vh;
+  overflow-y: scroll;
+  animation: slideIn 0.5s ease-out forwards;
+  background-color:  rgb(244, 233, 233);
+
+}
+.notification_section_without_message::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.notification_bar{
+  background-color: #771a42;
+  border-bottom: 1px solid rgb(234, 228, 228);
+  border-radius: 10px;
+  
+}
+.notification_text{
+  font-size: 12px;
+  text-align: center;
+  padding-top: 15px;
+  color: white;
+}
+.sender_name{
+  color: rgb(222, 176, 86);
+}
+.no_notification{
+  color: black;
+  text-align: center;
+  margin-top: 18vh;
+
+}
+.nav_button{
+  background-color: #c0105c;
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  
+}
+.nav_button:hover{
+  color: #442b40;
+}
+.lower{
+  text-align: center;
+  margin-top: 2vh;
+  padding-bottom: 20px;
+
+}
+.clear_button{
+   font-size: 14px;
+   border: none;
+   margin-left:14vw;
+}
+.clear_button:hover{
+  color: #771a42;
+}
+
+.notificationBadge{
+   color: wheat;
+    position: relative;
+    color: white;
+    font-size: 11px;
+    margin-top: 10px;
+    border-radius: 50px;
+    background-color: rgb(220, 9, 181);
+    padding: 0px 3px;
+
+}
+.content{
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width:1000px) {
+
+  .notificationBadge{
+    display: none
+  }
+  .content{
+    display:initial;
+  }
 }

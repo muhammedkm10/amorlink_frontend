@@ -1,12 +1,56 @@
-.my-custom-popup-class {
-    border-radius: 30px;
-    background-color: rgb(249, 249, 249);
-}
+/* customSwalStyles.css */
 
-.my-custom-title-class {
-    color: #440a23;
-}
+.swal-custom-container {
+    /* background-color: #78145c; */
+    background-color: transparent;
+    border: 2px solid white;
+    /* background-color: rgb(245, 235, 235); */
+    border-radius: 10px;
+  }
+  
+  .swal-custom-title {
+    color: wheat;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .swal-custom-icon {
+    color: #ffcc00 ;
+  }
+  
+  .swal-custom-confirm-button {
+    background:linear-gradient(to right,rgb(4, 98, 36),rgb(132, 187, 13)) !important;
 
-.my-custom-content-class {
-    font-size: 5px;
-}
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px !important;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .swal-custom-confirm-button:hover{
+    color: black !important;
+  }
+  
+  .swal-custom-cancel-button {
+    background:linear-gradient(to right,rgb(202, 12, 12),rgb(229, 108, 108)) !important;
+    color: white;
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .swal-custom-cancel-button:hover{
+    color: black !important;
+  }
+  
+  .swal-custom-buttons-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .swal-custom-overlay {
+    background: rgba(0, 0, 0, 0.7) !important; /* Dim the background */
+    backdrop-filter: blur(5px) !important; /* Optional: apply blur to the background */
+  }
+  

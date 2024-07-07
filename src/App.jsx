@@ -22,6 +22,8 @@ function App() {
   return (
     <Provider store={store}>
       <Elements stripe={stripePromise}>
+      <NotificationComponent userId={user_id} excludePaths={excludePaths} /> {/* Pass excludePaths prop */}
+
         <Router>
           <Routes>
             <Route path="/*" element={<UserRouter />} />
@@ -34,7 +36,7 @@ function App() {
           closeOnClick
           pauseOnHover
           />
-        <NotificationComponent userId={user_id} excludePaths={excludePaths} /> {/* Pass excludePaths prop */}
+        
       </Elements>
     </Provider>
   );

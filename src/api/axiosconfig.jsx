@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { backendurls } from './backendEndpoints';
+import Swal from 'sweetalert2';
+import '../assets/css/sweetalert-custom.css'
 
 
 // api clint that does not need tokens  (for login and signup)
@@ -33,6 +35,7 @@ export const authentcatedApiClient = axios.create({
     if (token.access) {
       config.headers.Authorization = `Bearer ${token.access}`;
     }
+    console.log(config);
     return config;
   },
   error => {
@@ -49,13 +52,19 @@ async function refreshAccessToken(refreshToken,user,redirectUrl) {
   try {
     const response = await apiClient.post(backendurls.refreshtokenurl, { refresh: refreshToken });
     // Save the new tokens to localStorage
+    console.log(response);
     if (user === "user"){
       localStorage.setItem("authUserTokens", JSON.stringify(response.data));
-      return authentcatedApiClient(redirectUrl);
+      console.log(JSON.stringify(response.data));
+      console.log(redirectUrl);
+      authentcatedApiClient.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
+      redirectUrl.headers['Authorization'] = `Bearer ${response.data.access}`
+      console.log(redirectUrl); 
+      return  authentcatedApiClient(redirectUrl);
     }
     else if (user === "admin"){
       localStorage.setItem("authAdminTokens", JSON.stringify(response.data));
-      return admin_authentcatedApiClient(redirectUrl);
+      return  authentcatedApiClient(redirectUrl);
     }
    
   } catch (error) {
@@ -75,8 +84,32 @@ authentcatedApiClient.interceptors.response.use(
     return response;
   },
   // if the error occured
-  (error) => {
+  async (error) => {
     const redirectUrl = error.config;
+    if (error.response && error.response.status === 403){
+         localStorage.removeItem("authUserTokens")
+         localStorage.removeItem("user_id")
+         Swal.fire({
+          title: "Match removed  successfully",
+          icon: 'success',
+          customClass: {
+            popup: 'swal-custom-container',
+            title: 'swal-custom-title',
+            icon: 'swal-custom-icon',
+            confirmButton: 'swal-custom-confirm-button',
+            cancelButton: 'swal-custom-cancel-button',
+            actions: 'swal-custom-buttons-container',
+            backdrop: `
+                black
+                center left
+                no-repeat
+              ` 
+          }
+      });
+      window.location.href= "/?message=Match removed successfully"
+
+
+    }
     if (error.response && error.response.status === 401) {
       redirectUrl._retry = true;
       // Retrieve the current tokens from localStorage

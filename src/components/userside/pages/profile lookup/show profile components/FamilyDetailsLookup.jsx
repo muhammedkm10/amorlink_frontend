@@ -5,7 +5,6 @@ import { backendurls } from '../../../../../api/backendEndpoints'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
 import '../../../../../assets/css/custom-toastify.css'
 

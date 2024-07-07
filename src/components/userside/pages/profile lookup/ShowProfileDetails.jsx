@@ -16,6 +16,7 @@ import { CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from 'cdbreact'
 import BasicDetailsLookup from './show profile components/UserbasicdetailsLookup'
 import Swal from 'sweetalert2'
 import SubscriptionNeededModal from '../preference/preference components/SubscriptionNeededModal'
+import '../../../../assets/css/sweetalert-custom.css'
 
 
 function ShowProfileDetails() {
@@ -100,7 +101,20 @@ console.log(comingfrom,"i am coming from");
           showCancelButton: true,
           confirmButtonText: 'Yes, proceed',
           cancelButtonText: 'No, cancel',
-          reverseButtons: true
+          reverseButtons: true,
+          customClass: {
+            popup: 'swal-custom-container',
+            title: 'swal-custom-title',
+            icon: 'swal-custom-icon',
+            confirmButton: 'swal-custom-confirm-button',
+            cancelButton: 'swal-custom-cancel-button',
+            actions: 'swal-custom-buttons-container',
+            backdrop: `
+                black
+                center left
+                no-repeat
+              ` 
+          }
         });
         if (result.isConfirmed){
           try{
@@ -109,6 +123,19 @@ console.log(comingfrom,"i am coming from");
               Swal.fire({
                 title: "Request sent successfully",
                 icon: 'success',
+                customClass: {
+                  popup: 'swal-custom-container',
+                  title: 'swal-custom-title',
+                  icon: 'swal-custom-icon',
+                  confirmButton: 'swal-custom-confirm-button',
+                  cancelButton: 'swal-custom-cancel-button',
+                  actions: 'swal-custom-buttons-container',
+                  backdrop: `
+                      black
+                      center left
+                      no-repeat
+                    ` 
+                }
             });
             }
             navigate('/preferences')

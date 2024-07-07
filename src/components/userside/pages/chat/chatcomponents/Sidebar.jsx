@@ -46,10 +46,10 @@ function Sidebar() {
       </div>
       </div>
 
-        <div className={styles.searchcontainer}>
+        {/* <div className={styles.searchcontainer}>
       <input  className={styles.search} type="text" placeholder='search' />
 
-      </div>
+      </div> */}
     
         </div>
         {

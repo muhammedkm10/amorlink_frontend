@@ -15,6 +15,7 @@ import {
 import AdminDashboard from '../admin management components/dashboard/AdminDashboard'
 import UserManagement from '../admin management components/user management/UserManagement'
 import SubscriptionManagement from '../admin management components/subscription management/SubscriptionManagement'
+import Swal from 'sweetalert2'
 
 function AdminHome() {
     const state = useSelector(state=>state.auth.admintoken)
@@ -23,13 +24,24 @@ function AdminHome() {
     const [sidebarElement,setSidebarElement] = useState(null)
     
 
-      const  logout =  () =>{
+      const  logout =  async () =>{
+        console.log("asjdfnasd");
+          const result = await Swal.fire({
+            title: 'Do you want to logout?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, proceed',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true
+          })
+          if (result.isConfirmed){
+            dispatch({type:"LOGIN FAILURE"})
+            localStorage.removeItem("authAdminTokens");
+            localStorage.removeItem("role");
+            navigate("/admin/adminlogin")
+          }
 
-              const loginrl = "/admin/adminlogin";
-              dispatch({type:"LOGIN FAILURE"})
-              localStorage.removeItem("authAdminTokens");
-              localStorage.removeItem("role");
-              navigate("/admin/adminlogin")
+              
 }
 
 

@@ -3,7 +3,6 @@ import styles from './common1.module.css'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import {Link} from 'react-router-dom'
-import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
 
 

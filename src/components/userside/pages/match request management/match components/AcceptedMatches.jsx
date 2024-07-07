@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react'
 import styles from './matchcomponents.module.css'
-import image from '../../../../../assets/images/home fixed.jpg'
+import image from '../../../../../assets/images/ppti.png'
 import {Link, useNavigate} from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
 import Swal from 'sweetalert2'
-
+import '../../../../../assets/css/sweetalert-custom.css'
 
 
 function AcceptedMatches() {
@@ -59,7 +59,20 @@ const RemoveFromMatches = async (userid) =>{
     showCancelButton: true,
     confirmButtonText: 'Yes, proceed',
     cancelButtonText: 'No, cancel',
-    reverseButtons: true
+    reverseButtons: true,
+    customClass: {
+      popup: 'swal-custom-container',
+      title: 'swal-custom-title',
+      icon: 'swal-custom-icon',
+      confirmButton: 'swal-custom-confirm-button',
+      cancelButton: 'swal-custom-cancel-button',
+      actions: 'swal-custom-buttons-container',
+      backdrop: `
+          black
+          center left
+          no-repeat
+        ` 
+    }
   });
   if (result.isConfirmed){
     try{
@@ -70,6 +83,19 @@ const RemoveFromMatches = async (userid) =>{
         Swal.fire({
           title: "Match removed  successfully",
           icon: 'success',
+          customClass: {
+            popup: 'swal-custom-container',
+            title: 'swal-custom-title',
+            icon: 'swal-custom-icon',
+            confirmButton: 'swal-custom-confirm-button',
+            cancelButton: 'swal-custom-cancel-button',
+            actions: 'swal-custom-buttons-container',
+            backdrop: `
+                black
+                center left
+                no-repeat
+              ` 
+          }
       });
       setisremoved(!isremoved)
       }

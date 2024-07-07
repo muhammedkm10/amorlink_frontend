@@ -1,6 +1,6 @@
 // UserRouter.js
 import React, { Suspense } from 'react';
-// import UserLogin from './pages/loginpage/UserLogin';
+import UserLogin from './pages/loginpage/UserLogin';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './pages/signuppage/Usersignup';
 import Modal from './pages/signuppage/otp/otpmodal';
@@ -10,15 +10,19 @@ import Usersiderouteprotection from '../../routprotections/Usersiderouteprotecti
 import Userloginpageprotection from '../../routprotections/Userloginpageprotection';
 import NotFoundPage from './UI/Error';
 import { useSelector } from 'react-redux';
-import Preferences from './pages/preference/Preferences';
+// import Preferences from './pages/preference/Preferences';
 import ShowProfileDetails from './pages/profile lookup/ShowProfileDetails';
-import Matches from './pages/match request management/Matches';
+// import Matches from './pages/match request management/Matches';
 import Subscriptions from './pages/subscription management/Subscriptions';
 import Thanks from './UI/Thanks';
 import NotFoundPageforUser from './UI/UserNotFound';
 import ChatPage from './pages/chat/chatPage';
-const UserLogin = React.lazy(()=>import ('./pages/loginpage/UserLogin'))
 const Userprofile = React.lazy(()=>import ('./pages/userprofile/Userprofile'))
+const Preferences = React.lazy(()=>import ('./pages/preference/Preferences'))
+const Matches = React.lazy(()=>import ('./pages/match request management/Matches'))
+
+
+
 
 function UserRouter() {
   const state = useSelector(state=>state.otppage.isvisible)

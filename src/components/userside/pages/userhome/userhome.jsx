@@ -73,7 +73,7 @@ function Userhome() {
             {isvisibleModal && (
                  <div className={styles.modal}>
                  <div className={styles.modal_content}>
-                   <h3 className='text-warning'>🌟 Why Upgrade to a Premium Subscription? 🌟</h3>
+                   <h3 className='text-warning'> Why Upgrade to a Premium Subscription? </h3>
                     <p className={styles.para_for_subscription}> At AmorLink, we believe that finding a meaningful and lasting relationship should be an enriching and enjoyable experience. Our free membership provides access to basic features and services, but by upgrading to our Premium Subscription, you unlock a suite of exclusive benefits designed to enhance your journey towards love and companionship. </p>
 
                   <div className={`${styles.buttonContainer} p-3 `}>

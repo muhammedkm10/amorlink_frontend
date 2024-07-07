@@ -4,7 +4,6 @@ import { backendurls } from '../../../../../api/backendEndpoints'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import profile from '../../../../../assets/images/pppp.jpg';
 import {Link} from 'react-router-dom'
-import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTrash } from '@fortawesome/free-solid-svg-icons';

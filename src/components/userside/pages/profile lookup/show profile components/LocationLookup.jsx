@@ -2,11 +2,7 @@ import React ,{useEffect,useState}from 'react'
 import styles from './common1.module.css'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
-import {Link} from 'react-router-dom'
-import statesData from '../../../../../assets/states'
-import Swal from 'sweetalert2';
 import '../../../../../assets/css/sweetalert-custom.css'
-
 
 
 function LocationLookup({userid,subscribed}) {

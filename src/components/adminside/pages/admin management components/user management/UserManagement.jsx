@@ -97,7 +97,6 @@ const BlockAndUnBlocking = async (user_id,type) =>{
                                       <th>User name</th>
                                       <th>Email</th>
                                       <th>Phone</th>
-                                      <th>Date joined</th>
                                       <th>actions</th>
                                   </tr>
                               </thead>
@@ -108,7 +107,6 @@ const BlockAndUnBlocking = async (user_id,type) =>{
                                         <td><p>{user.username}</p></td>
                                         <td><p>{user.email}</p></td> 
                                         <td><p>{user.phone}</p></td>
-                                        <td><p>{user.date_joined}</p></td>
                                         <td>
                                           { !user.is_blocked ? 
                                                 (<button onClick={()=>BlockAndUnBlocking(user.id,"block")} className='px-1 px-lg-5 m-2 bg-danger border-0 text-white'>block</button>):

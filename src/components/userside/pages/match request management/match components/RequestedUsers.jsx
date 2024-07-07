@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './matchcomponents.module.css'
 import image from '../../../../../assets/images/pppp.jpg'
-
+import '../../../../../assets/css/sweetalert-custom.css'
 import { Link } from 'react-router-dom'
 import { authentcatedApiClient } from '../../../../../api/axiosconfig'
 import { backendurls } from '../../../../../api/backendEndpoints'
@@ -13,6 +13,8 @@ function RequestedUsers() {
   const [requestedusers,setRequestedUsers] = useState([])
   const [requestaccepted,setRequestaccepted] = useState(false)
   const [isLoading,setLoading] = useState(false)
+  const current_user = localStorage.getItem("user_id")
+
 
 
   // fetching requested users details for this user
@@ -57,6 +59,7 @@ const AcceptRequest = async (userid) =>{
 
     const response = await authentcatedApiClient.patch(`${backendurls.matchrequests}/${userid}`)
     if (response.data.message === "success"){
+         SendAcceptedNotification(userid)
       Swal.fire({
         title: "Request accepted successfully",
         icon: 'success',
@@ -80,7 +83,20 @@ const RemoveFromRequests = async (userid) =>{
     showCancelButton: true,
     confirmButtonText: 'Yes, proceed',
     cancelButtonText: 'No, cancel',
-    reverseButtons: true
+    reverseButtons: true,
+    customClass: {
+      popup: 'swal-custom-container',
+      title: 'swal-custom-title',
+      icon: 'swal-custom-icon',
+      confirmButton: 'swal-custom-confirm-button',
+      cancelButton: 'swal-custom-cancel-button',
+      actions: 'swal-custom-buttons-container',
+      backdrop: `
+          black
+          center left
+          no-repeat
+        ` 
+    }
   });
   if (result.isConfirmed){
     try{
@@ -91,6 +107,19 @@ const RemoveFromRequests = async (userid) =>{
         Swal.fire({
           title: "Request removed  successfully",
           icon: 'success',
+          customClass: {
+            popup: 'swal-custom-container',
+            title: 'swal-custom-title',
+            icon: 'swal-custom-icon',
+            confirmButton: 'swal-custom-confirm-button',
+            cancelButton: 'swal-custom-cancel-button',
+            actions: 'swal-custom-buttons-container',
+            backdrop: `
+                black
+                center left
+                no-repeat
+              ` 
+          }
       });
       setRequestaccepted(!requestaccepted)
       }
@@ -103,6 +132,23 @@ const RemoveFromRequests = async (userid) =>{
   }
   
 
+
+}
+
+// sending notification to the user
+
+const SendAcceptedNotification = async (recieverid) =>{
+  try{
+    const response = authentcatedApiClient.post(`${backendurls.notification}/${current_user}/${recieverid}`,{
+      headers :{
+        "details":"!request!accepted!"
+      }
+    })
+    console.log(response);
+  }
+  catch(error){
+    console.log(error);
+  }
 
 }
 

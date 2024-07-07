@@ -5,7 +5,8 @@ import styles from './matchcomponents.module.css'
 import { backendurls } from '../../../../../api/backendEndpoints'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
-
+import '../../../../../assets/css/sweetalert-custom.css'
+import image from '../../../../../assets/images/ppti.png'
 
 
 function RequestedByCurrentUser() { 
@@ -53,7 +54,20 @@ function RequestedByCurrentUser() {
         showCancelButton: true,
         confirmButtonText: 'Yes, proceed',
         cancelButtonText: 'No, cancel',
-        reverseButtons: true
+        reverseButtons: true,
+        customClass: {
+          popup: 'swal-custom-container',
+          title: 'swal-custom-title',
+          icon: 'swal-custom-icon',
+          confirmButton: 'swal-custom-confirm-button',
+          cancelButton: 'swal-custom-cancel-button',
+          actions: 'swal-custom-buttons-container',
+          backdrop: `
+              black
+              center left
+              no-repeat
+            ` 
+        }
       });
       if (result.isConfirmed){
         try{
@@ -64,6 +78,19 @@ function RequestedByCurrentUser() {
               Swal.fire({
                 title: "Request removed  successfully",
                 icon: 'success',
+                customClass: {
+                  popup: 'swal-custom-container',
+                  title: 'swal-custom-title',
+                  icon: 'swal-custom-icon',
+                  confirmButton: 'swal-custom-confirm-button',
+                  cancelButton: 'swal-custom-cancel-button',
+                  actions: 'swal-custom-buttons-container',
+                  backdrop: `
+                      black
+                      center left
+                      no-repeat
+                    ` 
+                }
             });
             setRequestaccepted(!requestaccepted)
             }

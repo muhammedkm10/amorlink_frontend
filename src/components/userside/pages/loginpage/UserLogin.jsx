@@ -14,7 +14,9 @@ import { ClipLoader } from 'react-spinners'
 import apiClient from '../../../../api/axiosconfig'
 import { backendurls } from '../../../../api/backendEndpoints'
 
+
 function UserLogin() {
+ 
   const notify = (data) =>
     toast.error(
       <div>
@@ -33,6 +35,23 @@ function UserLogin() {
   useEffect(() => {
     setIsVisible(true)
   }, [])
+  const blocked = useLocation();
+  // useeffect for blocked users
+  useEffect(() => {
+    // Function to get query parameter
+    const getQueryParam = (param) => {
+      const urlParams = new URLSearchParams(blocked.search);
+      return urlParams.get(param);
+    };
+
+    const message1 = getQueryParam("message");
+
+
+    if (message1) {
+      // Display the message
+      setisinvalid("You are blocked")
+    }
+  }, [blocked]);
 
   const auth = useSelector((state) => state.auth)
   const dispatch = useDispatch()

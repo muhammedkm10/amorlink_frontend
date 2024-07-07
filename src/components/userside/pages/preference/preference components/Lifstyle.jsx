@@ -7,6 +7,7 @@ import { backendurls } from '../../../../../api/backendEndpoints'
 import { ClipLoader } from 'react-spinners'
 import Swal from 'sweetalert2'
 import SubscriptionNeededModal from './SubscriptionNeededModal'
+import '../../../../../assets/css/sweetalert-custom.css'
 
 
 
@@ -16,6 +17,7 @@ function Lifstyle() {
   const [isLoading,setLoading] = useState(false)
   const [requested,setrequested] = useState(false)
   const [subscribed,setSubscribed] = useState(null)
+  const current_user = localStorage.getItem("user_id")
 
   // subscription modal showing state
   const [isvisibleModal, setIsvisibleModal] = useState(false)
@@ -57,15 +59,42 @@ function Lifstyle() {
       showCancelButton: true,
       confirmButtonText: 'Yes, proceed',
       cancelButtonText: 'No, cancel',
-      reverseButtons: true
+      reverseButtons: true,
+      customClass: {
+        popup: 'swal-custom-container',
+        title: 'swal-custom-title',
+        icon: 'swal-custom-icon',
+        confirmButton: 'swal-custom-confirm-button',
+        cancelButton: 'swal-custom-cancel-button',
+        actions: 'swal-custom-buttons-container',
+        backdrop: `
+            black
+            center left
+            no-repeat
+          ` 
+      }
     });
     if (result.isConfirmed){
       try{
         const response = await authentcatedApiClient.post(`${backendurls.matchrequests}/${id}`)
         if (response.data.message === "success"){
+          await sendNotification(id)
           Swal.fire({
             title: "Request sent successfully",
             icon: 'success',
+            customClass: {
+              popup: 'swal-custom-container',
+              title: 'swal-custom-title',
+              icon: 'swal-custom-icon',
+              confirmButton: 'swal-custom-confirm-button',
+              cancelButton: 'swal-custom-cancel-button',
+              actions: 'swal-custom-buttons-container',
+              backdrop: `
+                  black
+                  center left
+                  no-repeat
+                ` 
+            }
         });
         setrequested(!requested)
         }
@@ -83,6 +112,19 @@ function Lifstyle() {
 
   }
 
+  const sendNotification = async (reciever_id) =>{
+    try{
+      const response = authentcatedApiClient.post(`${backendurls.notification}/${current_user}/${reciever_id}`,{
+        headers :{
+          "details":"!request!for!match"
+        }
+      })
+      console.log(response);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
 
   return (
     <div className="row">
