@@ -1,5 +1,3 @@
-
-
 .outerwrapper {
   margin-top: 15vh !important;
   padding: 10vh;
@@ -12,8 +10,6 @@
     #b72b5d,
     #d1316a
   );
-  /* max-width: 600px; */
-  /* margin: auto; */
   text-align: center;
 }
 
@@ -31,31 +27,27 @@
   padding: 20px !important;
   font-weight: 300;
 
-
   /* text-align: center; */
 }
-.info1{
+.info1 {
   color: white;
   padding: 20px !important;
-  max-width:100px;
+  max-width: 100px;
 }
 
 .tableBackgroundAlternate {
-  /* background: #b72b5d !important; Replace with your desired background color */
   width: 100%;
 }
 
-.rows{
+.rows {
   border-bottom: 1px solid #551d4d;
 }
 
 .items {
-  /* border-radius: 4px; */
   color: wheat !important;
   font-size: 15px !important;
   padding: 20px !important;
-  /* min-width: fit-content; */
-  /* padding: 200px; */
+
 }
 .images {
   padding: 2vh;
@@ -164,7 +156,6 @@ input[type='number']::-webkit-outer-spin-button {
   background-color: #0056b3;
 }
 
-
 /* image gallary styles */
 
 .selectedImage {
@@ -173,37 +164,33 @@ input[type='number']::-webkit-outer-spin-button {
   /* margin-left: 20px; */
 }
 
-
-.images{
-  width: 200px!important;
-  height: 200px!important;
+.images {
+  width: 200px !important;
+  height: 200px !important;
   position: relative;
-
 }
 
 .imgwrapper {
-  width: 200px!important;
-  height: 200px!important;
+  width: 200px !important;
+  height: 200px !important;
   position: relative;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .deleteButton {
   position: absolute;
   top: 20px;
-  right: 20px; 
+  right: 20px;
   background: none;
   border: none;
-  color: rgb(0, 0, 0); 
+  color: rgb(0, 0, 0);
   cursor: pointer;
   z-index: 1;
 }
 
-
 /* blurring details */
-.blurringinfo{
-  filter: blur(5px); /* Adjust the blur intensity */
-  /* color: transparent; */
+.blurringinfo {
+  filter: blur(5px); 
   color: white;
-  text-shadow: 0 0 5px white
+  text-shadow: 0 0 5px white;
 }

@@ -1,135 +1,118 @@
-.sidebarusers{
-    overflow-y: scroll;
+.sidebarusers {
+  overflow-y: scroll;
 }
 .sidebarusers {
-    overflow-y: scroll; 
-    
+  overflow-y: scroll;
 }
 
 .sidebarusers::-webkit-scrollbar {
+  display: none;
+}
+
+.linktochat {
+  text-decoration: none;
+}
+
+.user {
+  height: 70px;
+  border-bottom: 1px rgb(86, 34, 82) solid;
+  padding-left: 20px;
+  padding-top: 15px;
+}
+.user:hover {
+  background: linear-gradient(to right, #882277, #5c2154, #6a2161);
+}
+.head {
+  padding: 1vh;
+  border-bottom: 1px rgb(175, 175, 175) solid;
+}
+
+.search {
+  width: 100%;
+  border-radius: 5px;
+  height: 25px;
+}
+.searchcontainer {
+  text-align: center;
+}
+.sidebar {
+  border-radius: 10px 0px 10px 10px;
+  height: 90vh;
+}
+.profilePhoto {
+  border-radius: 50%;
+}
+.username {
+  color: white;
+  margin-left: 1vw;
+}
+.mainHeading {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.searchbutton {
+  margin-top: 2px;
+  cursor: pointer;
+}
+.searchbutton :hover {
+  color: #959394;
+}
+
+@media (max-width: 900px) {
+  .username {
     display: none;
   }
+  .match {
+    font-size: 10px;
+  }
+  .search {
+    font-size: 5px;
+  }
+  .icon {
+    font-size: 10px;
+  }
 
-  
-.linktochat{
-    text-decoration: none;
-
-}
-
-.user{
-    height: 70px;
-    border-bottom: 1px rgb(86, 34, 82) solid;
-    padding-left: 20px;
-    padding-top: 15px;
-
-}
-.user:hover{
-    background: linear-gradient(to right, #882277, #5c2154, #6a2161);
-}
-.head{
-    padding: 1vh;
-    border-bottom: 1px rgb(175, 175, 175) solid;
-}
-
-.search{
-    width: 100%;
-    border-radius: 5px;
-    height: 25px;
-    
-}
-.searchcontainer{
-    text-align: center;
-}
-.sidebar{
-    border-radius: 10px 0px 10px 10px;
-    height: 90vh;
-}
-.profilePhoto{
-    border-radius: 50%;
-}
-.username{
-    color: white;
-    margin-left: 1vw;
-}
-.mainHeading{
-    margin:auto;
-    width: 90%;
-    text-align: center;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px ;
-}
-.searchbutton{
-    margin-top: 2px;
-    cursor: pointer;
-
-}
-.searchbutton :hover{
-    color: #959394;
-}
-
-
-
-@media (max-width:900px){
-    .username{
-        display: none;
-    }
-    .match{
-        font-size: 10px;
-    }
-    .search{
-        font-size: 5px;
-
-    }
-    .icon{
-        font-size: 10px;
-    }
-  
-    .mainHeading{
+  .mainHeading {
     width: 100%;
     display: block;
-
-    }
-    .linkbutton{
-        font-size: 4px;
-    }
-    .preferencebutton{
-        padding: 2px 14px;
-        background-color: antiquewhite;
-
-    }
-    .findmatches{
-        font-size: 5px;
-
-    }
-    .nomatches{
-        margin-left: 0px !important;
-
-
-    }
+  }
+  .linkbutton {
+    font-size: 4px;
+  }
+  .preferencebutton {
+    padding: 2px 14px;
+    background-color: antiquewhite;
+  }
+  .findmatches {
+    font-size: 5px;
+  }
+  .nomatches {
+    margin-left: 0px !important;
+  }
 }
 
-.nomatches{
-    color: white;
-    margin-top: 10vh;
-    margin-left: 3vw;
-    text-align: center;
-    max-width: 20vw;
-    /* margin: auto; */
+.nomatches {
+  color: white;
+  margin-top: 10vh;
+  margin-left: 3vw;
+  text-align: center;
+  max-width: 20vw;
+  /* margin: auto; */
 }
 
-.linkbutton{
-    background-color: deeppink;
-    color: white;
-    border-radius: 20px;
-    padding: 2px 20px;
-    border: none;
-    margin-top: 50px !important;
-
-    
-
+.linkbutton {
+  background-color: deeppink;
+  color: white;
+  border-radius: 20px;
+  padding: 2px 20px;
+  border: none;
+  margin-top: 50px !important;
 }
-.linkbutton:hover{
-    color:wheat !important;
+.linkbutton:hover {
+  color: wheat !important;
 }

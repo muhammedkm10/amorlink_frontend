@@ -1,28 +1,27 @@
-/* customSwalStyles.css */
 
 .swal-custom-container {
-    /* background-color: #78145c; */
-    background-color: transparent;
-    border: 2px solid white;
-    /* background-color: rgb(245, 235, 235); */
-    border-radius: 10px;
+  
+    background-color: white;
+    border-radius: 0px !important;
+
   }
   
   .swal-custom-title {
-    color: wheat;
-    font-size: 24px;
+    color: black;
+    font-size: 16px;
     font-weight: bold;
   }
   
   .swal-custom-icon {
-    color: #ffcc00 ;
+    color: #ba9811 ;
   }
   
   .swal-custom-confirm-button {
     background:linear-gradient(to right,rgb(4, 98, 36),rgb(132, 187, 13)) !important;
+    font-size: 10px !important;
 
     color: white;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 5px !important;
     font-size: 16px;
     border: none;
@@ -35,7 +34,8 @@
   .swal-custom-cancel-button {
     background:linear-gradient(to right,rgb(202, 12, 12),rgb(229, 108, 108)) !important;
     color: white;
-    padding: 10px 20px !important;
+    font-size: 10px !important;
+    padding: 5px 20px !important;
     border-radius: 5px !important;
     font-size: 16px;
     border: none;
@@ -50,7 +50,7 @@
     justify-content: space-around;
   }
   .swal-custom-overlay {
-    background: rgba(0, 0, 0, 0.7) !important; /* Dim the background */
-    backdrop-filter: blur(5px) !important; /* Optional: apply blur to the background */
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(5px) !important; 
   }
   

@@ -4,9 +4,9 @@
 }
 .logo {
   margin: auto;
-  width: 15vh; /* Set the desired width */
+  width: 15vh; 
   height: 6vh;
-  padding: 4px; /* Set the desired height */
+  padding: 4px; 
 }
 .adminnavbar {
   background: black;

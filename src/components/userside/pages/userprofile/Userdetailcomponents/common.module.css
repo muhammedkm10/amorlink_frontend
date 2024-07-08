@@ -1,5 +1,3 @@
-
-
 .outerwrapper {
   padding: 10vh;
   background-image: linear-gradient(
@@ -10,7 +8,6 @@
     #d1316a
   );
   text-align: center;
-
 }
 
 .heading {
@@ -27,20 +24,19 @@
   padding: 20px !important;
   font-weight: 300;
 
-
   /* text-align: center; */
 }
-.info1{
+.info1 {
   color: white;
   padding: 20px !important;
-  max-width:200px;
+  max-width: 200px;
 }
 
 .tableBackgroundAlternate {
   width: 100%;
 }
 
-.rows{
+.rows {
   border-bottom: 1px solid #551d4d;
 }
 
@@ -159,7 +155,6 @@ input[type='number']::-webkit-outer-spin-button {
   background-color: #0056b3;
 }
 
-
 /* image gallary styles */
 
 .selectedImage {
@@ -168,30 +163,26 @@ input[type='number']::-webkit-outer-spin-button {
   /* margin-left: 20px; */
 }
 
-
-.images{
-  width: 200px!important;
-  height: 200px!important;
+.images {
+  width: 200px !important;
+  height: 200px !important;
   position: relative;
-
 }
 
 .imgwrapper {
-  width: 200px!important;
-  height: 200px!important;
+  width: 200px !important;
+  height: 200px !important;
   position: relative;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .deleteButton {
   position: absolute;
   top: 20px;
-  right: 20px; 
+  right: 20px;
   background: none;
   border: none;
-  color: rgb(0, 0, 0); 
+  color: rgb(0, 0, 0);
   cursor: pointer;
   z-index: 1;
 }
-
-

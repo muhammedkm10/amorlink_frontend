@@ -12,6 +12,8 @@ export const backendurls = {
         // admin app
         "subscription":"/adminapp/add_edit_subscription",
         "usermanagement":"/adminapp/usermanagement",
+        "showmatches":"/adminapp/users_matches",
+        
           // admin dashboard
         "dashboard":'adminapp/dashboard',
         // lookup profiles url

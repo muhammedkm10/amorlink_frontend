@@ -6,8 +6,6 @@ import NotFoundPage from '../components/userside/UI/Error'
 function Adminloginpageprotection({children}) {
     const admin = useSelector(state=>state.auth.admintoken)
     const user = useSelector(state=>state.auth.usertoken)
-    console.log("admin in admin login",admin)
-    console.log("hallo")
   return admin || user ?  <NotFoundPage/> : children 
    
 }

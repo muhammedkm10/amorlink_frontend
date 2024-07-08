@@ -14,9 +14,7 @@ import { ClipLoader } from 'react-spinners'
 import apiClient from '../../../../api/axiosconfig'
 import { backendurls } from '../../../../api/backendEndpoints'
 
-
 function UserLogin() {
- 
   const notify = (data) =>
     toast.error(
       <div>
@@ -35,23 +33,22 @@ function UserLogin() {
   useEffect(() => {
     setIsVisible(true)
   }, [])
-  const blocked = useLocation();
+  const blocked = useLocation()
   // useeffect for blocked users
   useEffect(() => {
     // Function to get query parameter
     const getQueryParam = (param) => {
-      const urlParams = new URLSearchParams(blocked.search);
-      return urlParams.get(param);
-    };
+      const urlParams = new URLSearchParams(blocked.search)
+      return urlParams.get(param)
+    }
 
-    const message1 = getQueryParam("message");
-
+    const message1 = getQueryParam('message')
 
     if (message1) {
       // Display the message
-      setisinvalid("You are blocked")
+      setisinvalid('You are blocked')
     }
-  }, [blocked]);
+  }, [blocked])
 
   const auth = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -93,7 +90,7 @@ function UserLogin() {
   }
 
   const [loading, setLoading] = useState(false)
-  const [isinvalid, setisinvalid] = useState("")
+  const [isinvalid, setisinvalid] = useState('')
   const Navigate = useNavigate()
   const dispatch1 = useDispatch()
 
@@ -109,34 +106,34 @@ function UserLogin() {
         if (response.status === 200 && response.data.role === 'user') {
           setLoading(true)
           const resp = response.data
-          apiClient.post(backendurls.accesstokenurl, formData1)
+          apiClient
+            .post(backendurls.accesstokenurl, formData1)
             .then((response) => {
               const p = response.data
-              
-             if (resp.role === 'user') {
+
+              if (resp.role === 'user') {
                 localStorage.setItem('authUserTokens', JSON.stringify(p))
-                localStorage.setItem('user_id',resp.id)
+                localStorage.setItem('user_id', resp.id)
                 dispatch({
                   type: 'LOGIN SUCCESS',
                   payload: { usertoken: p, admintoken: null, role: resp.role },
                 })
-                Navigate('/home')
+                // Navigate('/home')
+                window.location.reload();
               }
             })
         } else {
-          console.log('you are in an erroo', response)
+          console.log('you are in an error', response)
         }
       } catch (error) {
         //  catching error from the backend and taking proper actions here
         if (error.response && error.response.data.error === 'notpresent') {
           setLoading(false)
-          setisinvalid("enter currect email and password")
-        } 
-        else if (error.response.data.error === 'blocked'){
+          setisinvalid('enter currect email and password')
+        } else if (error.response.data.error === 'blocked') {
           setLoading(false)
-          setisinvalid("you are blocked")
-        }
-        else if (error.response.data.error === 'notverified') {
+          setisinvalid('you are blocked')
+        } else if (error.response.data.error === 'notverified') {
           setLoading(true)
           dispatch1({ type: 'SHOW OTP PAGE' })
 
@@ -211,11 +208,7 @@ function UserLogin() {
                   ) : (
                     ''
                   )}
-                  {isinvalid && (
-                    <p className="text-danger">
-                      {isinvalid}
-                    </p>
-                  )}
+                  {isinvalid && <p className="text-danger">{isinvalid}</p>}
 
                   <div className="links">
                     <span className="forget">

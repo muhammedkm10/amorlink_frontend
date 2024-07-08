@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom'
 
 function ChatPage() {
     const { userId,receiverId } = useParams(); 
-    console.log(receiverId);
 
   return (
     

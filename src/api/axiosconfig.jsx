@@ -35,7 +35,6 @@ export const authentcatedApiClient = axios.create({
     if (token.access) {
       config.headers.Authorization = `Bearer ${token.access}`;
     }
-    console.log(config);
     return config;
   },
   error => {
@@ -52,19 +51,17 @@ async function refreshAccessToken(refreshToken,user,redirectUrl) {
   try {
     const response = await apiClient.post(backendurls.refreshtokenurl, { refresh: refreshToken });
     // Save the new tokens to localStorage
-    console.log(response);
     if (user === "user"){
       localStorage.setItem("authUserTokens", JSON.stringify(response.data));
-      console.log(JSON.stringify(response.data));
-      console.log(redirectUrl);
       authentcatedApiClient.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
       redirectUrl.headers['Authorization'] = `Bearer ${response.data.access}`
-      console.log(redirectUrl); 
       return  authentcatedApiClient(redirectUrl);
     }
     else if (user === "admin"){
       localStorage.setItem("authAdminTokens", JSON.stringify(response.data));
-      return  authentcatedApiClient(redirectUrl);
+      admin_authentcatedApiClient.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
+      redirectUrl.headers['Authorization'] = `Bearer ${response.data.access}`
+      return  admin_authentcatedApiClient(redirectUrl);
     }
    
   } catch (error) {
@@ -89,45 +86,27 @@ authentcatedApiClient.interceptors.response.use(
     if (error.response && error.response.status === 403){
          localStorage.removeItem("authUserTokens")
          localStorage.removeItem("user_id")
-         Swal.fire({
-          title: "Match removed  successfully",
-          icon: 'success',
-          customClass: {
-            popup: 'swal-custom-container',
-            title: 'swal-custom-title',
-            icon: 'swal-custom-icon',
-            confirmButton: 'swal-custom-confirm-button',
-            cancelButton: 'swal-custom-cancel-button',
-            actions: 'swal-custom-buttons-container',
-            backdrop: `
-                black
-                center left
-                no-repeat
-              ` 
-          }
-      });
       window.location.href= "/?message=Match removed successfully"
-
-
     }
     if (error.response && error.response.status === 401) {
       redirectUrl._retry = true;
+
       // Retrieve the current tokens from localStorage
       const userTokens = localStorage.getItem('authUserTokens');
       const token = JSON.parse(userTokens);
       const refreshToken = token.refresh;
-      // Call the async function to refresh the access token
-      refreshAccessToken(refreshToken,"user",redirectUrl);
+      try {
+        await refreshAccessToken(refreshToken, "user", redirectUrl);
+
+        return authentcatedApiClient(redirectUrl);
+      } catch (refreshError) {
+        console.error("Failed to refresh token:", refreshError);
+      }
     }
     return new Promise(() => {});
 
   }
 );
-
-
-
-
-
 
 
 
@@ -176,18 +155,22 @@ admin_authentcatedApiClient.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
+  async (error) => {
     const redirectUrl = error.config;
     if (error.response && error.response.status === 401) {
       redirectUrl._retry = true;
-      console.log("response is working")
       // Retrieve the current tokens from localStorage
       const userTokens = localStorage.getItem('authAdminTokens');
       const token = JSON.parse(userTokens);
       const refreshToken = token.refresh;
-      console.log(refreshToken)
       // Call the async function to refresh the access token
-      refreshAccessToken(refreshToken,"admin",redirectUrl);
+      try {
+        await refreshAccessToken(refreshToken,"admin",redirectUrl);
+        return admin_authentcatedApiClient(redirectUrl);
+      }
+      catch (refreshError) {
+        console.error("Failed to refresh token:", refreshError);
+      }
     }
     return new Promise(() => {});
   }

@@ -1,65 +1,65 @@
-/* Align messages to start or end */
 .recieve {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .send {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .send .message_bubble {
-    background: linear-gradient(to left, #882277, #cc40ba);
-    border-radius: 10px 10px 0 10px;
-    margin: 10px 0;
-    padding: 10px 20px;
-    font-size: 14px;
-    color: wheat;
-    max-width: 20vw;
-    word-wrap: break-word; 
-    overflow-wrap: break-word; 
-    min-width: 20vh;
-
+  background: linear-gradient(to left, #882277, #cc40ba);
+  border-radius: 10px 10px 0 10px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: wheat;
+  max-width: 20vw;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 20vh;
 }
 
 .recieve .message_bubble {
-    background: linear-gradient(to right, #882277, #cc40ba);
-    border-radius: 10px 10px 10px 0;
-    margin: 10px 0;
-    padding: 10px 20px;
-    font-size: 14px;
-    color: wheat;
-    max-width: 20vw; 
-    word-wrap: break-word; 
-    overflow-wrap: break-word; 
-    min-width: 20vh;
+  background: linear-gradient(to right, #882277, #cc40ba);
+  border-radius: 10px 10px 10px 0;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: wheat;
+  max-width: 20vw;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 20vh;
 }
 
 .message_bubble {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .para {
-    max-width: 100%; 
-    margin: 0;
+  max-width: 100%;
+  margin: 0;
 }
 
 @media (max-width: 800px) {
-    .send .message_bubble, .recieve .message_bubble {
-        margin: 0 0 10px 0; 
-        padding: 5px 10px; 
-        font-size: 12px; 
-        max-width: 20vw; 
-    }
+  .send .message_bubble,
+  .recieve .message_bubble {
+    margin: 0 0 10px 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    max-width: 20vw;
+  }
 }
 
-.time, .recievetime {
-    font-size: 10px;
-    color: beige;
-    margin-top: 5px; 
-    text-align: right; 
-    display: block; 
+.time,
+.recievetime {
+  font-size: 10px;
+  color: beige;
+  margin-top: 5px;
+  text-align: right;
+  display: block;
 }

@@ -1,27 +1,23 @@
-
-.sendmessage{
-    border-radius: 5px;
-    text-align: left;
-    color: black;
-    font-size: 13px;
-    padding: 15px;
-    margin: auto;
+.sendmessage {
+  border-radius: 5px;
+  text-align: left;
+  color: black;
+  font-size: 13px;
+  padding: 15px;
+  margin: auto;
 }
-.sendmessage::placeholder{
-    text-align: left;
-    color: rgb(49, 48, 48);
+.sendmessage::placeholder {
+  text-align: left;
+  color: rgb(49, 48, 48);
 }
-.sendbutton{
-    border:  none;
-    color:white;
-    background:linear-gradient(to right, #3362d1, #5980dc);
-    border-radius: 10px;
-    padding: 13.5px;
-    margin-left: -35px;
+.sendbutton {
+  border: none;
+  color: white;
+  background: linear-gradient(to right, #3362d1, #5980dc);
+  border-radius: 10px;
+  padding: 13.5px;
+  margin-left: -35px;
 }
-.sendbutton:hover{
-    color:rgb(30, 29, 29);
+.sendbutton:hover {
+  color: rgb(30, 29, 29);
 }
-
-
-
