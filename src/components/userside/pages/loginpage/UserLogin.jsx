@@ -213,7 +213,7 @@ function UserLogin() {
                   <div className="links">
                     <span className="forget">
                       {' '}
-                      <Link>forget passwsord? </Link>|{' '}
+                      {/* <Link>forget passwsord? </Link>|{' '} */}
                       <Link to="/usersignup">signup </Link>
                     </span>
                   </div>
