@@ -7,9 +7,9 @@ const NotificationComponent = ({ userId }) => {
 
   useEffect(() => {
     if (!userId) return
-
+    
     const ws = new WebSocket(
-      `ws://localhost:8000/ws/notification/?user_id=${userId}`,
+      `${import.meta.env.VITE_SOCKET_URL}/notification/?user_id=${userId}`,
     )
     setSocket(ws)
 

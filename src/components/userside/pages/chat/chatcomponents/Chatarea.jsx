@@ -68,7 +68,7 @@ function Chatarea({ userId, receiverId }) {
     fetchMessages()
 
     const ws = new WebSocket(
-      `ws://localhost:8000/ws/chat/?receiver_id=${receiverId}&user_id=${userId}`,
+      `${import.meta.env.VITE_SOCKET_URL}/chat/?receiver_id=${receiverId}&user_id=${userId}`,
     )
     setSocket(ws)
     ws.onopen = () => {
