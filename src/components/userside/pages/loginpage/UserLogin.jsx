@@ -85,8 +85,7 @@ function UserLogin() {
     setisEmailvalid(gmailRegex.test(value))
   }
   const validatePassword = (value) => {
-    // setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
-    setidPasswordvalid(/^[a-zA-Z0-9]{6}$/.test(value))
+    setidPasswordvalid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value));
   }
 
   const [loading, setLoading] = useState(false)

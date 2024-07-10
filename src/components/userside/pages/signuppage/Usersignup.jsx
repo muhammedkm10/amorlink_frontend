@@ -124,8 +124,7 @@ const Registration = () => {
   }
 
   const validatePassword = (password) => {
-    // setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
-    setIspasswordValid(/^[a-zA-Z0-9]{6}$/.test(password))
+    setIspasswordValid(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password));
   }
 
   const validateAccountfor = (accountFor) => {
