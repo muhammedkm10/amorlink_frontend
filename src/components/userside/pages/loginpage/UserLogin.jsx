@@ -189,7 +189,7 @@ function UserLogin() {
                     {!formData1.password ||
                       (!ispasswordvalid && (
                         <div className="error">
-                          <p>Enter correct password</p>
+                          {/* <p>Enter correct password</p> */}
                         </div>
                       ))}
                   </div>
