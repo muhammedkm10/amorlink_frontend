@@ -138,7 +138,7 @@ function UserLogin() {
 
           Navigate('/modal', { state: { email: formData1.email } })
         } else {
-          console.log('not found')
+          console.log('not found',error)
         }
       }
     }
