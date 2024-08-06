@@ -23,6 +23,7 @@
   color: white;
   padding: 20px !important;
   font-weight: 300;
+  font-size: 13px;
 
   /* text-align: center; */
 }
@@ -37,7 +38,7 @@
 }
 
 .rows {
-  border-bottom: 1px solid #551d4d;
+  /* border-bottom: 1px solid #551d4d; */
 }
 
 .items {
